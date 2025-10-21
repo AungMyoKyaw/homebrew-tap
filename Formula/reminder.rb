@@ -3,8 +3,8 @@ class Reminder < Formula
   desc "A powerful Swift command-line interface for Apple Reminders with full EventKit integration"
   homepage "https://github.com/AungMyoKyaw/apple-reminders-cli"
   url "https://github.com/AungMyoKyaw/apple-reminders-cli.git",
-    tag:      "3.0.0",
-    revision: "532040b5f7b8c8e1c5b6d3a9e2f4g6h7i8j9k0l"
+    branch: "master",
+    revision: "b32dbb24835b1639127ad41d9a39161707723ccf"
   head "https://github.com/AungMyoKyaw/apple-reminders-cli.git", branch: "master"
 
   depends_on :macos

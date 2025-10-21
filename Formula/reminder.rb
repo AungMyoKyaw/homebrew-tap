@@ -12,12 +12,17 @@ class Reminder < Formula
   depends_on xcode: ["14.0", :build]
 
   def install
-    # Build using Xcode project with proper SDK and skip package resolution issues
+    # Clear package manager cache to avoid manifest compilation issues
+    system "rm", "-rf", "#{ENV["HOME"]}/Library/Caches/org.swift.swiftpm/manifests"
+
+    # Build using Xcode project with explicit version targeting
     system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
            "-scheme", "apple-reminders-cli",
            "-configuration", "Release",
-           "-sdk", "macosx",
+           "-sdk", "macosx14.0",
            "-derivedDataPath", "DerivedData",
+           "-skipPackagePluginValidation",
+           "-skipMacroValidation",
            "clean", "build"
 
     # Find the built executable in local DerivedData directory
@@ -25,7 +30,7 @@ class Reminder < Formula
 
     # Verify executable exists
     unless File.exist?(executable_path)
-      # Try alternative path patterns
+      # Try finding with glob pattern
       executable_path = Dir.glob("DerivedData/Build/Products/Release/reminder").first
     end
 

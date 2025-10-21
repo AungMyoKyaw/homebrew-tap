@@ -9,32 +9,36 @@ class Reminder < Formula
   head "https://github.com/AungMyoKyaw/apple-reminders-cli.git", branch: "master"
 
   depends_on :macos
-  depends_on xcode: ["14.0", :build]
 
   def install
-    # Clear package manager cache to avoid manifest compilation issues
-    system "rm", "-rf", "#{ENV["HOME"]}/Library/Caches/org.swift.swiftpm/manifests"
+    # Use the install script from the repository instead of building directly
+    # This avoids Swift Package Manager manifest compilation issues
+    install_script = "#{buildpath}/install.sh"
 
-    # Build using Xcode project with available SDK and validation bypass
-    system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
-           "-scheme", "apple-reminders-cli",
-           "-configuration", "Release",
-           "-derivedDataPath", "DerivedData",
-           "-skipPackagePluginValidation",
-           "-skipMacroValidation",
-           "clean", "build"
+    # Create a modified install script that installs to our prefix
+    modified_install = "#{buildpath}/install_homebrew.sh"
+    install_content = File.read(install_script)
 
-    # Find the built executable in local DerivedData directory
-    executable_path = "DerivedData/Build/Products/Release/reminder"
+    # Modify the script to install to Homebrew's prefix instead of /usr/local/bin
+    modified_content = install_content.gsub(
+      'INSTALL_DIR="/usr/local/bin"',
+      "INSTALL_DIR=\"#{bin}\""
+    ).gsub(
+      /sudo mkdir -p "\$INSTALL_DIR"/,
+      "mkdir -p \"$INSTALL_DIR\""
+    ).gsub(
+      'sudo cp "$EXECUTABLE" "$INSTALL_DIR/$INSTALL_NAME"',
+      'cp "$EXECUTABLE" "$INSTALL_DIR/$INSTALL_NAME"'
+    ).gsub(
+      'sudo chmod +x "$INSTALL_DIR/$INSTALL_NAME"',
+      'chmod +x "$INSTALL_DIR/$INSTALL_NAME"'
+    )
 
-    # Verify executable exists
-    unless File.exist?(executable_path)
-      # Try finding with glob pattern
-      executable_path = Dir.glob("DerivedData/Build/Products/Release/reminder").first
-    end
+    File.write(modified_install, modified_content)
+    chmod 0755, modified_install
 
-    # Install the executable
-    bin.install executable_path
+    # Run the modified install script
+    system modified_install
   end
 
   test do

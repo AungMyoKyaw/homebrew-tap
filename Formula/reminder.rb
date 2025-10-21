@@ -5,6 +5,7 @@ class Reminder < Formula
   url "https://github.com/AungMyoKyaw/apple-reminders-cli.git",
     branch: "master",
     revision: "b32dbb24835b1639127ad41d9a39161707723ccf"
+  version "1.0.0"
   head "https://github.com/AungMyoKyaw/apple-reminders-cli.git", branch: "master"
 
   depends_on :macos

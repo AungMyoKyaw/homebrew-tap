@@ -12,23 +12,23 @@ class Reminder < Formula
   depends_on xcode: ["14.0", :build]
 
   def install
-    # Fix the executable name to be consistent
-    inreplace "apple-reminders-cli.xcodeproj/project.pbxproj",
-      "apple-reminders-cli", "reminder"
-
     # Build using Xcode project
     system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
            "-scheme", "apple-reminders-cli",
            "-configuration", "Release",
-           "-derivedDataPath", "DerivedData",
-           "ONLY_ACTIVE_ARCH=NO",
-           "build"
+           "clean", "build"
 
-    # Find the built executable
-    executable_path = "DerivedData/Build/Products/Release/apple-reminders-cli"
+    # Find the built executable in Xcode's DerivedData directory
+    executable_path = Dir.glob("#{ENV["HOME"]}/Library/Developer/Xcode/DerivedData/apple-reminders-cli-*/Build/Products/Release/reminder")
+                      .find { |path| File.executable?(path) }
 
-    # Install the executable with the correct name
-    bin.install executable_path => "reminder"
+    # Fallback to local DerivedData if not found in user directory
+    if executable_path.nil?
+      executable_path = "DerivedData/Build/Products/Release/reminder"
+    end
+
+    # Install the executable
+    bin.install executable_path
   end
 
   test do

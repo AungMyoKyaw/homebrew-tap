@@ -15,11 +15,10 @@ class Reminder < Formula
     # Clear package manager cache to avoid manifest compilation issues
     system "rm", "-rf", "#{ENV["HOME"]}/Library/Caches/org.swift.swiftpm/manifests"
 
-    # Build using Xcode project with explicit version targeting
+    # Build using Xcode project with available SDK and validation bypass
     system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
            "-scheme", "apple-reminders-cli",
            "-configuration", "Release",
-           "-sdk", "macosx14.0",
            "-derivedDataPath", "DerivedData",
            "-skipPackagePluginValidation",
            "-skipMacroValidation",

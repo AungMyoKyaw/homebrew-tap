@@ -12,19 +12,21 @@ class Reminder < Formula
   depends_on xcode: ["14.0", :build]
 
   def install
-    # Build using Xcode project
+    # Build using Xcode project with proper SDK and skip package resolution issues
     system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
            "-scheme", "apple-reminders-cli",
            "-configuration", "Release",
+           "-sdk", "macosx",
+           "-derivedDataPath", "DerivedData",
            "clean", "build"
 
-    # Find the built executable in Xcode's DerivedData directory
-    executable_path = Dir.glob("#{ENV["HOME"]}/Library/Developer/Xcode/DerivedData/apple-reminders-cli-*/Build/Products/Release/reminder")
-                      .find { |path| File.executable?(path) }
+    # Find the built executable in local DerivedData directory
+    executable_path = "DerivedData/Build/Products/Release/reminder"
 
-    # Fallback to local DerivedData if not found in user directory
-    if executable_path.nil?
-      executable_path = "DerivedData/Build/Products/Release/reminder"
+    # Verify executable exists
+    unless File.exist?(executable_path)
+      # Try alternative path patterns
+      executable_path = Dir.glob("DerivedData/Build/Products/Release/reminder").first
     end
 
     # Install the executable

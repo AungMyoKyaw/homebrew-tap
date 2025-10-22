@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Reminder < Formula
+  # ... (Formula metadata remains the same) ...
   desc "A powerful, feature-rich command-line interface for Apple Reminders"
   homepage "https://github.com/AungMyoKyaw/apple-reminders-cli"
   url "https://github.com/AungMyoKyaw/apple-reminders-cli/archive/refs/tags/v3.0.0.tar.gz"
@@ -9,24 +10,23 @@ class Reminder < Formula
   version "3.0.0"
 
   on_macos do
-    # 💥 Correction: Replace the special dependency :swift with the explicit
-    # requirement for Xcode, which bundles the Swift toolchain.
-    # The '13.0' version is based on your project's stated requirements.
     depends_on :xcode => ["13.0", :build]
-
-    # The tool uses macOS-only frameworks (EventKit), so it must be on macOS.
     depends_on :macos
 
     def install
-      # Use the XCode-bundled 'swift build' command to compile the project.
-      # Homebrew automatically sets the correct environment variables for the build.
-      system "swift", "build", "--disable-sandbox", "--configuration", "release"
+      # 💥 CRITICAL FIX: Change directory to the source folder inside the extracted archive.
+      # The name is typically the repo name followed by the version/tag.
+      cd "apple-reminders-cli-3.0.0" do
+        # Now, swift build can find the Package.swift file
+        system "swift", "build", "--disable-sandbox", "--configuration", "release"
 
-      # Install the compiled executable, renaming it to 'reminder'.
-      bin.install ".build/release/apple-reminders-cli" => "reminder"
+        # The executable path is relative to the current working directory (which is now the source dir)
+        bin.install ".build/release/apple-reminders-cli" => "reminder"
+      end
     end
   end
 
+  # ... (Test block remains the same) ...
   test do
     assert_match "Version: 3.0.0", shell_output("#{bin}/reminder --version")
 

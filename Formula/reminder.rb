@@ -42,6 +42,7 @@ class Reminder < Formula
                "-scheme", "apple-reminders-cli",
                "-configuration", "Release",
                "-derivedDataPath", build_dir,
+               "-disable-package-manager-sandbox",
                "build"
 
         # Find the built executable in our specified build directory

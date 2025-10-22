@@ -14,13 +14,28 @@ class Reminder < Formula
     depends_on :macos
 
     def install
-      # 💥 CRITICAL FIX: Change directory to the source folder inside the extracted archive.
-      # The name is typically the repo name followed by the version/tag.
-      cd "apple-reminders-cli-3.0.0" do
+      # 💥 CRITICAL FIX: Use the 'cd' command with the 'libexec' directory.
+      # Homebrew extracts the tarball into a nested folder. We use Dir.glob to find
+      # the correct source directory, which is essential for `swift build` to find Package.swift.
+      # The '--strip-components 1' trick is often required for Git-generated tarballs,
+      # but in the formula, we use 'cd' to step into the directory.
+
+      # We assume the extracted folder is the only directory in the staging area:
+      source_dir = Dir.glob("apple-reminders-cli-*").first
+
+      if source_dir.nil?
+        # Fallback in case Homebrew stripped the directory name
+        # If the contents are already at the root, no 'cd' is needed.
+        # But since we have a nested structure, this suggests the source is buried.
+        odie "Could not find the source directory after extraction. Please report this issue to the formula maintainer (yourself)."
+      end
+
+      # Navigate into the source directory
+      cd source_dir do
         # Now, swift build can find the Package.swift file
         system "swift", "build", "--disable-sandbox", "--configuration", "release"
 
-        # The executable path is relative to the current working directory (which is now the source dir)
+        # The executable path is relative to the current working directory (source_dir)
         bin.install ".build/release/apple-reminders-cli" => "reminder"
       end
     end

@@ -13,21 +13,29 @@ class Reminder < Formula
     depends_on :macos
 
     def install
-      # 💥 FINAL CONFIRMED FIX: Navigate into the source directory.
-
-      # 1. Navigate into the top-level extracted directory (e.g., apple-reminders-cli-3.0.0)
+      # 💥 SWIFT PACKAGE WITH XCODE: This is an SPM project built via Xcode
+      # Navigate to the extracted directory where the project is located
       cd "apple-reminders-cli-3.0.0" do
 
-        # 2. Navigate into the nested source directory (apple-reminders-cli)
-        # This is the directory containing Package.swift, main.swift, and the build system.
-        cd "apple-reminders-cli" do
+        # Build using xcodebuild which handles Swift Package Manager dependencies
+        # Build to a specific output directory for predictability
+        build_dir = buildpath/"build"
 
-          # Now, swift build can find Package.swift relative to the current directory.
-          system "swift", "build", "--disable-sandbox", "--configuration", "release"
+        system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
+               "-scheme", "apple-reminders-cli",
+               "-configuration", "Release",
+               "-derivedDataPath", build_dir,
+               "build"
 
-          # Install the compiled executable
-          bin.install ".build/release/apple-reminders-cli" => "reminder"
+        # Find the built executable in our specified build directory
+        built_executable = build_dir/"Build/Products/Release/reminder"
+
+        unless built_executable.exist?
+          odie "Build failed: could not find executable at #{built_executable}"
         end
+
+        # Install the compiled executable to Homebrew's bin directory
+        bin.install built_executable => "reminder"
       end
     end
   end

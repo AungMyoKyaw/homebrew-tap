@@ -13,9 +13,27 @@ class Reminder < Formula
     depends_on :macos
 
     def install
-      # 💥 SWIFT PACKAGE WITH XCODE: This is an SPM project built via Xcode
-      # Navigate to the extracted directory where the project is located
-      cd "apple-reminders-cli-3.0.0" do
+      # 💥 DEBUG: Let's see what directories actually exist
+      puts "Current working directory: #{Dir.pwd}"
+      puts "Contents of current directory:"
+      Dir.glob("*").each { |item| puts "  #{item}" }
+
+      # Try to find any directory that matches our pattern
+      matching_dirs = Dir.glob("apple-reminders-cli-*")
+      puts "Matching directories: #{matching_dirs}"
+
+      if matching_dirs.empty?
+        odie "No apple-reminders-cli directory found! Check the directory listing above."
+      end
+
+      # Use the first matching directory
+      source_dir = matching_dirs.first
+      puts "Using directory: #{source_dir}"
+
+      cd source_dir do
+        puts "Changed to: #{Dir.pwd}"
+        puts "Contents:"
+        Dir.glob("*").each { |item| puts "  #{item}" }
 
         # Build using xcodebuild which handles Swift Package Manager dependencies
         # Build to a specific output directory for predictability

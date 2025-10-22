@@ -13,27 +13,26 @@ class Reminder < Formula
     depends_on :macos
 
     def install
-      # 💥 DEBUG: Let's see what directories actually exist
-      puts "Current working directory: #{Dir.pwd}"
-      puts "Contents of current directory:"
-      Dir.glob("*").each { |item| puts "  #{item}" }
+      # 💥 ROBUST FIX: Handle various Homebrew extraction patterns
+      # Homebrew may extract the archive differently depending on the tarball structure
 
-      # Try to find any directory that matches our pattern
-      matching_dirs = Dir.glob("apple-reminders-cli-*")
-      puts "Matching directories: #{matching_dirs}"
+      # Look for the source directory - try multiple patterns
+      source_dir = Dir.glob("apple-reminders-cli-*").first
 
-      if matching_dirs.empty?
-        odie "No apple-reminders-cli directory found! Check the directory listing above."
+      if source_dir.nil?
+        # Fallback: check if files are already at the root (some archives extract directly)
+        if File.exist?("apple-reminders-cli.xcodeproj")
+          source_dir = "."
+        else
+          odie "Could not find apple-reminders-cli source directory. Available contents: #{Dir.glob('*').join(', ')}"
+        end
       end
 
-      # Use the first matching directory
-      source_dir = matching_dirs.first
-      puts "Using directory: #{source_dir}"
-
       cd source_dir do
-        puts "Changed to: #{Dir.pwd}"
-        puts "Contents:"
-        Dir.glob("*").each { |item| puts "  #{item}" }
+        # Verify we're in the right place
+        unless File.exist?("apple-reminders-cli.xcodeproj")
+          odie "Not in the correct source directory. Missing apple-reminders-cli.xcodeproj file."
+        end
 
         # Build using xcodebuild which handles Swift Package Manager dependencies
         # Build to a specific output directory for predictability

@@ -34,24 +34,47 @@ class Reminder < Formula
           odie "Not in the correct source directory. Missing apple-reminders-cli.xcodeproj file."
         end
 
+          # NOTE: There's a known issue with Swift Package Manager sandbox on macOS 26.0.1 (Sequoia)
+        # that causes "sandbox-exec: sandbox_apply: Operation not permitted" errors.
+        # This is a compatibility issue between macOS Sequoia, Xcode 26.0.1, and SPM.
+
+        # Clear any cached package data that might be causing sandbox issues
+        system "rm", "-rf", "#{Dir.home}/Library/Caches/org.swift.swiftpm"
+
         # Build using xcodebuild which handles Swift Package Manager dependencies
         # Build to a specific output directory for predictability
         build_dir = buildpath/"build"
 
-        system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
-               "-scheme", "apple-reminders-cli",
-               "-configuration", "Release",
-               "-derivedDataPath", build_dir,
-               "-skipPackageUpdates",
-               "-disablePackageRepositoryCache",
-               "build"
+        begin
+          system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
+                 "-scheme", "apple-reminders-cli",
+                 "-configuration", "Release",
+                 "-derivedDataPath", build_dir,
+                 "-skipPackageUpdates",
+                 "-disablePackageRepositoryCache",
+                 "build"
+        rescue => e
+          odie <<~EOS
+            Build failed due to Swift Package Manager sandbox issues on macOS 26.0.1 (Sequoia).
+
+            This is a known compatibility issue with the current version of Swift Package Manager.
+
+            Alternative installation methods:
+            1. Use the pre-built binary:
+               curl -L https://github.com/AungMyoKyaw/apple-reminders-cli/releases/download/v3.0.0/reminder-macos.zip -o reminder.zip
+               unzip reminder.zip && sudo mv reminder /usr/local/bin/
+            2. Build manually outside of Homebrew:
+               git clone https://github.com/AungMyoKyaw/apple-reminders-cli.git
+               cd apple-reminders-cli
+               xcodebuild -project apple-reminders-cli.xcodeproj -scheme apple-reminders-cli -configuration Release build
+               cp build/Build/Products/Release/reminder /usr/local/bin/
+
+            Error: #{e.message}
+          EOS
+        end
 
         # Find the built executable in our specified build directory
         built_executable = build_dir/"Build/Products/Release/reminder"
-
-        unless built_executable.exist?
-          odie "Build failed: could not find executable at #{built_executable}"
-        end
 
         # Install the compiled executable to Homebrew's bin directory
         bin.install built_executable => "reminder"

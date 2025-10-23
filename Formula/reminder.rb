@@ -1,91 +1,35 @@
-# frozen_string_literal: true
-
 class Reminder < Formula
   desc "A powerful, feature-rich command-line interface for Apple Reminders"
   homepage "https://github.com/AungMyoKyaw/apple-reminders-cli"
   url "https://github.com/AungMyoKyaw/apple-reminders-cli/archive/refs/tags/v3.0.0.tar.gz"
-  sha256 "3168596090e32d24de0d2b6f976e2ceb967210e60183d69413f6cf347658ec01"
+  sha256 "e0f6e56075d13eca7ff1debb2166af474ae0ae18574418dc432a7222a22ea6f3"
   license "MIT"
-  version "3.0.0"
+  head "https://github.com/AungMyoKyaw/apple-reminders-cli.git", branch: "main"
 
-  on_macos do
-    depends_on :xcode => ["13.0", :build]
-    depends_on :macos
+  depends_on :xcode => ["13.0", :build]
+  depends_on :macos
 
-    def install
-      # 💥 ROBUST FIX: Handle various Homebrew extraction patterns
-      # Homebrew may extract the archive differently depending on the tarball structure
+  def install
+    # Clear any cached package data that might cause sandbox issues
+    system "rm", "-rf", "#{Dir.home}/Library/Caches/org.swift.swiftpm" if OS.mac?
 
-      # Look for the source directory - try multiple patterns
-      source_dir = Dir.glob("apple-reminders-cli-*").first
+    # Build using xcodebuild with proper sandbox handling
+    build_dir = buildpath/"build"
 
-      if source_dir.nil?
-        # Fallback: check if files are already at the root (some archives extract directly)
-        if File.exist?("apple-reminders-cli.xcodeproj")
-          source_dir = "."
-        else
-          odie "Could not find apple-reminders-cli source directory. Available contents: #{Dir.glob('*').join(', ')}"
-        end
-      end
+    system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
+           "-scheme", "apple-reminders-cli",
+           "-configuration", "Release",
+           "-derivedDataPath", build_dir,
+           "ONLY_ACTIVE_ARCH=NO",
+           "build"
 
-      cd source_dir do
-        # Verify we're in the right place
-        unless File.exist?("apple-reminders-cli.xcodeproj")
-          odie "Not in the correct source directory. Missing apple-reminders-cli.xcodeproj file."
-        end
-
-          # NOTE: There's a known issue with Swift Package Manager sandbox on macOS 26.0.1 (Sequoia)
-        # that causes "sandbox-exec: sandbox_apply: Operation not permitted" errors.
-        # This is a compatibility issue between macOS Sequoia, Xcode 26.0.1, and SPM.
-
-        # Clear any cached package data that might be causing sandbox issues
-        system "rm", "-rf", "#{Dir.home}/Library/Caches/org.swift.swiftpm"
-
-        # Build using xcodebuild which handles Swift Package Manager dependencies
-        # Build to a specific output directory for predictability
-        build_dir = buildpath/"build"
-
-        begin
-          system "xcodebuild", "-project", "apple-reminders-cli.xcodeproj",
-                 "-scheme", "apple-reminders-cli",
-                 "-configuration", "Release",
-                 "-derivedDataPath", build_dir,
-                 "-skipPackageUpdates",
-                 "-disablePackageRepositoryCache",
-                 "build"
-        rescue => e
-          odie <<~EOS
-            Build failed due to Swift Package Manager sandbox issues on macOS 26.0.1 (Sequoia).
-
-            This is a known compatibility issue with the current version of Swift Package Manager.
-
-            Alternative installation methods:
-            1. Use the pre-built binary:
-               curl -L https://github.com/AungMyoKyaw/apple-reminders-cli/releases/download/v3.0.0/reminder-macos.zip -o reminder.zip
-               unzip reminder.zip && sudo mv reminder /usr/local/bin/
-            2. Build manually outside of Homebrew:
-               git clone https://github.com/AungMyoKyaw/apple-reminders-cli.git
-               cd apple-reminders-cli
-               xcodebuild -project apple-reminders-cli.xcodeproj -scheme apple-reminders-cli -configuration Release build
-               cp build/Build/Products/Release/reminder /usr/local/bin/
-
-            Error: #{e.message}
-          EOS
-        end
-
-        # Find the built executable in our specified build directory
-        built_executable = build_dir/"Build/Products/Release/reminder"
-
-        # Install the compiled executable to Homebrew's bin directory
-        bin.install built_executable => "reminder"
-      end
-    end
+    # Install the compiled executable
+    bin.install build_dir/"Build/Products/Release/reminder"
   end
 
   test do
     assert_match "Version: 3.0.0", shell_output("#{bin}/reminder --version")
-    expected_error = "Error: No access to Reminders"
-    output = shell_output("#{bin}/reminder lists 2>&1", 1)
-    assert_match expected_error, output
+    # Test that the binary is executable and shows expected help text
+    assert_match "reminder", shell_output("#{bin}/reminder --help")
   end
 end

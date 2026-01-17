@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AungMyoKyaw's Homebrew Tap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #09090b;
+            --bg-secondary: #18181b;
+            --bg-tertiary: #27272a;
+            --accent-green: #4ade80;
+            --accent-cyan: #22d3ee;
+            --accent-orange: #fb923c;
+            --accent-pink: #f472b6;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border: #3f3f46;
+            --glow-green: rgba(74, 222, 128, 0.3);
+            --glow-cyan: rgba(34, 211, 238, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Geist', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated grid background */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(63, 63, 71, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(63, 63, 71, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top, rgba(74, 222, 128, 0.05) 0%, transparent 50%);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Geist Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--bg-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        /* Terminal Window */
+        .terminal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ef4444; }
+        .terminal-dot.yellow { background: #f59e0b; }
+        .terminal-dot.green { background: #22c55e; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .terminal-body {
+            padding: 24px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .terminal-line {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        .terminal-line:nth-child(1) { animation-delay: 0.1s; }
+        .terminal-line:nth-child(2) { animation-delay: 0.3s; }
+        .terminal-line:nth-child(3) { animation-delay: 0.5s; }
+        .terminal-line:nth-child(4) { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prompt {
+            color: var(--accent-green);
+            white-space: nowrap;
+        }
+
+        .command {
+            color: var(--text-primary);
+        }
+
+        .command .highlight {
+            color: var(--accent-cyan);
+        }
+
+        .output {
+            color: var(--text-secondary);
+            padding-left: 16px;
+        }
+
+        .output.success {
+            color: var(--accent-green);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: var(--accent-cyan);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-green), #22c55e);
+            color: var(--bg-primary);
+            box-shadow: 0 0 30px var(--glow-green);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px var(--glow-green);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Formulae Section */
+        .formulae {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .section-number {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            opacity: 0.6;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* Formula Card */
+        .formula-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .formula-card:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 40px rgba(74, 222, 128, 0.1);
+        }
+
+        .formula-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .formula-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .formula-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .formula-version {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .formula-description {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .formula-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            font-size: 0.75rem;
+        }
+
+        .install-box {
+            background: var(--bg-primary);
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 16px 20px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .install-box:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.05);
+        }
+
+        .install-box .cmd {
+            color: var(--accent-cyan);
+        }
+
+        .copy-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .terminal-body {
+                padding: 16px;
+                font-size: 0.8rem;
+            }
+
+            .formula-header {
+                flex-direction: column;
+            }
+
+            .install-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Scanline effect */
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 100;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="scanlines"></div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <span class="logo-icon">~</span>
+                    <span>homebrew-tap</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#formulae">Formulae</a></li>
+                    <li><a href="https://github.com/AungMyoKyaw/homebrew-tap">GitHub</a></li>
+                    <li><a href="https://github.com/AungMyoKyaw">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="hero-badge">
+                    <span class="badge-dot"></span>
+                    1 formula available
+                </span>
+
+                <h1>
+                    CLI tools for<br>
+                    <span class="accent">macOS wizards</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    A personal Homebrew tap hosting powerful command-line utilities
+                    with full macOS integration. Built for developers who live in the terminal.
+                </p>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">terminal — zsh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">$</span>
+                            <span class="command">brew tap <span class="highlight">AungMyoKyaw/homebrew-tap</span></span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">==> Tapping 'AungMyoKyaw/homebrew-tap'</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output">Cloning into '/opt/homebrew/Library/Taps/aungmyokyaw-homebrew-tap'...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="output success">✔ Tapped 1 formula.</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">$</span>
+                            <span class="command">brew install <span class="highlight">reminder</span></span><span class="cursor"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <a href="#formulae" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                        Get Started
+                    </a>
+                    <a href="https://github.com/AungMyoKyaw/homebrew-tap" class="btn btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="formulae" id="formulae">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">01.</span>
+                    <h2 class="section-title">Available Formulae</h2>
+                </div>
+
+                <article class="formula-card">
+                    <div class="formula-header">
+                        <div class="formula-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--bg-primary)" stroke-width="2">
+                                <path d="M9 11l3 3L22 4"/>
+                                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                            </svg>
+                        </div>
+                        <div class="formula-info">
+                            <h3>reminder</h3>
+                            <span class="formula-version">v3.0.4</span>
+                        </div>
+                    </div>
+
+                    <p class="formula-description">
+                        A powerful, feature-rich command-line interface for Apple Reminders
+                        with full EventKit integration. Manage your reminders without leaving
+                        the terminal.
+                    </p>
+
+                    <div class="formula-features">
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            Full EventKit integration
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            Pre-compiled binary
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            Quarantine handling
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            macOS native
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            MIT License
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            Active development
+                        </div>
+                    </div>
+
+                    <div class="install-box" onclick="copyToClipboard('brew install AungMyoKyaw/homebrew-tap/reminder')">
+                        <span><span class="prompt">$</span> <span class="cmd">brew install AungMyoKyaw/homebrew-tap/reminder</span></span>
+                        <span class="copy-hint">Click to copy</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    © 2025 AungMyoKyaw · MIT License
+                </p>
+                <div class="footer-links">
+                    <a href="https://github.com/AungMyoKyaw/homebrew-tap">Repository</a>
+                    <a href="https://github.com/AungMyoKyaw/apple-reminders-cli">reminder CLI</a>
+                    <a href="https://github.com/AungMyoKyaw">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Find the install box and update the hint
+                const installBox = document.querySelector('.install-box .copy-hint');
+                if (installBox) {
+                    const original = installBox.textContent;
+                    installBox.textContent = 'Copied!';
+                    installBox.style.color = 'var(--accent-green)';
+                    setTimeout(() => {
+                        installBox.textContent = original;
+                        installBox.style.color = '';
+                    }, 2000);
+                }
+            });
+        }
+
+        // Terminal typing effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const terminalLines = document.querySelectorAll('.terminal-line');
+            terminalLines.forEach((line, index) => {
+                line.style.animationDelay = `${index * 0.15}s`;
+            });
+        });
+    </script>
+</body>
+</html>

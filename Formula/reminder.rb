@@ -1,8 +1,8 @@
 class Reminder < Formula
   desc "Powerful, feature-rich command-line interface for Apple Reminders"
   homepage "https://github.com/AungMyoKyaw/apple-reminders-cli"
-  url "https://github.com/AungMyoKyaw/apple-reminders-cli/releases/download/v3.0.2/reminder-v3.0.2.zip"
-  sha256 "c08c44f3dddea3fb57522df16357ac700009067b7b45d67de7e7c948649aa692"
+  url "https://github.com/AungMyoKyaw/apple-reminders-cli/releases/download/v3.0.4/reminder-3.0.4.zip"
+  sha256 "960b2cc708b2cb0eac357fbc8360e45282ab0a80d9924093526d2c6d66513b9f"
   license "MIT"
   head "https://github.com/AungMyoKyaw/apple-reminders-cli.git", branch: "main"
 
@@ -11,10 +11,15 @@ class Reminder < Formula
   def install
     # Extract and install the pre-compiled binary
     bin.install "reminder"
+
+    begin
+      system "xattr", "-d", "com.apple.quarantine", "#{bin}/reminder"
+    rescue
+    end
   end
 
   test do
-    assert_match "3.0.2", shell_output("#{bin}/reminder --version")
+    assert_match "3.0.4", shell_output("#{bin}/reminder --version")
     # Test that the binary is executable and shows expected help text
     assert_match "reminder", shell_output("#{bin}/reminder --help")
   end

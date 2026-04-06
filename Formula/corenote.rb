@@ -2,7 +2,7 @@ class Corenote < Formula
   desc "CLI frontend to Apple Notes via direct SQLite access"
   homepage "https://github.com/AungMyoKyaw/corenote"
   url "https://github.com/AungMyoKyaw/corenote/releases/download/v0.1.0/corenote-0.1.0.zip"
-  sha256 "PLACEHOLDER"
+  sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
   license "MIT"
   head "https://github.com/AungMyoKyaw/corenote.git", branch: "master"
 

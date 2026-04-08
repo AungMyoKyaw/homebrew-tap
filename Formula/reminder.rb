@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Reminder < Formula
   desc "Powerful, feature-rich command-line interface for Apple Reminders"
   homepage "https://github.com/AungMyoKyaw/apple-reminders-cli"
@@ -12,10 +14,15 @@ class Reminder < Formula
     # Extract and install the pre-compiled binary
     bin.install "reminder"
 
-    begin
-      system "xattr", "-d", "com.apple.quarantine", "#{bin}/reminder"
-    rescue
+    # Remove quarantine attribute to allow immediate execution
+    # This is safe for formulae from trusted taps
+    quarantine_path = "#{bin}/reminder"
+    if File.exist?(quarantine_path)
+      system "xattr", "-d", "com.apple.quarantine", quarantine_path
     end
+  rescue RuntimeError => e
+    # Quarantine attribute may not exist on all systems, which is acceptable
+    opoo "Could not remove quarantine attribute: #{e.message}" if verbose?
   end
 
   test do

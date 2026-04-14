@@ -5,7 +5,7 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 [P] Create feature branch `001-corenote-product-page`
+- [x] T001 [P] Create feature branch `001-corenote-product-page`
 
 ## Phase 2: Foundational
 
@@ -21,11 +21,11 @@
 
 ### Implementation for User Story 1
 
-- [ ] T002 [US1] Create `corenote.html` with shared design system (colors, fonts, animations from `index.html`)
-- [ ] T003 [US1] Add hero section with product name, description, and install command block
-- [ ] T004 [US1] Add copy-to-clipboard JavaScript with toast feedback
-- [ ] T005 [US1] Add metadata cards (version, architecture, license, requirements)
-- [ ] T006 [US1] Ensure responsive layout across 320px–1440px viewports
+- [x] T002 [US1] Create `corenote.html` with shared design system (colors, fonts, animations from `index.html`)
+- [x] T003 [US1] Add hero section with product name, description, and install command block
+- [x] T004 [US1] Add copy-to-clipboard JavaScript with toast feedback
+- [x] T005 [US1] Add metadata cards (version, architecture, license, requirements)
+- [x] T006 [US1] Ensure responsive layout across 320px–1440px viewports
 
 **Checkpoint**: `corenote.html` is fully functional and testable independently
 
@@ -37,9 +37,9 @@
 
 ### Implementation for User Story 2
 
-- [ ] T007 [US2] Update `index.html` header/logo to link back to itself (if not already)
-- [ ] T008 [US2] Add corenote formula card to `index.html` bento-grid with link to `corenote.html`
-- [ ] T009 [US2] Update total formulae count in `index.html` from "01" to "02"
+- [x] T007 [US2] Update `index.html` header/logo to link back to itself (if not already)
+- [x] T008 [US2] Add corenote formula card to `index.html` bento-grid with link to `corenote.html`
+- [x] T009 [US2] Update total formulae count in `index.html` from "01" to "02"
 
 **Checkpoint**: Navigation between pages works in both directions
 
@@ -51,22 +51,22 @@
 
 ### Implementation for User Story 3
 
-- [ ] T010 [US3] Audit CSS custom properties, font imports, border radius, and hover effects for parity
-- [ ] T011 [US3] Run Lighthouse accessibility audit; fix any score below 90
+- [x] T010 [US3] Audit CSS custom properties, font imports, border radius, and hover effects for parity
+- [x] T011 [US3] Run Lighthouse accessibility audit; fix any score below 90
 
 **Checkpoint**: Design consistency verified
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T012 [P] Manual cross-browser test (Chrome, Safari, Firefox)
-- [ ] T013 Validate all links work correctly
-- [ ] T014 Commit changes with conventional commit message
+- [x] T012 [P] Manual cross-browser test (Chrome, Safari, Firefox)
+- [x] T013 Validate all links work correctly
+- [x] T014 Commit changes with conventional commit message
 
 ---
 
 ## Dependencies & Execution Order
 
 - T002 → T003 → T004 → T005 → T006 (US1 sequential)
-- T007, T008, T009 (US2 sequential, depends on US1 completion)
-- T010, T011 (US3, can run after US2)
+- T007, T008, T009 (US2 sequential, depends on T002-T006)
+- T010, T011 (US3, can run after T007-T009)
 - T012, T013, T014 (Polish, run after all US complete)

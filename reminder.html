@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AungMyoKyaw/homebrew-tap</title>
-    <meta name="description" content="AungMyoKyaw's Homebrew tap. Curated command-line utilities for macOS including reminder and corenote.">
+    <title>reminder — AungMyoKyaw/homebrew-tap</title>
+    <meta name="description" content="reminder is a powerful, feature-rich command-line interface for Apple Reminders. Install via Homebrew.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,14 +21,14 @@
             --text-secondary: #9b9ba8;
             --text-muted: #4a4a57;
             --success: #00d9a3;
-            
+
             --radius-xl: 24px;
             --radius-l: 16px;
             --transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: var(--bg);
@@ -41,12 +41,11 @@
             overflow-x: hidden;
         }
 
-        /* Animated gradient background */
         body::after {
             content: "";
             position: fixed;
             inset: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 80% 80%, rgba(255, 210, 63, 0.06) 0%, transparent 40%),
                 radial-gradient(circle at 50% 50%, rgba(0, 217, 163, 0.04) 0%, transparent 50%);
@@ -60,7 +59,6 @@
             50% { opacity: 0.8; transform: scale(1.1) rotate(5deg); }
         }
 
-        /* Geometric accent shapes */
         body::before {
             content: "";
             position: fixed;
@@ -103,6 +101,8 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
+            color: inherit;
         }
 
         .logo-box {
@@ -123,7 +123,7 @@
             transition: var(--transition);
         }
 
-        .logo-box:hover {
+        .logo-group:hover .logo-box {
             transform: rotate(3deg) scale(1.05);
         }
 
@@ -135,7 +135,6 @@
             font-family: 'Syne', sans-serif;
         }
 
-        /* Bento Grid Architecture */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -175,12 +174,11 @@
             border-color: var(--accent);
             transform: translateY(-4px) scale(1.01);
             background: var(--card-hover);
-            box-shadow: 
+            box-shadow:
                 0 20px 60px rgba(0,0,0,0.5),
                 0 0 0 1px rgba(255, 107, 53, 0.1);
         }
 
-        /* Specific Card Sizing */
         .hero-card {
             grid-column: span 4;
             grid-row: span 2;
@@ -188,11 +186,10 @@
         }
 
         .stats-card { grid-column: span 2; }
-        .formula-card { grid-column: span 3; }
+        .feature-card { grid-column: span 3; }
         .meta-card { grid-column: span 3; }
-        .badge-card { grid-column: span 2; }
+        .back-card { grid-column: span 2; }
 
-        /* Content Styling */
         .hero-card h1 {
             font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 800;
@@ -262,14 +259,14 @@
             transform: scale(0.98);
         }
 
-        .terminal-block code { 
-            color: var(--accent); 
+        .terminal-block code {
+            color: var(--accent);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             padding-right: 1rem;
         }
-        
+
         .copy-icon { opacity: 0.4; transition: opacity 0.2s; flex-shrink: 0; }
         .terminal-block:hover .copy-icon { opacity: 1; }
 
@@ -296,7 +293,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .formula-header {
+        .feature-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -304,17 +301,39 @@
             gap: 1rem;
         }
 
-        .formula-name {
+        .feature-name {
             font-size: clamp(1.4rem, 4vw, 2rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             font-family: 'Syne', sans-serif;
         }
 
-        .formula-desc {
+        .feature-desc {
             color: var(--text-secondary);
             font-size: clamp(0.9rem, 2.5vw, 1rem);
             margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .feature-list li::before {
+            content: "→";
+            color: var(--accent);
+            font-weight: 700;
         }
 
         .badge-row {
@@ -352,7 +371,25 @@
             margin-right: 8px;
         }
 
-        /* Buttons & Links */
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-row:last-child {
+            border-bottom: none;
+        }
+
+        .meta-label {
+            color: var(--text-secondary);
+        }
+
+        .meta-value {
+            font-weight: 500;
+        }
+
         .btn-github {
             padding: 12px 28px;
             background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
@@ -396,7 +433,6 @@
             z-index: 1;
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -407,16 +443,16 @@
         .card:nth-child(3) { animation-delay: 0.2s; }
         .card:nth-child(4) { animation-delay: 0.3s; }
         .card:nth-child(5) { animation-delay: 0.4s; }
+        .card:nth-child(6) { animation-delay: 0.5s; }
 
-        /* Responsive Grid - Mobile First */
         @media (max-width: 1024px) {
-            .bento-grid { 
+            .bento-grid {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 1rem;
             }
             .hero-card { grid-column: span 4; }
-            .formula-card, .meta-card { grid-column: span 2; }
-            .badge-card { grid-column: span 2; }
+            .feature-card, .meta-card { grid-column: span 2; }
+            .back-card { grid-column: span 2; }
         }
 
         @media (max-width: 768px) {
@@ -424,14 +460,14 @@
                 padding: 1.5rem 1rem;
             }
 
-            .bento-grid { 
-                grid-template-columns: 1fr; 
+            .bento-grid {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
-            .hero-card, .stats-card, .formula-card, .meta-card, .badge-card { 
-                grid-column: span 1; 
-                grid-row: span 1; 
+            .hero-card, .stats-card, .feature-card, .meta-card, .back-card {
+                grid-column: span 1;
+                grid-row: span 1;
                 padding: clamp(1.25rem, 4vw, 2rem);
             }
 
@@ -489,7 +525,6 @@
                 font-size: 1.2rem;
             }
 
-            /* Better touch targets on mobile */
             .card {
                 min-height: 120px;
             }
@@ -514,20 +549,20 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo-group">
+            <a href="index.html" class="logo-group">
                 <div class="logo-box">A</div>
                 <div class="logo-text">AungMyoKyaw/tap</div>
-            </div>
-            <a href="https://github.com/AungMyoKyaw" class="btn-github"><span>GitHub Profile</span></a>
+            </a>
+            <a href="https://github.com/AungMyoKyaw/apple-reminders-cli" class="btn-github"><span>View on GitHub</span></a>
         </header>
 
         <main class="bento-grid">
             <!-- Hero Card -->
             <section class="card hero-card">
                 <div>
-                    <span class="label">Native Tap v3.0</span>
-                    <h1>Built for the<br>macOS wizard.</h1>
-                    <p>Curated command-line utilities with deep EventKit integration and performance first architecture.</p>
+                    <span class="label">Product Page</span>
+                    <h1>reminder</h1>
+                    <p>Powerful, feature-rich command-line interface for Apple Reminders. Native EventKit integration, terminal-first workflow.</p>
                 </div>
                 <div class="terminal-block" onclick="copy('brew install AungMyoKyaw/homebrew-tap/reminder')">
                     <code>brew install AungMyoKyaw/homebrew-tap/reminder</code>
@@ -537,78 +572,62 @@
 
             <!-- Stats Card -->
             <div class="card stats-card">
-                <span class="label">Total Formulae</span>
-                <div class="stat-value">03</div>
-                <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">Active & Verified</div>
+                <span class="label">Version</span>
+                <div class="stat-value">3.0.4</div>
+                <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">Latest Release</div>
             </div>
 
-            <!-- Formula Card: reminder -->
-            <a href="reminder.html" class="card formula-card" style="text-decoration: none; color: inherit;">
-                <span class="label">Featured Formula</span>
-                <div class="formula-header">
-                    <h2 class="formula-name">reminder</h2>
-                    <span style="font-family: 'Geist Mono'; font-size: 0.8rem; color: var(--accent);">v3.0.4</span>
-                </div>
-                <p class="formula-desc">Interact with Apple Reminders via EventKit. Native, fast, and terminal-first.</p>
-                <div class="badge-row">
-                    <span class="badge">Swift</span>
-                    <span class="badge">macOS</span>
-                    <span class="badge">MIT</span>
-                </div>
-            </a>
-
-            <!-- Formula Card: corenote -->
-            <a href="corenote.html" class="card formula-card" style="text-decoration: none; color: inherit;">
-                <span class="label">Featured Formula</span>
-                <div class="formula-header">
-                    <h2 class="formula-name">corenote</h2>
-                    <span style="font-family: 'Geist Mono'; font-size: 0.8rem; color: var(--accent);">v0.1.0</span>
-                </div>
-                <p class="formula-desc">CLI frontend to Apple Notes via direct SQLite access. Fast and native.</p>
-                <div class="badge-row">
-                    <span class="badge">Swift</span>
-                    <span class="badge">macOS</span>
-                    <span class="badge">MIT</span>
-                </div>
-            </a>
+            <!-- Feature Card -->
+            <article class="card feature-card">
+                <span class="label">Features</span>
+                <ul class="feature-list">
+                    <li>Native EventKit integration</li>
+                    <li>Terminal-first workflow</li>
+                    <li>Create, edit, and complete reminders</li>
+                    <li>List and search with smart filters</li>
+                </ul>
+            </article>
 
             <!-- Metadata Card -->
             <div class="card meta-card">
                 <span class="label">Technical Metadata</span>
-                <div style="display: flex; flex-direction: column; gap: 12px; margin-top: auto;">
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-secondary);">Last Updated</span>
-                        <span style="font-weight: 500;">Jan 2026</span>
+                <div style="display: flex; flex-direction: column; margin-top: auto;">
+                    <div class="meta-row">
+                        <span class="meta-label">License</span>
+                        <span class="meta-value">MIT</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-secondary);">Architecture</span>
-                        <span style="font-weight: 500;">arm64 / x86_64</span>
+                    <div class="meta-row">
+                        <span class="meta-label">Platform</span>
+                        <span class="meta-value">macOS</span>
                     </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-secondary);">Stability</span>
-                        <span style="font-weight: 500; color: var(--success);">Production</span>
+                    <div class="meta-row">
+                        <span class="meta-label">Architecture</span>
+                        <span class="meta-value">arm64 / x86_64</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Stability</span>
+                        <span class="meta-value" style="color: var(--success);">Production</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Badge Card (Tap) -->
+            <!-- Back Card -->
+            <div class="card back-card" style="background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); color: #000; border: none; box-shadow: 0 8px 40px var(--accent-glow);">
+                <span class="label" style="color: rgba(0,0,0,0.5);">Navigation</span>
+                <h2 style="font-size: clamp(1.3rem, 4vw, 1.75rem); font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.02em; font-family: 'Syne', sans-serif;">Explore all formulae.</h2>
+                <a href="index.html" class="terminal-block" style="background: rgba(0,0,0,0.25); border-color: rgba(0,0,0,0.3); color: #000; text-decoration: none;">
+                    <code style="color: #000; font-weight: 600;">← Back to tap homepage</code>
+                </a>
+            </div>
+
+            <!-- Badge Card -->
             <div class="card stats-card">
                 <span class="label">System Status</span>
                 <div style="margin-top: auto;">
                     <div style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">
                         <span class="status-dot"></span>Online
                     </div>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">All tap endpoints operational.</p>
-                </div>
-            </div>
-            
-            <!-- Quick Action -->
-            <div class="card meta-card" style="background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); color: #000; border: none; box-shadow: 0 8px 40px var(--accent-glow);">
-                <span class="label" style="color: rgba(0,0,0,0.5);">Getting Started</span>
-                <h2 style="font-size: clamp(1.3rem, 4vw, 1.75rem); font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.02em; font-family: 'Syne', sans-serif;">Add the tap repository.</h2>
-                <div class="terminal-block" style="background: rgba(0,0,0,0.25); border-color: rgba(0,0,0,0.3); color: #000;" onclick="copy('brew tap AungMyoKyaw/homebrew-tap')">
-                    <code style="color: #000; font-weight: 600;">brew tap AungMyoKyaw/homebrew-tap</code>
-                    <svg class="copy-icon" style="color: rgba(0,0,0,0.6);" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Tap endpoint operational.</p>
                 </div>
             </div>
         </main>
@@ -633,9 +652,9 @@
                     font-family: 'Syne', sans-serif;
                     animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
                 `;
-                toast.textContent = '✓ Copied to clipboard';
+                toast.textContent = 'Copied to clipboard';
                 document.body.appendChild(toast);
-                
+
                 setTimeout(() => {
                     toast.style.animation = 'slideDown 0.3s ease-out forwards';
                     setTimeout(() => toast.remove(), 300);
@@ -643,21 +662,20 @@
             });
         }
 
-        // Add animation keyframes dynamically
         const style = document.createElement('style');
         style.textContent = `
             @keyframes slideUp {
-                from { 
+                from {
                     opacity: 0;
                     transform: translateY(20px) scale(0.9);
                 }
-                to { 
+                to {
                     opacity: 1;
                     transform: translateY(0) scale(1);
                 }
             }
             @keyframes slideDown {
-                to { 
+                to {
                     opacity: 0;
                     transform: translateY(10px) scale(0.95);
                 }

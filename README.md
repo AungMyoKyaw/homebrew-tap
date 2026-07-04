@@ -18,9 +18,19 @@ Install the Apple Reminders CLI:
 brew install AungMyoKyaw/homebrew-tap/reminder
 ```
 
+Install GitFolio (macOS desktop app):
+
+```bash
+brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
+```
+
 ## Available Formulas
 
 - `reminder` - A powerful Swift command-line interface for Apple Reminders with full EventKit integration
+
+## Available Casks
+
+- `gitfolio` - Git contribution portfolio exporter for macOS
 
 ## Maintainer
 

@@ -30,6 +30,13 @@ Install Git-Ingest (macOS desktop app):
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
 ```
 
+Upgrade an existing Git-Ingest installation:
+
+```bash
+brew update
+brew upgrade --cask AungMyoKyaw/homebrew-tap/git-ingest
+```
+
 ## Available Formulas
 
 - `reminder` - A powerful Swift command-line interface for Apple Reminders with full EventKit integration

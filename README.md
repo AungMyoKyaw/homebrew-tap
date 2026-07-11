@@ -24,6 +24,12 @@ Install GitFolio (macOS desktop app):
 brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
 ```
 
+Install Git-Ingest (macOS desktop app):
+
+```bash
+brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
+```
+
 ## Available Formulas
 
 - `reminder` - A powerful Swift command-line interface for Apple Reminders with full EventKit integration
@@ -31,6 +37,7 @@ brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
 ## Available Casks
 
 - `gitfolio` - Git contribution portfolio exporter for macOS
+- `git-ingest` - Secure Electron desktop app for Git-Ingest
 
 ## Maintainer
 

@@ -24,9 +24,10 @@ Install GitFolio (macOS desktop app):
 brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
 ```
 
-Install Git-Ingest (macOS desktop app):
+First-time Git-Ingest install (macOS desktop app):
 
 ```bash
+brew tap AungMyoKyaw/homebrew-tap
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
 ```
 

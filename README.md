@@ -38,6 +38,13 @@ brew update
 brew upgrade --cask AungMyoKyaw/homebrew-tap/git-ingest
 ```
 
+Install Caffeinate (macOS desktop app):
+
+```bash
+brew tap AungMyoKyaw/homebrew-tap
+brew install --cask AungMyoKyaw/homebrew-tap/caffeinate
+```
+
 ## Available Formulas
 
 - `reminder` - A powerful Swift command-line interface for Apple Reminders with full EventKit integration
@@ -46,6 +53,7 @@ brew upgrade --cask AungMyoKyaw/homebrew-tap/git-ingest
 
 - `gitfolio` - Git contribution portfolio exporter for macOS
 - `git-ingest` - Secure Electron desktop app for Git-Ingest
+- `caffeinate` - Keep your Mac awake during long builds, downloads, renders, and remote sessions
 
 ## Maintainer
 

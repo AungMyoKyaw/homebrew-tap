@@ -1,9 +1,9 @@
 cask "dhamma-echo" do
   arch arm: "aarch64", intel: "x64"
 
-  version "0.4.0"
-  sha256 arm:   "2a426ddddf45b2c8794cc71282cbb8876e1468a54bce11b421d3e771daf96543",
-         intel: "3a9cb943742b55898ca021ab179d075f72ea1ec71dc40f35277293957ab0ac46"
+  version "0.4.1"
+  sha256 arm:   "3ed010596cfb1c678733a2b5d4af22d24067291264bef23413b5ddcb4f74e0b0",
+         intel: "d4ee52f8a6c26dcbb7c168239c8929d75ebf655f703dd1939ba8fe757c350ac7"
 
   url "https://github.com/AungMyoKyaw/dhamma-echo/releases/download/v#{version}/Dhamma.Echo_#{version}_#{arch}.dmg"
   name "Dhamma Echo"

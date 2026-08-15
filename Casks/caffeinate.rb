@@ -1,6 +1,6 @@
 cask "caffeinate" do
-  version "2.0.0"
-  sha256 "5e7490b848ac54b58f7e2405e435d7380fd9035836303a2e145921b1c87b968e"
+  version "2.1.0"
+  sha256 "a6c60354f8d58fc3b67e5fd025055b34000341ec1d92def35ad17f1a74f1d34c"
 
   url "https://github.com/AungMyoKyaw/caffeinate-app/releases/download/v#{version}/Caffeinate_#{version}_universal.dmg"
   name "Caffeinate"

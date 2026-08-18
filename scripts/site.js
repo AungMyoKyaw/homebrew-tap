@@ -89,29 +89,14 @@
     }
 
     // ---- Typewriter ------------------------------------------------
+    // The typewriter effect was removed: it replaced the install
+    // command's text content with partial strings while running, which
+    // meant a click on the adjacent copy button would copy text the
+    // user couldn't yet see, and screen readers announced partial text.
+    // The blinking caret still provides motion without mutating content.
     function initTypewriter() {
-        const target = document.querySelector("[data-typewriter]");
-        if (!target) return;
-
-        const fullText = target.textContent;
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        if (reducedMotion) {
-            // Leave the text in place.
-            return;
-        }
-
-        target.textContent = "";
-
-        let i = 0;
-        const tick = () => {
-            if (i <= fullText.length) {
-                target.textContent = fullText.slice(0, i);
-                i += 1;
-                window.setTimeout(tick, 28 + Math.random() * 35);
-            }
-        };
-        window.setTimeout(tick, 350);
+        // Intentionally a no-op. Kept as a stub so future motion
+        // experiments have a known hook to replace.
     }
 
     // ---- Boot ------------------------------------------------------

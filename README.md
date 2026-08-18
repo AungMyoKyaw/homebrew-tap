@@ -101,6 +101,16 @@ brew untap AungMyoKyaw/homebrew-tap
 
 Contributions are welcome. Please open a pull request with a focused change and include relevant validation steps.
 
+## Security
+
+This tap distributes pre-compiled binaries from the official [apple-reminders-cli releases](https://github.com/AungMyoKyaw/apple-reminders-cli/releases). All binaries are:
+
+- Built from open-source code
+- Signed and notarized when applicable
+- SHA256 verified during installation
+
+If you discover a security vulnerability, please report it by creating an issue in the respective repository.
+
 ## License
 
 The formulas in this tap reference software under their respective licenses. The `reminder` formula references software licensed under the MIT License.

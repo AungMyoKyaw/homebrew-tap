@@ -1,68 +1,41 @@
-# AungMyoKyaw's Homebrew Tap
+# AungMyoKyaw / homebrew-tap
 
-> **Visit the website:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
+> **Live site:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
 
-A personal Homebrew tap for six macOS command-line tools and desktop apps.
+A personal Homebrew tap for six small macOS tools (2 formulae, 4 casks). All MIT licensed, all installed and updated through Homebrew.
 
-## Quick start
-
-Add the tap once:
+## Install
 
 ```bash
 brew tap AungMyoKyaw/homebrew-tap
+brew install <package>
 ```
-
-Then install any formula or cask below.
 
 ## Formulae
 
-### reminder
-
-Powerful command-line interface for Apple Reminders with full EventKit integration.
+| Package | Version | What it does |
+| --- | --- | --- |
+| [reminder](./package/reminder.html) | v3.0.4 | Command-line interface for Apple Reminders, full EventKit integration |
+| [corenote](./package/corenote.html) | v0.1.0 | CLI frontend to Apple Notes via direct SQLite access |
 
 ```bash
 brew install AungMyoKyaw/homebrew-tap/reminder
-```
-
-### corenote
-
-CLI frontend to Apple Notes via direct SQLite access. Fast and native.
-
-```bash
 brew install AungMyoKyaw/homebrew-tap/corenote
 ```
 
 ## Casks
 
-### git-ingest
-
-Secure Electron desktop app for Git-Ingest. Bundle any repo for LLM context.
+| Package | Version | What it does |
+| --- | --- | --- |
+| git-ingest | v0.2.7 | Secure Electron desktop app that bundles any repo for LLM context |
+| gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
+| caffeinate | v2.1.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
+| dhamma-echo | v0.5.5 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
 
 ```bash
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
-```
-
-### gitfolio
-
-Git contribution portfolio exporter for macOS. Visualize your year of work.
-
-```bash
 brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
-```
-
-### caffeinate
-
-Keep your Mac awake during long builds, downloads, renders, and remote sessions.
-
-```bash
 brew install --cask AungMyoKyaw/homebrew-tap/caffeinate
-```
-
-### dhamma-echo
-
-A quiet desktop library for Dhamma talks. Listen offline, mindfully.
-
-```bash
 brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo
 ```
 
@@ -70,10 +43,10 @@ brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo
 
 ```bash
 brew update
-brew upgrade --cask AungMyoKyaw/homebrew-tap/git-ingest
+brew upgrade AungMyoKyaw/homebrew-tap/<name>
 ```
 
-Replace `git-ingest` with any installed formula or cask you want to upgrade.
+Use `--cask` after `brew upgrade` for casks.
 
 ## Maintainer
 

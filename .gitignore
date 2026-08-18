@@ -39,6 +39,13 @@ Temporary Items
 *.tmp
 *.temp
 
+# Codex and agent workspaces
+.claude/
+.specify/
+.impeccable/
+/v2-full.png
+/v2-viewport.png
+
 # Ruby
 *.gem
 *.rbc

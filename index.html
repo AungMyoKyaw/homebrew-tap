@@ -3,651 +3,1723 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AungMyoKyaw/homebrew-tap</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#0b0d0d">
+    <title>Homebrew Tap: AungMyoKyaw</title>
+    <meta name="description" content="A personal Homebrew tap for six useful macOS command-line tools and desktop apps.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23ff7a45'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='monospace' font-size='40' font-weight='700' fill='%231b100b'%3EA%3C/text%3E%3C/svg%3E">
     <style>
         :root {
-            --bg: #0a0a0f;
-            --card-bg: #16161d;
-            --card-hover: #1c1c26;
-            --border: #2a2a35;
-            --accent: #ff6b35;
-            --accent-secondary: #ffd23f;
-            --accent-glow: rgba(255, 107, 53, 0.2);
-            --text: #f4f4f9;
-            --text-secondary: #9b9ba8;
-            --text-muted: #4a4a57;
-            --success: #00d9a3;
-            
-            --radius-xl: 24px;
-            --radius-l: 16px;
-            --transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color-scheme: dark;
+            --bg: #0b0d0d;
+            --surface: #121716;
+            --surface-raised: #18201e;
+            --code-bg: #080b0b;
+            --line: #2b3632;
+            --line-strong: #46534d;
+            --text: #f3f5ed;
+            --muted: #b2bbb5;
+            --subtle: #84908a;
+            --orange: #ff7a45;
+            --orange-soft: #3a2118;
+            --yellow: #ffd166;
+            --green: #25d0a0;
+            --green-soft: #12352c;
+            --focus: #f6d477;
+            --danger: #ff9580;
+            --radius-panel: 14px;
+            --radius-control: 10px;
+            --content-width: 1180px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Space Grotesk', sans-serif;
+            min-width: 320px;
+            margin: 0;
+            overflow-x: hidden;
             background: var(--bg);
             color: var(--text);
-            padding: clamp(1.5rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+            font-size: 1rem;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* Animated gradient background */
-        body::after {
-            content: "";
+        a {
+            color: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 4px;
+        }
+
+        .skip-link {
             position: fixed;
-            inset: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(255, 210, 63, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(0, 217, 163, 0.04) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-            animation: gradientShift 20s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
-            50% { opacity: 0.8; transform: scale(1.1) rotate(5deg); }
-        }
-
-        /* Geometric accent shapes */
-        body::before {
-            content: "";
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            top: -150px;
-            right: -150px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-            opacity: 0.03;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            pointer-events: none;
-            z-index: 1;
-            animation: morphShape 15s ease-in-out infinite;
-        }
-
-        @keyframes morphShape {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg); }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; transform: rotate(90deg); }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-        }
-
-        header {
-            margin-bottom: clamp(2rem, 8vw, 4rem);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-box {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-weight: 800;
-            font-size: 1.4rem;
-            flex-shrink: 0;
-            font-family: 'Syne', sans-serif;
-            box-shadow: 0 4px 20px var(--accent-glow);
-            transform: rotate(-3deg);
-            transition: var(--transition);
-        }
-
-        .logo-box:hover {
-            transform: rotate(3deg) scale(1.05);
-        }
-
-        .logo-text {
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 40;
+            padding: 0.65rem 0.9rem;
+            transform: translateY(-180%);
+            border-radius: var(--radius-control);
+            background: var(--yellow);
+            color: #15130d;
             font-weight: 700;
-            font-size: clamp(1.1rem, 4vw, 1.35rem);
-            letter-spacing: -0.02em;
-            white-space: nowrap;
-            font-family: 'Syne', sans-serif;
-        }
-
-        /* Bento Grid Architecture */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: auto;
-            gap: 1.25rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 2px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: clamp(1.5rem, 4vw, 2.5rem);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-secondary), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px) scale(1.01);
-            background: var(--card-hover);
-            box-shadow: 
-                0 20px 60px rgba(0,0,0,0.5),
-                0 0 0 1px rgba(255, 107, 53, 0.1);
-        }
-
-        /* Specific Card Sizing */
-        .hero-card {
-            grid-column: span 4;
-            grid-row: span 2;
-            justify-content: center;
-        }
-
-        .stats-card { grid-column: span 2; }
-        .formula-card { grid-column: span 3; }
-        .meta-card { grid-column: span 3; }
-        .badge-card { grid-column: span 2; }
-
-        /* Content Styling */
-        .hero-card h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
-            line-height: 0.95;
-            letter-spacing: -0.04em;
-            margin-bottom: 1.5rem;
-            font-family: 'Syne', sans-serif;
-            background: linear-gradient(135deg, #fff 0%, var(--accent-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            animation: textShimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes textShimmer {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.1); }
-        }
-
-        .hero-card p {
-            font-size: clamp(1.05rem, 3vw, 1.3rem);
-            color: var(--text-secondary);
-            max-width: 500px;
-            margin-bottom: clamp(2rem, 6vw, 3rem);
-            font-weight: 400;
-            line-height: 1.7;
-        }
-
-        .terminal-block {
-            background: rgba(0,0,0,0.5);
-            border: 2px solid var(--border);
-            border-radius: 14px;
-            padding: clamp(1rem, 3vw, 1.25rem);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(0.75rem, 2.5vw, 0.9rem);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .terminal-block::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .terminal-block:hover {
-            border-color: var(--accent);
-            background: rgba(0,0,0,0.7);
-            transform: scale(1.02);
-        }
-
-        .terminal-block:hover::after {
-            opacity: 1;
-        }
-
-        .terminal-block:active {
-            transform: scale(0.98);
-        }
-
-        .terminal-block code { 
-            color: var(--accent); 
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding-right: 1rem;
-        }
-        
-        .copy-icon { opacity: 0.4; transition: opacity 0.2s; flex-shrink: 0; }
-        .terminal-block:hover .copy-icon { opacity: 1; }
-
-        .label {
-            font-size: clamp(0.65rem, 2vw, 0.75rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: block;
-            font-family: 'Syne', sans-serif;
-        }
-
-        .stat-value {
-            font-size: clamp(3.5rem, 12vw, 5.5rem);
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            line-height: 1;
-            margin-top: auto;
-            font-family: 'Syne', sans-serif;
-            background: linear-gradient(135deg, var(--text), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .formula-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .formula-name {
-            font-size: clamp(1.4rem, 4vw, 2rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            font-family: 'Syne', sans-serif;
-        }
-
-        .formula-desc {
-            color: var(--text-secondary);
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            margin-bottom: 2rem;
-        }
-
-        .badge-row {
-            display: flex;
-            gap: 8px;
-            margin-top: auto;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.03);
-            border: 2px solid var(--border);
-            border-radius: 100px;
-            font-size: clamp(0.7rem, 2vw, 0.8rem);
-            font-weight: 600;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s ease;
-        }
-
-        .badge:hover {
-            background: rgba(255, 107, 53, 0.1);
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .status-dot {
-            width: 8px; height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            box-shadow: 0 0 12px var(--success);
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        /* Buttons & Links */
-        .btn-github {
-            padding: 12px 28px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-            color: #000;
-            border-radius: 100px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-            transition: var(--transition);
-            white-space: nowrap;
-            font-family: 'Syne', sans-serif;
-            box-shadow: 0 4px 20px var(--accent-glow);
-            position: relative;
-            overflow: hidden;
+            transition: transform 180ms ease-out;
         }
 
-        .btn-github::before {
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .site-shell {
+            width: min(var(--content-width), calc(100% - 2rem));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            min-height: 5rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 2.5rem;
+            height: 2.5rem;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid var(--orange);
+            border-radius: 8px;
+            background: var(--orange);
+            color: #1b100b;
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .brand-copy {
+            display: grid;
+            gap: 0.05rem;
+            min-width: 0;
+        }
+
+        .brand-name {
+            overflow: hidden;
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .brand-caption {
+            color: var(--subtle);
+            font-size: 0.75rem;
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.75rem, 2vw, 1.5rem);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .site-nav a {
+            text-decoration: none;
+        }
+
+        .site-nav a:not(.nav-button):hover {
+            color: var(--text);
+        }
+
+        .nav-button,
+        .hero-link {
+            display: inline-flex;
+            min-height: 2.75rem;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .nav-button {
+            border-color: var(--yellow);
+            background: var(--yellow);
+            color: #17130a;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+            align-items: center;
+            gap: clamp(2.5rem, 7vw, 7rem);
+            padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
+        }
+
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            display: block;
+        }
+        #hero-canvas.is-hidden { display: none; }
+
+        #ambient-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            display: block;
+        }
+        #ambient-canvas.is-hidden { display: none; }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            min-height: clamp(34rem, 78vh, 56rem);
+        }
+
+        .hero::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(120% 80% at 70% 50%, rgba(11, 13, 13, 0) 0%, rgba(11, 13, 13, 0.35) 55%, rgba(11, 13, 13, 0.85) 100%),
+                linear-gradient(180deg, rgba(11, 13, 13, 0.55) 0%, rgba(11, 13, 13, 0.25) 30%, rgba(11, 13, 13, 0.65) 100%);
         }
 
-        .btn-github:hover::before {
+        .hero-copy { position: relative; z-index: 1; max-width: 43rem; }
+
+        .hero-copy {
+            max-width: 43rem;
+        }
+
+        .eyebrow,
+        .section-kicker,
+        .step-label,
+        .package-kind,
+        .install-label {
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow,
+        .section-kicker {
+            color: var(--orange);
+        }
+
+        .eyebrow {
+            margin: 0 0 1.25rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-wrap: balance;
+        }
+
+        h1 {
+            max-width: 10ch;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            font-size: clamp(3.25rem, 8vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 0.98;
+        }
+
+        .hero-lede {
+            max-width: 61ch;
+            margin-bottom: 2rem;
+            color: var(--muted);
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
+        }
+
+        .hero-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero-link {
+            border-color: var(--orange);
+            background: var(--orange);
+            color: #1b100b;
+            text-decoration: none;
+        }
+
+        .hero-link.secondary {
+            border-color: var(--line-strong);
+            background: transparent;
+            color: var(--muted);
+        }
+
+        .hero-link.secondary:hover {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        .install-panel,
+        .about-panel {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-panel);
+            background: var(--surface);
+        }
+
+        .install-panel {
+            padding: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        .panel-heading {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .panel-heading h2 {
+            max-width: 16ch;
+            margin-bottom: 0;
+            font-size: clamp(1.35rem, 3vw, 1.8rem);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .panel-mark {
+            display: grid;
+            width: 2.5rem;
+            height: 2.5rem;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid var(--orange);
+            border-radius: 50%;
+            color: var(--orange);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.8rem;
+        }
+
+        .install-step + .install-step {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .step-label,
+        .install-label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--subtle);
+        }
+
+        .step-label {
+            color: var(--yellow);
+        }
+
+        .step-description {
+            margin-bottom: 0.75rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .command {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.7rem;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius-control);
+            background: var(--code-bg);
+        }
+
+        .command code {
+            min-width: 0;
+            color: var(--yellow);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.78rem;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+
+        .copy-button {
+            min-width: 4.5rem;
+            min-height: 2.75rem;
+            padding: 0.55rem 0.85rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 7px;
+            background: var(--surface-raised);
+            color: var(--text);
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.82rem;
+            font-weight: 700;
+            transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
+        }
+
+        .copy-button:hover {
+            border-color: var(--yellow);
+            background: var(--yellow);
+            color: #17130a;
+        }
+
+        .copy-button[data-status="copied"] {
+            border-color: var(--green);
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .copy-button[data-status="failed"] {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .copy-button:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
+
+        .catalog-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 2rem;
+            padding: 1.1rem 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+        }
+
+        .summary-item {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.45rem;
+        }
+
+        .summary-value {
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-weight: 700;
+        }
+
+        .summary-label {
+            color: var(--subtle);
+            font-size: 0.9rem;
+        }
+
+        .catalog-section {
+            padding: clamp(3.75rem, 7vw, 6rem) 0 0;
+            scroll-margin-top: 2rem;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 0.35rem;
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            letter-spacing: -0.035em;
+            line-height: 1;
+        }
+
+        .section-heading p {
+            max-width: 56ch;
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .section-count {
+            flex: 0 0 auto;
+            color: var(--subtle);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.78rem;
+        }
+
+        .package-list {
+            border-top: 1px solid var(--line);
+        }
+
+        .package-row {
+            display: grid;
+            grid-template-columns: minmax(10rem, 0.7fr) minmax(15rem, 1fr) minmax(20rem, 1.35fr);
+            gap: clamp(1.25rem, 3vw, 3rem);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--line);
+            position: relative;
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .package-row.depth-pending {
+            opacity: 0;
+            transform: translateY(2.4rem);
+        }
+
+        .package-row.depth-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .package-row::before {
+            content: "";
+            position: absolute;
+            inset: -0.4rem -0.75rem;
+            z-index: -1;
+            border-radius: var(--radius-panel);
+            background: radial-gradient(60% 100% at 0% 50%, var(--row-glow, var(--orange-soft)) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 220ms ease-out;
+        }
+
+        .package-row.row-hover::before {
             opacity: 1;
         }
 
-        .btn-github:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 30px var(--accent-glow);
-        }
+        .package-row[data-kind="formula"] { --row-accent: var(--orange); --row-glow: rgba(255, 122, 69, 0.18); }
+        .package-row[data-kind="cask"] { --row-accent: var(--green); --row-glow: rgba(37, 208, 160, 0.18); }
 
-        .btn-github:active {
-            transform: translateY(0) scale(1);
-        }
-
-        .btn-github span {
+        .catalog-section {
             position: relative;
-            z-index: 1;
+            transform-style: preserve-3d;
+            transform: perspective(2400px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+            transition: transform 200ms ease-out;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .package-identity,
+        .package-details,
+        .package-action {
+            min-width: 0;
         }
 
-        .card { animation: fadeIn 0.6s ease-out forwards; }
-        .card:nth-child(2) { animation-delay: 0.1s; }
-        .card:nth-child(3) { animation-delay: 0.2s; }
-        .card:nth-child(4) { animation-delay: 0.3s; }
-        .card:nth-child(5) { animation-delay: 0.4s; }
-
-        /* Responsive Grid - Mobile First */
-        @media (max-width: 1024px) {
-            .bento-grid { 
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-            }
-            .hero-card { grid-column: span 4; }
-            .formula-card, .meta-card { grid-column: span 2; }
-            .badge-card { grid-column: span 2; }
+        .package-identity {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            align-items: baseline;
+            gap: 0.65rem;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 1.5rem 1rem;
+        .package-name {
+            width: 100%;
+            margin-bottom: 0;
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .package-kind {
+            padding: 0.25rem 0.45rem;
+            border: 1px solid var(--orange);
+            border-radius: 999px;
+            color: var(--orange);
+            font-size: 0.62rem;
+            letter-spacing: 0.05em;
+        }
+
+        .package-row[data-kind="cask"] .package-kind {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .package-version {
+            color: var(--subtle);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.76rem;
+        }
+
+        .package-description {
+            max-width: 46ch;
+            margin-bottom: 0.85rem;
+            color: var(--muted);
+        }
+
+        .package-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .package-tags li {
+            padding: 0.2rem 0.5rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--subtle);
+            font-size: 0.75rem;
+        }
+
+        .package-action {
+            align-self: start;
+        }
+
+        .package-row[data-kind="formula"] .command code {
+            color: var(--orange);
+        }
+
+        .package-row[data-kind="cask"] .command code {
+            color: var(--green);
+        }
+
+        .package-row[data-kind="cask"] .copy-button:hover {
+            border-color: var(--green);
+            background: var(--green);
+            color: #07130f;
+        }
+
+        .detail-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            color: var(--muted);
+            font-size: 0.86rem;
+            text-decoration: underline;
+            text-decoration-color: var(--line-strong);
+            text-underline-offset: 0.2em;
+        }
+
+        .detail-link:hover {
+            color: var(--text);
+            text-decoration-color: var(--text);
+        }
+
+        .about-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.9fr);
+            gap: 2rem;
+            margin: clamp(4rem, 8vw, 7rem) 0 4rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .about-panel h2 {
+            max-width: 15ch;
+            margin-bottom: 0.9rem;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            letter-spacing: -0.035em;
+            line-height: 1;
+        }
+
+        .about-panel p:not(.section-kicker) {
+            max-width: 58ch;
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .meta-list {
+            display: grid;
+            gap: 0;
+            margin: 0;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .meta-row:first-child {
+            padding-top: 0;
+        }
+
+        .meta-row:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .meta-row dt {
+            color: var(--subtle);
+        }
+
+        .meta-row dd {
+            margin: 0;
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.84rem;
+            text-align: right;
+        }
+
+        .site-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.5rem 0 2.5rem;
+            border-top: 1px solid var(--line);
+            color: var(--subtle);
+            font-size: 0.86rem;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        .site-footer a {
+            color: var(--muted);
+            text-decoration-color: var(--line-strong);
+            text-underline-offset: 0.2em;
+        }
+
+        .site-footer a:hover {
+            color: var(--text);
+        }
+
+        .copy-status {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 30;
+            max-width: min(24rem, calc(100% - 2rem));
+            padding: 0.75rem 0.9rem;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius-control);
+            background: var(--surface-raised);
+            color: var(--text);
+            font-size: 0.88rem;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(0.5rem);
+            transition: opacity 180ms ease-out, transform 180ms ease-out;
+        }
+
+        .copy-status.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .copy-status[data-state="success"] {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .copy-status[data-state="error"] {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
 
-            .bento-grid { 
-                grid-template-columns: 1fr; 
-                gap: 1rem;
+            h1 {
+                max-width: 12ch;
             }
 
-            .hero-card, .stats-card, .formula-card, .meta-card, .badge-card { 
-                grid-column: span 1; 
-                grid-row: span 1; 
-                padding: clamp(1.25rem, 4vw, 2rem);
+            .package-row {
+                grid-template-columns: minmax(9rem, 0.65fr) minmax(0, 1fr);
             }
 
-            .hero-card h1 {
-                font-size: clamp(2rem, 10vw, 3rem);
-                line-height: 1.05;
-                margin-bottom: 1rem;
+            .package-action {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-shell {
+                width: min(var(--content-width), calc(100% - 1.25rem));
             }
 
-            .hero-card p {
-                font-size: clamp(0.95rem, 4vw, 1.1rem);
-                margin-bottom: 1.5rem;
-            }
-
-            .terminal-block {
-                padding: 0.875rem 1rem;
-                font-size: 0.75rem;
-            }
-
-            .terminal-block code {
-                font-size: 0.7rem;
-            }
-
-            header {
-                flex-direction: column;
+            .site-header {
                 align-items: flex-start;
-                gap: 1rem;
-                margin-bottom: 2rem;
+                flex-direction: column;
+                padding: 1rem 0;
             }
 
-            .btn-github {
+            .site-nav {
                 width: 100%;
-                text-align: center;
-                padding: 14px 24px;
-                justify-content: center;
-                display: flex;
+                justify-content: space-between;
+                gap: 0.65rem;
             }
 
-            .stat-value {
-                font-size: clamp(3rem, 15vw, 4rem);
+            .site-nav a {
+                font-size: 0.82rem;
             }
 
-            .badge-row {
-                gap: 6px;
+            .nav-button {
+                min-height: 2.6rem;
+                padding: 0.5rem 0.75rem;
             }
 
-            .badge {
-                padding: 6px 12px;
-                font-size: 0.7rem;
+            .hero {
+                padding-top: 3.5rem;
             }
 
-            .logo-box {
-                width: 36px;
-                height: 36px;
-                font-size: 1.2rem;
+            h1 {
+                font-size: clamp(2.75rem, 15vw, 4.4rem);
             }
 
-            /* Better touch targets on mobile */
-            .card {
-                min-height: 120px;
+            .command {
+                grid-template-columns: 1fr;
             }
 
-            .terminal-block {
-                min-height: 48px;
+            .copy-button {
+                width: 100%;
+            }
+
+            .about-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+                gap: 0.65rem;
+            }
+
+            .package-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .package-action {
+                grid-column: auto;
+            }
+
+            .about-panel {
+                display: grid;
+            }
+
+            .site-footer {
+                flex-direction: column;
             }
         }
 
-        @media (max-width: 480px) {
-            .terminal-block code {
-                font-size: 0.65rem;
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
             }
 
-            .copy-icon {
-                width: 16px;
-                height: 16px;
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            #hero-canvas,
+            #ambient-canvas {
+                display: none;
+            }
+
+            .package-row {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .catalog-section {
+                transform: none !important;
             }
         }
     </style>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"
+        }
+    }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-group">
-                <div class="logo-box">A</div>
-                <div class="logo-text">AungMyoKyaw/tap</div>
-            </div>
-            <a href="https://github.com/AungMyoKyaw" class="btn-github"><span>GitHub Profile</span></a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html" aria-label="AungMyoKyaw Homebrew tap home">
+                <span class="brand-mark" aria-hidden="true">A</span>
+                <span class="brand-copy">
+                    <span class="brand-name">AungMyoKyaw / homebrew-tap</span>
+                    <span class="brand-caption">macOS tools, shipped simply</span>
+                </span>
+            </a>
+
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a href="#packages">Packages</a>
+                <a href="#install">Install</a>
+                <a href="README.md">README</a>
+                <a class="nav-button" href="https://github.com/AungMyoKyaw" rel="noreferrer" target="_blank">GitHub</a>
+            </nav>
         </header>
 
-        <div class="bento-grid">
-            <!-- Hero Card -->
-            <section class="card hero-card">
-                <div>
-                    <span class="label">Native Tap v3.0</span>
-                    <h1>Built for the<br>macOS wizard.</h1>
-                    <p>Curated command-line utilities with deep EventKit integration and performance first architecture.</p>
-                </div>
-                <div class="terminal-block" onclick="copy('brew install AungMyoKyaw/homebrew-tap/reminder')">
-                    <code>brew install AungMyoKyaw/homebrew-tap/reminder</code>
-                    <svg class="copy-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <main id="main-content">
+            <section class="hero" aria-labelledby="page-title">
+                <canvas id="hero-canvas" aria-hidden="true"></canvas>
+                <aside class="install-panel" id="install" aria-labelledby="install-title">
+                    <div class="panel-heading">
+                        <h2 id="install-title">Start in two commands.</h2>
+                        <span class="panel-mark" aria-hidden="true">⌘</span>
+                    </div>
+
+                    <div class="install-step">
+                        <span class="step-label">Step 01</span>
+                        <p class="step-description">Add the tap to Homebrew once.</p>
+                        <div class="command">
+                            <code>brew tap AungMyoKyaw/homebrew-tap</code>
+                            <button class="copy-button" type="button" data-copy-command="brew tap AungMyoKyaw/homebrew-tap" aria-label="Copy Homebrew tap command">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="install-step">
+                        <span class="step-label">Step 02</span>
+                        <p class="step-description">Choose a package below and copy its exact install command.</p>
+                        <a class="detail-link" href="#packages">See all six packages →</a>
+                    </div>
+                </aside>
+
+                <div class="hero-copy">
+                    <p class="eyebrow">A personal Homebrew tap for macOS</p>
+                    <h1 id="page-title">Useful Mac tools, one tap away.</h1>
+                    <p class="hero-lede">A small collection of command-line utilities and desktop apps for people who like their tools native, focused, and easy to install.</p>
+                    <div class="hero-links">
+                        <a class="hero-link" href="#packages">Browse packages</a>
+                        <a class="hero-link secondary" href="#about">About this tap</a>
+                    </div>
                 </div>
             </section>
 
-            <!-- Stats Card -->
-            <div class="card stats-card">
-                <span class="label">Total Formulae</span>
-                <div class="stat-value">01</div>
-                <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">Active & Verified</div>
+            <div class="catalog-summary" aria-label="Catalog summary">
+                <span class="summary-item"><span class="summary-value" data-count="total">6</span><span class="summary-label">packages</span></span>
+                <span class="summary-item"><span class="summary-value" data-count="formulae">2</span><span class="summary-label">formulae</span></span>
+                <span class="summary-item"><span class="summary-value" data-count="casks">4</span><span class="summary-label">casks</span></span>
+                <span class="summary-item"><span class="summary-value">macOS</span><span class="summary-label">platform</span></span>
             </div>
 
-            <!-- Formula Card -->
-            <article class="card formula-card">
-                <span class="label">Featured Formula</span>
-                <div class="formula-header">
-                    <h2 class="formula-name">reminder</h2>
-                    <span style="font-family: 'Geist Mono'; font-size: 0.8rem; color: var(--accent);">v3.0.4</span>
+            <section class="catalog-section" id="packages" aria-labelledby="formulae-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Command line</p>
+                        <h2 id="formulae-title">Formulae</h2>
+                        <p>Terminal tools that work with the native apps already on your Mac.</p>
+                    </div>
+                    <span class="section-count" data-section-count="formula">2 packages</span>
                 </div>
-                <p class="formula-desc">Interact with Apple Reminders via EventKit. Native, fast, and terminal-first.</p>
-                <div class="badge-row">
-                    <span class="badge">Swift</span>
-                    <span class="badge">macOS</span>
-                    <span class="badge">MIT</span>
-                </div>
-            </article>
 
-            <!-- Metadata Card -->
-            <div class="card meta-card">
-                <span class="label">Technical Metadata</span>
-                <div style="display: flex; flex-direction: column; gap: 12px; margin-top: auto;">
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-secondary);">Last Updated</span>
-                        <span style="font-weight: 500;">Feb 2026</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-secondary);">Architecture</span>
-                        <span style="font-weight: 500;">arm64 / x86_64</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: var(--text-secondary);">Stability</span>
-                        <span style="font-weight: 500; color: var(--success);">Production</span>
-                    </div>
-                </div>
-            </div>
+                <div class="package-list" data-package-list="formula">
+                    <article class="package-row" data-package="reminder" data-kind="formula" data-version="3.0.4">
+                        <div class="package-identity">
+                            <h3 class="package-name">reminder</h3>
+                            <span class="package-kind">Formula</span>
+                            <span class="package-version">v3.0.4</span>
+                        </div>
+                        <div class="package-details">
+                            <p class="package-description">Powerful command-line interface for Apple Reminders with full EventKit integration.</p>
+                            <ul class="package-tags" aria-label="reminder attributes">
+                                <li>Swift</li>
+                                <li>macOS</li>
+                                <li>MIT</li>
+                            </ul>
+                        </div>
+                        <div class="package-action">
+                            <span class="install-label">Install reminder</span>
+                            <div class="command">
+                                <code>brew install AungMyoKyaw/homebrew-tap/reminder</code>
+                                <button class="copy-button" type="button" data-copy-command="brew install AungMyoKyaw/homebrew-tap/reminder" aria-label="Copy reminder install command">Copy</button>
+                            </div>
+                            <a class="detail-link" href="reminder.html">View reminder details →</a>
+                        </div>
+                    </article>
 
-            <!-- Badge Card (Tap) -->
-            <div class="card stats-card">
-                <span class="label">System Status</span>
-                <div style="margin-top: auto;">
-                    <div style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">
-                        <span class="status-dot"></span>Online
+                    <article class="package-row" data-package="corenote" data-kind="formula" data-version="0.1.0">
+                        <div class="package-identity">
+                            <h3 class="package-name">corenote</h3>
+                            <span class="package-kind">Formula</span>
+                            <span class="package-version">v0.1.0</span>
+                        </div>
+                        <div class="package-details">
+                            <p class="package-description">CLI frontend to Apple Notes via direct SQLite access. Fast and native.</p>
+                            <ul class="package-tags" aria-label="corenote attributes">
+                                <li>Swift</li>
+                                <li>macOS</li>
+                                <li>MIT</li>
+                            </ul>
+                        </div>
+                        <div class="package-action">
+                            <span class="install-label">Install corenote</span>
+                            <div class="command">
+                                <code>brew install AungMyoKyaw/homebrew-tap/corenote</code>
+                                <button class="copy-button" type="button" data-copy-command="brew install AungMyoKyaw/homebrew-tap/corenote" aria-label="Copy corenote install command">Copy</button>
+                            </div>
+                            <a class="detail-link" href="corenote.html">View corenote details →</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="catalog-section" aria-labelledby="casks-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Desktop apps</p>
+                        <h2 id="casks-title">Casks</h2>
+                        <p>Native or Electron apps you can install and keep updated through Homebrew.</p>
                     </div>
-                    <p style="color: var(--text-muted); font-size: 0.85rem;">All tap endpoints operational.</p>
+                    <span class="section-count" data-section-count="cask">4 packages</span>
                 </div>
-            </div>
-            
-            <!-- Quick Action -->
-            <div class="card badge-card" style="background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); color: #000; border: none; box-shadow: 0 8px 40px var(--accent-glow);">
-                <span class="label" style="color: rgba(0,0,0,0.5);">Getting Started</span>
-                <h3 style="font-size: clamp(1.3rem, 4vw, 1.75rem); font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.02em; font-family: 'Syne', sans-serif;">Add the tap repository.</h3>
-                <div class="terminal-block" style="background: rgba(0,0,0,0.25); border-color: rgba(0,0,0,0.3); color: #000;" onclick="copy('brew tap AungMyoKyaw/homebrew-tap')">
-                    <code style="color: #000; font-weight: 600;">brew tap AungMyoKyaw/homebrew-tap</code>
-                    <svg class="copy-icon" style="color: rgba(0,0,0,0.6);" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+
+                <div class="package-list" data-package-list="cask">
+                    <article class="package-row" data-package="git-ingest" data-kind="cask" data-version="0.2.7">
+                        <div class="package-identity">
+                            <h3 class="package-name">git-ingest</h3>
+                            <span class="package-kind">Cask</span>
+                            <span class="package-version">v0.2.7</span>
+                        </div>
+                        <div class="package-details">
+                            <p class="package-description">Secure Electron desktop app for Git-Ingest. Bundle any repo for LLM context.</p>
+                            <ul class="package-tags" aria-label="git-ingest attributes">
+                                <li>Electron</li>
+                                <li>macOS</li>
+                                <li>MIT</li>
+                            </ul>
+                        </div>
+                        <div class="package-action">
+                            <span class="install-label">Install git-ingest</span>
+                            <div class="command">
+                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/git-ingest</code>
+                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/git-ingest" aria-label="Copy git-ingest install command">Copy</button>
+                            </div>
+                            <a class="detail-link" href="https://github.com/AungMyoKyaw/git-ingest-desktop" rel="noreferrer" target="_blank">View source on GitHub →</a>
+                        </div>
+                    </article>
+
+                    <article class="package-row" data-package="gitfolio" data-kind="cask" data-version="1.0.2">
+                        <div class="package-identity">
+                            <h3 class="package-name">gitfolio</h3>
+                            <span class="package-kind">Cask</span>
+                            <span class="package-version">v1.0.2</span>
+                        </div>
+                        <div class="package-details">
+                            <p class="package-description">Git contribution portfolio exporter for macOS. Visualize your year of work.</p>
+                            <ul class="package-tags" aria-label="gitfolio attributes">
+                                <li>Swift</li>
+                                <li>macOS</li>
+                                <li>MIT</li>
+                            </ul>
+                        </div>
+                        <div class="package-action">
+                            <span class="install-label">Install gitfolio</span>
+                            <div class="command">
+                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/gitfolio</code>
+                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/gitfolio" aria-label="Copy gitfolio install command">Copy</button>
+                            </div>
+                            <a class="detail-link" href="https://github.com/AungMyoKyaw/GitFolio" rel="noreferrer" target="_blank">View source on GitHub →</a>
+                        </div>
+                    </article>
+
+                    <article class="package-row" data-package="caffeinate" data-kind="cask" data-version="2.1.0">
+                        <div class="package-identity">
+                            <h3 class="package-name">caffeinate</h3>
+                            <span class="package-kind">Cask</span>
+                            <span class="package-version">v2.1.0</span>
+                        </div>
+                        <div class="package-details">
+                            <p class="package-description">Keep your Mac awake during long builds, downloads, renders, and remote sessions.</p>
+                            <ul class="package-tags" aria-label="caffeinate attributes">
+                                <li>Swift</li>
+                                <li>macOS</li>
+                                <li>MIT</li>
+                            </ul>
+                        </div>
+                        <div class="package-action">
+                            <span class="install-label">Install caffeinate</span>
+                            <div class="command">
+                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/caffeinate</code>
+                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/caffeinate" aria-label="Copy caffeinate install command">Copy</button>
+                            </div>
+                            <a class="detail-link" href="https://github.com/AungMyoKyaw/caffeinate-app" rel="noreferrer" target="_blank">View source on GitHub →</a>
+                        </div>
+                    </article>
+
+                    <article class="package-row" data-package="dhamma-echo" data-kind="cask" data-version="0.5.5">
+                        <div class="package-identity">
+                            <h3 class="package-name">dhamma-echo</h3>
+                            <span class="package-kind">Cask</span>
+                            <span class="package-version">v0.5.5</span>
+                        </div>
+                        <div class="package-details">
+                            <p class="package-description">A quiet desktop library for Dhamma talks. Listen offline, mindfully.</p>
+                            <ul class="package-tags" aria-label="dhamma-echo attributes">
+                                <li>Electron</li>
+                                <li>macOS</li>
+                                <li>MIT</li>
+                            </ul>
+                        </div>
+                        <div class="package-action">
+                            <span class="install-label">Install dhamma-echo</span>
+                            <div class="command">
+                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/dhamma-echo</code>
+                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/dhamma-echo" aria-label="Copy dhamma-echo install command">Copy</button>
+                            </div>
+                            <a class="detail-link" href="https://github.com/AungMyoKyaw/dhamma-echo" rel="noreferrer" target="_blank">View source on GitHub →</a>
+                        </div>
+                    </article>
                 </div>
-            </div>
-        </div>
+            </section>
+
+            <section class="about-panel" id="about" aria-labelledby="about-title">
+                <div>
+                    <p class="section-kicker">About this tap</p>
+                    <h2 id="about-title">Small tools, one dependable entry point.</h2>
+                    <p>This tap collects useful macOS utilities under one Homebrew namespace. Formulae are command-line tools; casks are desktop apps. Install what you need, update it with Homebrew, and keep the rest out of your way.</p>
+                </div>
+                <dl class="meta-list">
+                    <div class="meta-row">
+                        <dt>Catalog</dt>
+                        <dd data-count-label="catalog">6 packages</dd>
+                    </div>
+                    <div class="meta-row">
+                        <dt>Platform</dt>
+                        <dd>macOS</dd>
+                    </div>
+                    <div class="meta-row">
+                        <dt>License</dt>
+                        <dd>MIT</dd>
+                    </div>
+                    <div class="meta-row">
+                        <dt>Snapshot</dt>
+                        <dd>Aug 2026</dd>
+                    </div>
+                </dl>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>Maintained by <a href="https://github.com/AungMyoKyaw" rel="noreferrer" target="_blank">@AungMyoKyaw</a>.</p>
+            <p><a href="README.md">Read the install notes</a> · <a href="https://github.com/AungMyoKyaw/homebrew-tap" rel="noreferrer" target="_blank">View the tap on GitHub</a></p>
+        </footer>
     </div>
 
+    <div class="copy-status" id="copy-status" role="status" aria-live="polite" aria-atomic="true"></div>
+
     <script>
-        function copy(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const toast = document.createElement('div');
-                toast.style.cssText = `
-                    position: fixed;
-                    bottom: 2rem;
-                    right: 2rem;
-                    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-                    color: #000;
-                    padding: 14px 28px;
-                    border-radius: 100px;
-                    font-weight: 700;
-                    font-size: 0.9rem;
-                    box-shadow: 0 10px 40px rgba(255, 107, 53, 0.4);
-                    z-index: 10000;
-                    font-family: 'Syne', sans-serif;
-                    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-                `;
-                toast.textContent = '✓ Copied to clipboard';
-                document.body.appendChild(toast);
-                
-                setTimeout(() => {
-                    toast.style.animation = 'slideDown 0.3s ease-out forwards';
-                    setTimeout(() => toast.remove(), 300);
-                }, 2200);
+        (() => {
+            const status = document.getElementById("copy-status");
+            const copyButtons = document.querySelectorAll("[data-copy-command]");
+            let statusTimer;
+
+            const announce = (message, state) => {
+                window.clearTimeout(statusTimer);
+                status.textContent = message;
+                status.dataset.state = state;
+                status.classList.add("is-visible");
+                statusTimer = window.setTimeout(() => {
+                    status.classList.remove("is-visible");
+                }, 2600);
+            };
+
+            const copyWithFallback = async (text) => {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                    return;
+                }
+
+                if (typeof document.execCommand !== "function") {
+                    throw new Error("Clipboard is unavailable");
+                }
+
+                const textarea = document.createElement("textarea");
+                textarea.value = text;
+                textarea.setAttribute("readonly", "");
+                textarea.style.position = "fixed";
+                textarea.style.opacity = "0";
+                document.body.appendChild(textarea);
+                textarea.select();
+
+                const copied = document.execCommand("copy");
+                textarea.remove();
+
+                if (!copied) {
+                    throw new Error("Copy command failed");
+                }
+            };
+
+            copyButtons.forEach((button) => {
+                button.addEventListener("click", async () => {
+                    const originalLabel = button.textContent;
+                    const command = button.dataset.copyCommand;
+                    const packageName = button.closest("[data-package]")?.dataset.package || "Homebrew";
+
+                    button.disabled = true;
+                    try {
+                        await copyWithFallback(command);
+                        button.dataset.status = "copied";
+                        button.textContent = "Copied";
+                        announce("Copied the " + packageName + " install command.", "success");
+                    } catch (error) {
+                        button.dataset.status = "failed";
+                        button.textContent = "Try again";
+                        announce("Copy failed. Select the command and copy it manually.", "error");
+                    } finally {
+                        window.setTimeout(() => {
+                            button.disabled = false;
+                            button.textContent = originalLabel;
+                            delete button.dataset.status;
+                        }, 2200);
+                    }
+                });
+            });
+
+            const formulaCount = document.querySelectorAll('[data-package][data-kind="formula"]').length;
+            const caskCount = document.querySelectorAll('[data-package][data-kind="cask"]').length;
+            const totalCount = formulaCount + caskCount;
+
+            document.querySelector('[data-count="formulae"]').textContent = String(formulaCount);
+            document.querySelector('[data-count="casks"]').textContent = String(caskCount);
+            document.querySelector('[data-count="total"]').textContent = String(totalCount);
+            document.querySelector('[data-count-label="catalog"]').textContent = totalCount + " packages";
+            document.querySelector('[data-section-count="formula"]').textContent = formulaCount + " packages";
+            document.querySelector('[data-section-count="cask"]').textContent = caskCount + " packages";
+        })();
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const WEBGL_OK = (() => {
+            try {
+                const probe = document.createElement('canvas');
+                return !!(window.WebGLRenderingContext && (probe.getContext('webgl2') || probe.getContext('webgl')));
+            } catch (e) {
+                return false;
+            }
+        })();
+
+        // ============================================================
+        // initHero — kinetic Three.js scene on the brew-tap landing.
+        // A "brew" of orbiting torus rings + emissive core + particles
+        // + glyph sprites + volumetric beams, parented to .hero.
+        // ============================================================
+        function initHero(canvas) {
+            if (!canvas) return false;
+            if (REDUCED_MOTION || !WEBGL_OK) {
+                canvas.classList.add('is-hidden');
+                return false;
+            }
+
+            let renderer;
+            try {
+                renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    antialias: true,
+                    alpha: true,
+                    powerPreference: 'low-power',
+                });
+            } catch (err) {
+                console.error('[hero] WebGL renderer failed', err);
+                canvas.classList.add('is-hidden');
+                return false;
+            }
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+            renderer.setClearColor(0x000000, 0);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 200);
+            camera.position.set(0, 0, 12);
+
+            scene.add(new THREE.AmbientLight(0x22343a, 0.55));
+
+            const keyLight = new THREE.PointLight(0xff7a45, 4.5, 30, 1.6);
+            keyLight.position.set(6, 4, 6);
+            scene.add(keyLight);
+
+            const rimLight = new THREE.PointLight(0x25d0a0, 3.5, 28, 1.8);
+            rimLight.position.set(-7, -3, -4);
+            scene.add(rimLight);
+
+            const accentLight = new THREE.PointLight(0xffd166, 2.5, 22, 2.0);
+            accentLight.position.set(0, 6, -6);
+            scene.add(accentLight);
+
+            const brewGroup = new THREE.Group();
+            brewGroup.position.set(3.6, 0.2, -1.2);
+            scene.add(brewGroup);
+
+            const rings = [];
+            const ringConfigs = [
+                { radius: 2.4, tube: 0.09, segments: 32, radial: 96, color: 0xff7a45, emissive: 0x4a1a0c, rot: [Math.PI / 2.6, 0.0, 0.0], spin: 0.12 },
+                { radius: 1.85, tube: 0.07, segments: 28, radial: 88, color: 0xffd166, emissive: 0x3a2a08, rot: [Math.PI / 2.0, 0.0, 0.2], spin: -0.18 },
+                { radius: 3.05, tube: 0.06, segments: 24, radial: 96, color: 0x25d0a0, emissive: 0x07291d, rot: [Math.PI / 2.4, 0.25, 0.0], spin: 0.08 },
+                { radius: 1.2, tube: 0.05, segments: 22, radial: 72, color: 0xff9580, emissive: 0x3a1408, rot: [Math.PI / 1.8, 0.0, 0.0], spin: -0.32 },
+            ];
+
+            ringConfigs.forEach((cfg, i) => {
+                const geo = new THREE.TorusGeometry(cfg.radius, cfg.tube, cfg.segments, cfg.radial);
+                const mat = new THREE.MeshStandardMaterial({
+                    color: cfg.color,
+                    roughness: 0.35,
+                    metalness: 0.7,
+                    emissive: cfg.emissive,
+                    emissiveIntensity: 0.65,
+                });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.rotation.set(cfg.rot[0], cfg.rot[1], cfg.rot[2]);
+                mesh.userData.spin = cfg.spin;
+                mesh.userData.phase = i * 0.7;
+                brewGroup.add(mesh);
+                rings.push(mesh);
+            });
+
+            const coreGeo = new THREE.IcosahedronGeometry(0.45, 3);
+            const coreMat = new THREE.MeshStandardMaterial({
+                color: 0xffe4a0,
+                emissive: 0xffd166,
+                emissiveIntensity: 1.8,
+                roughness: 0.25,
+                metalness: 0.4,
+            });
+            const core = new THREE.Mesh(coreGeo, coreMat);
+            brewGroup.add(core);
+
+            const particleCount = 240;
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+            const palette = [
+                [1.0, 0.48, 0.27],
+                [1.0, 0.82, 0.4],
+                [0.15, 0.82, 0.63],
+                [0.95, 0.58, 0.5],
+            ];
+            for (let i = 0; i < particleCount; i++) {
+                const theta = Math.random() * Math.PI * 2;
+                const radius = 4 + Math.random() * 14;
+                positions[i * 3 + 0] = Math.cos(theta) * radius;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * 14;
+                positions[i * 3 + 2] = Math.sin(theta) * radius * 0.7 - Math.random() * 8;
+                const c = palette[i % palette.length];
+                colors[i * 3 + 0] = c[0];
+                colors[i * 3 + 1] = c[1];
+                colors[i * 3 + 2] = c[2];
+            }
+            const pGeo = new THREE.BufferGeometry();
+            pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            const pMat = new THREE.PointsMaterial({
+                size: 0.06,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.55,
+                depthWrite: false,
+                sizeAttenuation: true,
+                blending: THREE.AdditiveBlending,
+            });
+            const particles = new THREE.Points(pGeo, pMat);
+            scene.add(particles);
+
+            const glyphs = ['⌘', '⌥', '⌃', '⇧', '›', '»', '§', '∞', '∴', '◇', '◈', '◊'];
+            const spriteCount = 22;
+            const spriteGroup = new THREE.Group();
+            for (let i = 0; i < spriteCount; i++) {
+                const char = glyphs[i % glyphs.length];
+                const canvasTex = document.createElement('canvas');
+                canvasTex.width = 128;
+                canvasTex.height = 128;
+                const ctx = canvasTex.getContext('2d');
+                ctx.fillStyle = i % 3 === 0 ? '#ffd166' : i % 3 === 1 ? '#ff7a45' : '#25d0a0';
+                ctx.font = 'bold 96px monospace';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.shadowColor = ctx.fillStyle;
+                ctx.shadowBlur = 24;
+                ctx.fillText(char, 64, 64);
+                const tex = new THREE.CanvasTexture(canvasTex);
+                tex.minFilter = THREE.LinearFilter;
+                const mat = new THREE.SpriteMaterial({
+                    map: tex,
+                    transparent: true,
+                    opacity: 0.18,
+                    depthWrite: false,
+                    blending: THREE.AdditiveBlending,
+                });
+                const sprite = new THREE.Sprite(mat);
+                sprite.userData.t0 = Math.random() * Math.PI * 2;
+                sprite.userData.speed = 0.4 + Math.random() * 0.6;
+                sprite.userData.radius = 5 + Math.random() * 10;
+                sprite.userData.drift = (Math.random() - 0.5) * 6;
+                sprite.position.set(0, 0, 0);
+                sprite.scale.set(0.55, 0.55, 0.55);
+                spriteGroup.add(sprite);
+            }
+            scene.add(spriteGroup);
+
+            const beamGeo = new THREE.PlaneGeometry(0.04, 18);
+            const beamMat = new THREE.MeshBasicMaterial({
+                color: 0xffd166,
+                transparent: true,
+                opacity: 0.06,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending,
+                side: THREE.DoubleSide,
+            });
+            const beam1 = new THREE.Mesh(beamGeo, beamMat);
+            brewGroup.add(beam1);
+            const beam2 = new THREE.Mesh(beamGeo, beamMat.clone());
+            beam2.material.color.set(0xff7a45);
+            brewGroup.add(beam2);
+            const beam3 = new THREE.Mesh(beamGeo, beamMat.clone());
+            beam3.material.color.set(0x25d0a0);
+            brewGroup.add(beam3);
+
+            const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+            window.addEventListener('pointermove', (e) => {
+                pointer.tx = (e.clientX / window.innerWidth) - 0.5;
+                pointer.ty = (e.clientY / window.innerHeight) - 0.5;
+            }, { passive: true });
+
+            const resize = () => {
+                const rect = canvas.getBoundingClientRect();
+                const w = Math.round(rect.width);
+                const h = Math.round(rect.height);
+                if (w === 0 || h === 0) return;
+                renderer.setSize(w, h, false);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+            };
+            resize();
+            requestAnimationFrame(resize);
+            requestAnimationFrame(() => requestAnimationFrame(resize));
+            window.addEventListener('resize', resize, { passive: true });
+            if (window.ResizeObserver) {
+                new ResizeObserver(resize).observe(canvas);
+            }
+
+            const clock = new THREE.Clock();
+
+            const animate = () => {
+                const t = clock.getElapsedTime();
+
+                pointer.x += (pointer.tx - pointer.x) * 0.05;
+                pointer.y += (pointer.ty - pointer.y) * 0.05;
+
+                camera.position.x = pointer.x * 1.4;
+                camera.position.y = -pointer.y * 0.9;
+                camera.lookAt(brewGroup.position.x * 0.6, 0, 0);
+
+                brewGroup.rotation.y = t * 0.16 + Math.sin(t * 0.3) * 0.05;
+                brewGroup.rotation.x = Math.sin(t * 0.22) * 0.12;
+
+                rings.forEach((ring, i) => {
+                    ring.rotation.z = t * ring.userData.spin + ring.userData.phase;
+                    const breath = 1 + Math.sin(t * 0.7 + ring.userData.phase) * 0.015;
+                    ring.scale.set(breath, breath, 1);
+                });
+
+                const corePulse = 1 + Math.sin(t * 1.4) * 0.08;
+                core.scale.set(corePulse, corePulse, corePulse);
+                core.rotation.x = t * 0.5;
+                core.rotation.y = t * 0.35;
+
+                keyLight.position.x = Math.cos(t * 0.4) * 7;
+                keyLight.position.z = Math.sin(t * 0.4) * 7;
+                rimLight.position.y = Math.sin(t * 0.3) * 5;
+                accentLight.position.x = Math.cos(-t * 0.2) * 5;
+
+                particles.rotation.y = t * 0.018;
+                particles.rotation.x = Math.sin(t * 0.1) * 0.05;
+
+                spriteGroup.children.forEach((sprite) => {
+                    const angle = t * sprite.userData.speed * 0.25 + sprite.userData.t0;
+                    const r = sprite.userData.radius;
+                    sprite.position.x = Math.cos(angle) * r;
+                    sprite.position.z = Math.sin(angle) * r * 0.6 - 2;
+                    sprite.position.y = Math.sin(t * 0.6 + sprite.userData.t0) * sprite.userData.drift;
+                    const wobble = 0.5 + 0.5 * Math.sin(t * 0.8 + sprite.userData.t0);
+                    sprite.material.opacity = 0.1 + wobble * 0.18;
+                });
+
+                beam1.rotation.z = t * 0.3;
+                beam2.rotation.z = -t * 0.25 + 1.0;
+                beam3.rotation.z = t * 0.2 + 2.0;
+
+                renderer.render(scene, camera);
+            };
+            renderer.setAnimationLoop(animate);
+
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    for (const e of entries) {
+                        renderer.setAnimationLoop(e.isIntersecting ? animate : null);
+                    }
+                });
+                io.observe(canvas);
+            }
+
+            return true;
+        }
+
+        // ============================================================
+        // initAmbient — full-page starfield + sweeping beams behind
+        // the entire page.
+        // ============================================================
+        function initAmbient(canvas) {
+            if (!canvas) return false;
+            if (REDUCED_MOTION || !WEBGL_OK) {
+                canvas.classList.add('is-hidden');
+                return false;
+            }
+
+            let renderer;
+            try {
+                renderer = new THREE.WebGLRenderer({
+                    canvas,
+                    antialias: false,
+                    alpha: true,
+                    powerPreference: 'low-power',
+                });
+            } catch (err) {
+                console.error('[ambient] WebGL renderer failed', err);
+                canvas.classList.add('is-hidden');
+                return false;
+            }
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
+            renderer.setClearColor(0x000000, 0);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
+            camera.position.set(0, 0, 30);
+
+            const particleCount = 720;
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+            const palette = [
+                [1.0, 0.48, 0.27],
+                [1.0, 0.82, 0.4],
+                [0.15, 0.82, 0.63],
+                [0.95, 0.62, 0.5],
+                [0.78, 0.78, 0.78],
+            ];
+            for (let i = 0; i < particleCount; i++) {
+                positions[i * 3 + 0] = (Math.random() - 0.5) * 100;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
+                positions[i * 3 + 2] = -Math.random() * 80;
+                const c = palette[Math.floor(Math.random() * palette.length)];
+                colors[i * 3 + 0] = c[0];
+                colors[i * 3 + 1] = c[1];
+                colors[i * 3 + 2] = c[2];
+            }
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            const mat = new THREE.PointsMaterial({
+                size: 0.12,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.6,
+                depthWrite: false,
+                sizeAttenuation: true,
+                blending: THREE.AdditiveBlending,
+            });
+            const points = new THREE.Points(geo, mat);
+            scene.add(points);
+
+            const beamGroup = new THREE.Group();
+            scene.add(beamGroup);
+
+            const beamColors = [0xff7a45, 0xffd166, 0x25d0a0];
+            const beams = [];
+            for (let i = 0; i < 3; i++) {
+                const planeGeo = new THREE.PlaneGeometry(0.08, 60);
+                const planeMat = new THREE.MeshBasicMaterial({
+                    color: beamColors[i],
+                    transparent: true,
+                    opacity: 0.05,
+                    depthWrite: false,
+                    blending: THREE.AdditiveBlending,
+                    side: THREE.DoubleSide,
+                });
+                const beam = new THREE.Mesh(planeGeo, planeMat);
+                beam.rotation.z = (i * Math.PI) / 4;
+                beam.userData.t0 = Math.random() * Math.PI * 2;
+                beam.userData.swings = 0.18 + i * 0.04;
+                beam.position.set(0, 0, -10 - i * 4);
+                beamGroup.add(beam);
+                beams.push(beam);
+            }
+
+            const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+            window.addEventListener('pointermove', (e) => {
+                pointer.tx = (e.clientX / window.innerWidth) - 0.5;
+                pointer.ty = (e.clientY / window.innerHeight) - 0.5;
+            }, { passive: true });
+
+            const resize = () => {
+                const w = window.innerWidth;
+                const h = window.innerHeight;
+                if (w === 0 || h === 0) return;
+                renderer.setSize(w, h, false);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+            };
+            resize();
+            requestAnimationFrame(resize);
+            requestAnimationFrame(() => requestAnimationFrame(resize));
+            window.addEventListener('resize', resize, { passive: true });
+
+            const clock = new THREE.Clock();
+
+            const animate = () => {
+                const t = clock.getElapsedTime();
+
+                pointer.x += (pointer.tx - pointer.x) * 0.025;
+                pointer.y += (pointer.ty - pointer.y) * 0.025;
+
+                camera.position.x = pointer.x * 1.8;
+                camera.position.y = -pointer.y * 1.2;
+                camera.lookAt(0, 0, 0);
+
+                points.rotation.y = t * 0.012;
+                points.rotation.x = Math.sin(t * 0.05) * 0.04;
+
+                beams.forEach((beam) => {
+                    beam.rotation.z = beam.userData.t0 + Math.sin(t * beam.userData.swings) * 0.5;
+                    beam.material.opacity = 0.035 + 0.04 * (0.5 + 0.5 * Math.sin(t * 0.5 + beam.userData.t0));
+                });
+
+                renderer.render(scene, camera);
+            };
+            renderer.setAnimationLoop(animate);
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    renderer.setAnimationLoop(null);
+                } else {
+                    renderer.setAnimationLoop(animate);
+                }
+            });
+
+            return true;
+        }
+
+        // ============================================================
+        // initCatalogDepth — scroll reveal + pointer parallax on the
+        // catalog section + per-row hover glow.
+        // ============================================================
+        function initCatalogDepth() {
+            const rows = document.querySelectorAll('.package-row');
+            if (!rows.length) return;
+
+            if (REDUCED_MOTION) return;
+
+            rows.forEach((row) => row.classList.add('depth-pending'));
+
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('depth-in');
+                            entry.target.classList.remove('depth-pending');
+                            io.unobserve(entry.target);
+                        }
+                    }
+                }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+                rows.forEach((row) => io.observe(row));
+            } else {
+                rows.forEach((row) => {
+                    row.classList.add('depth-in');
+                    row.classList.remove('depth-pending');
+                });
+            }
+
+            const sections = document.querySelectorAll('.catalog-section');
+            if (sections.length) {
+                const onMove = (e) => {
+                    const nx = (e.clientX / window.innerWidth) - 0.5;
+                    const ny = (e.clientY / window.innerHeight) - 0.5;
+                    sections.forEach((section) => {
+                        const rect = section.getBoundingClientRect();
+                        const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+                        if (!visible) return;
+                        section.style.setProperty('--tilt-x', `${(-ny * 1.4).toFixed(3)}deg`);
+                        section.style.setProperty('--tilt-y', `${(nx * 1.0).toFixed(3)}deg`);
+                    });
+                };
+                window.addEventListener('pointermove', onMove, { passive: true });
+            }
+
+            rows.forEach((row) => {
+                row.addEventListener('pointerenter', () => row.classList.add('row-hover'));
+                row.addEventListener('pointerleave', () => row.classList.remove('row-hover'));
             });
         }
 
-        // Add animation keyframes dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideUp {
-                from { 
-                    opacity: 0;
-                    transform: translateY(20px) scale(0.9);
-                }
-                to { 
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-            }
-            @keyframes slideDown {
-                to { 
-                    opacity: 0;
-                    transform: translateY(10px) scale(0.95);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+        // ---- Bootstrap ------------------------------------------------
+        function bootstrap() {
+            const hero = document.getElementById('hero-canvas');
+            const ambient = document.getElementById('ambient-canvas');
+            initHero(hero);
+            initAmbient(ambient);
+            initCatalogDepth();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootstrap, { once: true });
+        } else {
+            bootstrap();
+        }
     </script>
 </body>
 </html>

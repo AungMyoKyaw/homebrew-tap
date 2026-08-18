@@ -1,119 +1,105 @@
-# AungMyoKyaw's Homebrew Tap
+# AungMyoKyaw / homebrew-tap
 
-> **Visit the website:** [https://aungmyokyaw.github.io/homebrew-tap/](https://aungmyokyaw.github.io/homebrew-tap/)
+> **Live site:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
 
-Personal Homebrew tap for CLI tools and utilities.
+A personal Homebrew tap for six small macOS tools (2 formulae, 4 casks). All MIT licensed, all installed and updated through Homebrew.
 
 ## Prerequisites
 
 - [Homebrew](https://brew.sh/) installed on your system
-- macOS (Apple Silicon or Intel)
+- macOS on Apple Silicon or Intel
 
-## How to Install
-
-Add this tap to your Homebrew installation:
+## Install
 
 ```bash
 brew tap AungMyoKyaw/homebrew-tap
+brew install <package>
 ```
 
-Install the Apple Reminders CLI:
+## Formulae
+
+| Package | Version | What it does |
+| --- | --- | --- |
+| [reminder](./reminder.html) | v3.0.4 | Command-line interface for Apple Reminders, full EventKit integration |
+| [corenote](./corenote.html) | v0.1.0 | CLI frontend to Apple Notes via direct SQLite access |
 
 ```bash
 brew install AungMyoKyaw/homebrew-tap/reminder
+brew install AungMyoKyaw/homebrew-tap/corenote
 ```
-
-## Available Formulas
-
-| Formula | Description | Version |
-|---------|-------------|---------|
-| `reminder` | A powerful Swift command-line interface for Apple Reminders with full EventKit integration | v3.0.4 |
 
 ### reminder
 
-A native macOS command-line tool for interacting with Apple Reminders. Built with Swift and EventKit for seamless integration with the macOS ecosystem.
+A native macOS command-line tool for interacting with Apple Reminders. Built with Swift and EventKit for seamless integration with macOS.
 
-**Features:**
+Features include:
+
 - Full EventKit integration
 - Native Swift performance
 - Terminal-first design
 
 ## Usage
 
-After installing `reminder`, you can use it from the command line:
-
 ```bash
-# Show help
 reminder --help
-
-# Show version
 reminder --version
-
-# Create a new reminder
 reminder add "Buy groceries"
-
-# List all reminders
 reminder list
 ```
 
-For more usage information, see the [apple-reminders-cli repository](https://github.com/AungMyoKyaw/apple-reminders-cli).
+See the [apple-reminders-cli repository](https://github.com/AungMyoKyaw/apple-reminders-cli) for more details.
 
 ## Troubleshooting
 
-### Permission Issues
-
-If you encounter permission issues after installation:
+If the installed binary is not executable, run:
 
 ```bash
-# Ensure the binary is executable
 chmod +x "$(brew --prefix)/bin/reminder"
 ```
 
-### Quarantine Attribute
-
-The formula automatically removes the macOS quarantine attribute during installation. If you still see security warnings:
+The formula removes the macOS quarantine attribute during installation. If a security warning remains:
 
 ```bash
-# Manually remove quarantine
 xattr -d com.apple.quarantine "$(brew --prefix)/bin/reminder"
 ```
 
-### EventKit Permissions
+On first run, macOS may prompt you to grant Terminal access to Reminders. Choose **Allow** so the CLI can work with your reminders.
 
-On first run, macOS will prompt you to grant Terminal (or your terminal emulator) access to reminders. Click "Allow" to enable the CLI to work with your reminders.
+## Casks
+
+| Package | Version | What it does |
+| --- | --- | --- |
+| git-ingest | v0.2.7 | Secure Electron desktop app that bundles any repo for LLM context |
+| gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
+| caffeinate | v2.1.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
+| dhamma-echo | v0.5.5 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
+
+```bash
+brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
+brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
+brew install --cask AungMyoKyaw/homebrew-tap/caffeinate
+brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo
+```
 
 ## Updating
 
-To update to the latest version:
-
 ```bash
 brew update
-brew upgrade AungMyoKyaw/homebrew-tap/reminder
+brew upgrade AungMyoKyaw/homebrew-tap/<name>
 ```
+
+Use `--cask` after `brew upgrade` for casks.
 
 ## Uninstalling
 
-To uninstall:
-
 ```bash
-brew uninstall AungMyoKyaw/homebrew-tap/reminder
-```
-
-To remove the tap entirely:
-
-```bash
+brew uninstall AungMyoKyaw/homebrew-tap/<name>
 brew untap AungMyoKyaw/homebrew-tap
 ```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome. Please open a pull request with a focused change and include relevant validation steps.
 
 ## License
 
@@ -121,7 +107,7 @@ The formulas in this tap reference software under their respective licenses. The
 
 ## Maintainer
 
-- [@AungMyoKyaw](https://github.com/AungMyoKyaw)
+[@AungMyoKyaw](https://github.com/AungMyoKyaw)
 
 ## Links
 

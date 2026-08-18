@@ -38,3 +38,10 @@ Temporary Items
 # Temporary files
 *.tmp
 *.temp
+
+# Codex and agent workspaces
+.claude/
+.specify/
+.impeccable/
+/v2-full.png
+/v2-viewport.png

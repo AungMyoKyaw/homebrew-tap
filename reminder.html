@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color="#0b0d0d">
+    <title>reminder — AungMyoKyaw/homebrew-tap</title>
+    <meta name="description" content="reminder is a command-line interface for Apple Reminders with full EventKit integration. Install with brew.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23ff7a45'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='monospace' font-size='40' font-weight='700' fill='%231b100b'%3EA%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../styles/site.css">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0b0d0d;
+            --surface: #121716;
+            --surface-raised: #18201e;
+            --code-bg: #080b0b;
+            --line: #2b3632;
+            --line-strong: #46534d;
+            --text: #f3f5ed;
+            --muted: #b2bbb5;
+            --subtle: #84908a;
+            --orange: #ff7a45;
+            --orange-soft: #3a2118;
+            --yellow: #ffd166;
+            --green: #25d0a0;
+            --green-soft: #12352c;
+            --focus: #f6d477;
+            --danger: #ff9580;
+            --radius-panel: 14px;
+            --radius-control: 10px;
+            --content-width: 1080px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 40;
+            padding: 0.65rem 0.9rem;
+            transform: translateY(-180%);
+            border-radius: var(--radius-control);
+            background: var(--yellow);
+            color: #15130d;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 180ms ease-out;
+        }
+        .skip-link:focus { transform: translateY(0); }
+
+        .site-shell {
+            width: min(var(--content-width), calc(100% - 2rem));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            min-height: 5rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 2.5rem;
+            height: 2.5rem;
+            flex: 0 0 auto;
+            place-items: center;
+            border: 1px solid var(--orange);
+            border-radius: 8px;
+            background: var(--orange);
+            color: #1b100b;
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .brand-copy { display: grid; gap: 0.05rem; min-width: 0; }
+
+        .brand-name {
+            overflow: hidden;
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .brand-caption {
+            color: var(--subtle);
+            font-size: 0.75rem;
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.75rem, 2vw, 1.5rem);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .site-nav a { text-decoration: none; }
+        .site-nav a:not(.nav-button):hover { color: var(--text); }
+
+        .nav-button {
+            display: inline-flex;
+            min-height: 2.75rem;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            color: var(--text);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* === Hero === */
+        .hero {
+            position: relative;
+            isolation: isolate;
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+            gap: clamp(2rem, 5vw, 4rem);
+            padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+            align-items: center;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(11, 13, 13, 0.4) 0%, rgba(11, 13, 13, 0.15) 35%, rgba(11, 13, 13, 0.55) 100%);
+        }
+
+        .hero-copy { position: relative; z-index: 1; max-width: 38rem; }
+        .hero-art { position: relative; z-index: 1; }
+
+        .eyebrow, .section-kicker, .step-label, .meta-key {
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow { color: var(--orange); margin: 0 0 1.25rem; }
+
+        h1, h2, h3, p { margin-top: 0; }
+        h1, h2, h3 { text-wrap: balance; }
+
+        h1 {
+            max-width: 14ch;
+            margin-bottom: 1rem;
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .hero-lede {
+            max-width: 50ch;
+            margin-bottom: 1.75rem;
+            color: var(--muted);
+            font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tag-row li {
+            padding: 0.3rem 0.65rem;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--subtle);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+        }
+
+        /* === Command / copy === */
+        .command {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius-control);
+            background: var(--code-bg);
+        }
+
+        .command code {
+            min-width: 0;
+            color: var(--orange);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+
+        .command .caret {
+            display: inline-block;
+            width: 0.5em;
+            height: 1em;
+            margin-left: 0.1em;
+            background: var(--orange);
+            vertical-align: text-bottom;
+            animation: blink 1.05s steps(2) infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            50.01%, 100% { opacity: 0; }
+        }
+
+        .copy-button {
+            min-width: 4.6rem;
+            min-height: 2.6rem;
+            padding: 0.55rem 0.95rem;
+            border: 1px solid var(--line-strong);
+            border-radius: 7px;
+            background: var(--surface-raised);
+            color: var(--text);
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.82rem;
+            font-weight: 700;
+            transition: background-color 180ms, border-color 180ms, color 180ms;
+        }
+
+        .copy-button:hover {
+            border-color: var(--yellow);
+            background: var(--yellow);
+            color: #17130a;
+        }
+
+        .copy-button[data-status="copied"] {
+            border-color: var(--green);
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .copy-button[data-status="failed"] {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .copy-button:disabled { cursor: wait; opacity: 0.7; }
+
+        /* === Hero art === */
+        .hero-art-frame {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-panel);
+            background: var(--surface);
+            padding: 1rem;
+            overflow: hidden;
+        }
+
+        #package-canvas {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1.4 / 1;
+            border-radius: 8px;
+            background: #080b0b;
+        }
+
+        #package-canvas.is-hidden { display: none; }
+
+        .hero-art-meta {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .meta-key {
+            color: var(--subtle);
+            margin: 0 0 0.25rem;
+        }
+
+        .meta-value {
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .sparkline {
+            display: block;
+            width: 100%;
+            height: 38px;
+        }
+
+        .sparkline path { fill: none; stroke: var(--orange); stroke-width: 1.5; }
+        .sparkline .area { fill: var(--orange-soft); stroke: none; }
+        .sparkline .dot { fill: var(--orange); }
+
+        /* === Sections === */
+        .section {
+            padding: clamp(2.5rem, 5vw, 4rem) 0 0;
+            scroll-margin-top: 2rem;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 0.35rem;
+            font-size: clamp(1.75rem, 3vw, 2.4rem);
+            letter-spacing: -0.035em;
+            line-height: 1;
+        }
+
+        .section-heading p {
+            max-width: 56ch;
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .section-kicker { color: var(--orange); margin: 0 0 0.6rem; }
+
+        /* === Feature grid === */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+            gap: 1rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .feature {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .feature h3 {
+            margin-bottom: 0.4rem;
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.95rem;
+            letter-spacing: -0.02em;
+        }
+
+        .feature p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        /* === Demo / usage === */
+        .demo {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-panel);
+            background: var(--code-bg);
+            overflow: hidden;
+        }
+
+        .demo-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid var(--line);
+            color: var(--subtle);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .demo-body {
+            padding: 1rem 1rem 1.25rem;
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        .demo-body .prompt { color: var(--green); user-select: none; }
+        .demo-body .flag { color: var(--yellow); }
+        .demo-body .ok { color: var(--green); }
+        .demo-body .due { color: var(--orange); }
+
+        /* === Meta panel === */
+        .meta-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+            gap: 0 2rem;
+            padding: 1.5rem;
+            margin: clamp(2rem, 4vw, 3rem) 0 0;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-panel);
+            background: var(--surface);
+        }
+
+        .meta-row {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .meta-row:last-child { border-bottom: 0; }
+
+        .meta-row .meta-key { color: var(--subtle); margin: 0 0 0.35rem; }
+        .meta-row .meta-value {
+            font-size: 1rem;
+            color: var(--text);
+            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
+            letter-spacing: -0.01em;
+        }
+
+        .meta-row .meta-value.green { color: var(--green); }
+
+        /* === Footer === */
+        .site-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 2rem 0 2.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--line);
+            color: var(--subtle);
+            font-size: 0.86rem;
+        }
+
+        .site-footer p { margin: 0; }
+        .site-footer a {
+            color: var(--muted);
+            text-decoration-color: var(--line-strong);
+            text-underline-offset: 0.2em;
+        }
+        .site-footer a:hover { color: var(--text); }
+
+        .copy-status {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 30;
+            max-width: min(24rem, calc(100% - 2rem));
+            padding: 0.75rem 0.9rem;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius-control);
+            background: var(--surface-raised);
+            color: var(--text);
+            font-size: 0.88rem;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(0.5rem);
+            transition: opacity 180ms, transform 180ms;
+        }
+
+        .copy-status.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .copy-status[data-state="success"] {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .copy-status[data-state="error"] {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-shell {
+                width: min(var(--content-width), calc(100% - 1.25rem));
+            }
+
+            .site-header {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .site-nav {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.65rem;
+            }
+
+            .site-nav a { font-size: 0.82rem; }
+            .nav-button { min-height: 2.6rem; padding: 0.5rem 0.75rem; }
+
+            .command { grid-template-columns: 1fr; }
+            .copy-button { width: 100%; }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .site-footer { flex-direction: column; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            #package-canvas { display: none; }
+            .command .caret { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="../index.html" aria-label="AungMyoKyaw Homebrew tap home">
+                <span class="brand-mark" aria-hidden="true">A</span>
+                <span class="brand-copy">
+                    <span class="brand-name">AungMyoKyaw / homebrew-tap</span>
+                    <span class="brand-caption">macOS tools, shipped simply</span>
+                </span>
+            </a>
+
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a href="index.html#packages">All packages</a>
+                <a href="#install">Install</a>
+                <a href="https://github.com/AungMyoKyaw/apple-reminders-cli" rel="noreferrer" target="_blank">Source →</a>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <section class="hero" aria-labelledby="page-title">
+                <div class="hero-copy">
+                    <p class="eyebrow">Formula · v3.0.4 · macOS</p>
+                    <h1 id="page-title">reminder</h1>
+                    <p class="hero-lede">A full command-line interface to Apple Reminders. Reads and writes through EventKit so the data stays in sync with the system app on every other device.</p>
+                    <ul class="tag-row" aria-label="reminder attributes">
+                        <li>Swift</li>
+                        <li>macOS</li>
+                        <li>MIT</li>
+                        <li>EventKit</li>
+                    </ul>
+
+                    <div class="command" id="install" aria-label="Install command">
+                        <code><span class="prompt">$</span> <span data-typewriter="brew install AungMyoKyaw/homebrew-tap/reminder"></span><span class="caret" aria-hidden="true"></span></code>
+                        <button class="copy-button" type="button" data-copy-command="brew install AungMyoKyaw/homebrew-tap/reminder" aria-label="Copy reminder install command">Copy</button>
+                    </div>
+                </div>
+
+                <aside class="hero-art" aria-label="Package glyph">
+                    <div class="hero-art-frame">
+                        <canvas id="package-canvas" aria-hidden="true"></canvas>
+                        <div class="hero-art-meta">
+                            <div>
+                                <p class="meta-key">Latest release</p>
+                                <div class="meta-value">v3.0.4</div>
+                            </div>
+                            <div>
+                                <p class="meta-key">Reminders synced · last 7 days</p>
+                                <svg class="sparkline" viewBox="0 0 200 38" preserveAspectRatio="none" aria-hidden="true">
+                                    <path class="area" d="M0,28 L20,24 L40,26 L60,18 L80,20 L100,22 L120,14 L140,16 L160,10 L180,12 L200,6 L200,38 L0,38 Z"></path>
+                                    <path d="M0,28 L20,24 L40,26 L60,18 L80,20 L100,22 L120,14 L140,16 L160,10 L180,12 L200,6"></path>
+                                    <circle class="dot" cx="200" cy="6" r="2.5"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="section" aria-labelledby="features-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Features</p>
+                        <h2 id="features-title">Your reminders, on your terms.</h2>
+                    </div>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature">
+                        <h3>Native EventKit integration</h3>
+                        <p>Writes go straight to Apple Reminders. No middleman, no sync delay, no proprietary format.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Full create, edit, complete</h3>
+                        <p>Add, modify, mark complete, and delete reminders from the shell. Every field EventKit exposes.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Smart lists and filters</h3>
+                        <p>Search by date, list, priority, or completion. Build filters the same way you build shell pipelines.</p>
+                    </article>
+                    <article class="feature">
+                        <h3>Scriptable and composable</h3>
+                        <p>Drive reminders from launchd, cron, or your editor's build hook. Pipe results into other tools.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="usage-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Usage</p>
+                        <h2 id="usage-title">From install to first reminder in one terminal.</h2>
+                    </div>
+                </div>
+
+                <div class="demo" aria-label="Sample reminder session">
+                    <div class="demo-head">
+                        <span>~ zsh</span>
+                        <span>reminder 3.0.4</span>
+                    </div>
+                    <div class="demo-body"><span class="prompt">$</span> brew install AungMyoKyaw/homebrew-tap/reminder
+<span class="prompt">$</span> reminder add <span class="flag">--list</span> Today <span class="flag">--due</span> "in 2 hours" "Submit PR review"
+<span class="ok">✓ added to Today · due 16:30</span>
+<span class="prompt">$</span> reminder list <span class="flag">--today</span>
+<span class="due">· 16:30  Submit PR review</span>
+<span class="due">· 18:00  Pick up groceries</span>
+<span class="prompt">$</span> reminder complete <span class="flag">--id</span> 42
+<span class="ok">✓ completed: Submit PR review</span></div>
+                </div>
+            </section>
+
+            <section class="section" aria-label="Package metadata">
+                <dl class="meta-panel">
+                    <div class="meta-row">
+                        <p class="meta-key">Version</p>
+                        <div class="meta-value">v3.0.4</div>
+                    </div>
+                    <div class="meta-row">
+                        <p class="meta-key">License</p>
+                        <div class="meta-value">MIT</div>
+                    </div>
+                    <div class="meta-row">
+                        <p class="meta-key">Platform</p>
+                        <div class="meta-value">macOS · arm64 / x86_64</div>
+                    </div>
+                    <div class="meta-row">
+                        <p class="meta-key">Stability</p>
+                        <div class="meta-value green">Production</div>
+                    </div>
+                    <div class="meta-row">
+                        <p class="meta-key">Source</p>
+                        <div class="meta-value">github.com/AungMyoKyaw/apple-reminders-cli</div>
+                    </div>
+                    <div class="meta-row">
+                        <p class="meta-key">Tap</p>
+                        <div class="meta-value">brew tap AungMyoKyaw/homebrew-tap</div>
+                    </div>
+                </dl>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>Part of <a href="../index.html">AungMyoKyaw / homebrew-tap</a>.</p>
+            <p><a href="../index.html">← Back to the tap</a> · <a href="../README.md">README</a></p>
+        </footer>
+    </div>
+
+    <div class="copy-status" id="copy-status" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // === reminder glyph: a small list of reminders rendered as cards,
+        // with the top item's completion circle pulsing softly. Three cards,
+        // subtle stagger, no spinning or glow. Honours prefers-reduced-motion. ===
+        const canvas = document.getElementById('package-canvas');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const webglOk = (() => {
+            try {
+                const probe = document.createElement('canvas');
+                return !!(window.WebGLRenderingContext && (probe.getContext('webgl2') || probe.getContext('webgl')));
+            } catch (e) { return false; }
+        })();
+
+        if (!webglOk || reducedMotion) {
+            canvas.classList.add('is-hidden');
+        } else {
+            try {
+                initGlyph();
+            } catch (err) {
+                console.error('[reminder glyph] init failed', err);
+                canvas.classList.add('is-hidden');
+            }
+        }
+
+        function initGlyph() {
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+            renderer.setClearColor(0x080b0b, 1);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 50);
+            camera.position.set(0, 0.6, 4.2);
+            camera.lookAt(0, 0, 0);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+
+            const key = new THREE.DirectionalLight(0xffd166, 0.9);
+            key.position.set(2, 3, 4);
+            scene.add(key);
+
+            const rim = new THREE.DirectionalLight(0xff7a45, 0.4);
+            rim.position.set(-3, 1, -2);
+            scene.add(rim);
+
+            // Three reminder cards, stacked.
+            const cards = [];
+            const titles = ['Submit PR review', 'Pick up groceries', 'Call the dentist'];
+            const times = ['16:30', '18:00', 'Tomorrow'];
+            const cardColors = [0x18201e, 0x20282a, 0x121716];
+
+            const titles3d = [];
+            const times3d = [];
+
+            for (let i = 0; i < 3; i++) {
+                const group = new THREE.Group();
+
+                // Card body
+                const body = new THREE.Mesh(
+                    new THREE.PlaneGeometry(2.6, 0.7),
+                    new THREE.MeshStandardMaterial({ color: cardColors[i], roughness: 0.85 })
+                );
+                group.add(body);
+
+                // Completion circle (left side)
+                const ringGeo = new THREE.RingGeometry(0.1, 0.14, 32);
+                const ringMat = new THREE.MeshBasicMaterial({ color: 0x46534d, side: THREE.DoubleSide });
+                const ring = new THREE.Mesh(ringGeo, ringMat);
+                ring.position.set(-1.05, 0, 0.01);
+                group.add(ring);
+
+                // Dot inside the ring for the top item only (active reminder)
+                if (i === 0) {
+                    const dotGeo = new THREE.CircleGeometry(0.06, 24);
+                    const dotMat = new THREE.MeshBasicMaterial({ color: 0xff7a45 });
+                    const dot = new THREE.Mesh(dotGeo, dotMat);
+                    dot.position.set(-1.05, 0, 0.012);
+                    group.add(dot);
+                    group.userData.dot = dot;
+                }
+
+                // Title bar (text substitute)
+                const titleGeo = new THREE.PlaneGeometry(1.5 + (i % 2) * 0.2, 0.08);
+                const titleMat = new THREE.MeshBasicMaterial({ color: i === 0 ? 0xff7a45 : 0xb2bbb5, transparent: true, opacity: 0.9 });
+                const title = new THREE.Mesh(titleGeo, titleMat);
+                title.position.set(-0.1, 0.08, 0.01);
+                group.add(title);
+
+                // Time chip (right side)
+                const timeGeo = new THREE.PlaneGeometry(0.5, 0.08);
+                const timeMat = new THREE.MeshBasicMaterial({ color: 0x84908a, transparent: true, opacity: 0.7 });
+                const time = new THREE.Mesh(timeGeo, timeMat);
+                time.position.set(0.95, -0.16, 0.01);
+                group.add(time);
+
+                group.position.y = 0.6 - i * 0.85;
+                group.userData = {
+                    baseY: group.position.y,
+                    phase: i * 0.7,
+                };
+                scene.add(group);
+                cards.push(group);
+            }
+
+            const clock = new THREE.Clock();
+
+            const resize = () => {
+                const w = canvas.clientWidth;
+                const h = canvas.clientHeight;
+                if (!w || !h) return;
+                renderer.setSize(w, h, false);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+            };
+            resize();
+            window.addEventListener('resize', resize, { passive: true });
+
+            const animate = () => {
+                const t = clock.getElapsedTime();
+
+                // Subtle stagger breathing on the cards
+                cards.forEach((card) => {
+                    const d = card.userData;
+                    card.position.y = d.baseY + Math.sin(t * 0.5 + d.phase) * 0.02;
+                });
+
+                // Top card's completion dot pulses softly
+                const topCard = cards[0];
+                if (topCard && topCard.userData.dot) {
+                    const pulse = (Math.sin(t * 2.2) * 0.5 + 0.5);
+                    const s = 1 + pulse * 0.6;
+                    topCard.userData.dot.scale.setScalar(s);
+                    topCard.userData.dot.material.opacity = 0.7 + pulse * 0.3;
+                }
+
+                renderer.render(scene, camera);
+            };
+            renderer.setAnimationLoop(animate);
+
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    for (const e of entries) {
+                        renderer.setAnimationLoop(e.isIntersecting ? animate : null);
+                    }
+                });
+                io.observe(canvas);
+            }
+        }
+    </script>
+
+    <script src="../scripts/site.js" defer></script>
+</body>
+</html>

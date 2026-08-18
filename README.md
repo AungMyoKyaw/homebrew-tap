@@ -4,6 +4,11 @@
 
 A personal Homebrew tap for six small macOS tools (2 formulae, 4 casks). All MIT licensed, all installed and updated through Homebrew.
 
+## Prerequisites
+
+- [Homebrew](https://brew.sh/) installed on your system
+- macOS on Apple Silicon or Intel
+
 ## Install
 
 ```bash
@@ -22,6 +27,43 @@ brew install <package>
 brew install AungMyoKyaw/homebrew-tap/reminder
 brew install AungMyoKyaw/homebrew-tap/corenote
 ```
+
+### reminder
+
+A native macOS command-line tool for interacting with Apple Reminders. Built with Swift and EventKit for seamless integration with macOS.
+
+Features include:
+
+- Full EventKit integration
+- Native Swift performance
+- Terminal-first design
+
+## Usage
+
+```bash
+reminder --help
+reminder --version
+reminder add "Buy groceries"
+reminder list
+```
+
+See the [apple-reminders-cli repository](https://github.com/AungMyoKyaw/apple-reminders-cli) for more details.
+
+## Troubleshooting
+
+If the installed binary is not executable, run:
+
+```bash
+chmod +x "$(brew --prefix)/bin/reminder"
+```
+
+The formula removes the macOS quarantine attribute during installation. If a security warning remains:
+
+```bash
+xattr -d com.apple.quarantine "$(brew --prefix)/bin/reminder"
+```
+
+On first run, macOS may prompt you to grant Terminal access to Reminders. Choose **Allow** so the CLI can work with your reminders.
 
 ## Casks
 
@@ -48,6 +90,26 @@ brew upgrade AungMyoKyaw/homebrew-tap/<name>
 
 Use `--cask` after `brew upgrade` for casks.
 
+## Uninstalling
+
+```bash
+brew uninstall AungMyoKyaw/homebrew-tap/<name>
+brew untap AungMyoKyaw/homebrew-tap
+```
+
+## Contributing
+
+Contributions are welcome. Please open a pull request with a focused change and include relevant validation steps.
+
+## License
+
+The formulas in this tap reference software under their respective licenses. The `reminder` formula references software licensed under the MIT License.
+
 ## Maintainer
 
 [@AungMyoKyaw](https://github.com/AungMyoKyaw)
+
+## Links
+
+- [Apple Reminders CLI Repository](https://github.com/AungMyoKyaw/apple-reminders-cli)
+- [Homebrew Documentation](https://docs.brew.sh/)

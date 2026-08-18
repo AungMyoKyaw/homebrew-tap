@@ -15,8 +15,8 @@ brew install <package>
 
 | Package | Version | What it does |
 | --- | --- | --- |
-| [reminder](./package/reminder.html) | v3.0.4 | Command-line interface for Apple Reminders, full EventKit integration |
-| [corenote](./package/corenote.html) | v0.1.0 | CLI frontend to Apple Notes via direct SQLite access |
+| [reminder](./reminder.html) | v3.0.4 | Command-line interface for Apple Reminders, full EventKit integration |
+| [corenote](./corenote.html) | v0.1.0 | CLI frontend to Apple Notes via direct SQLite access |
 
 ```bash
 brew install AungMyoKyaw/homebrew-tap/reminder

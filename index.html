@@ -183,7 +183,7 @@
 
         .hero {
             display: grid;
-            grid-template-columns: minmax(0, 1.08fr) minmax(19rem, 0.92fr);
+            grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
             align-items: center;
             gap: clamp(2.5rem, 7vw, 7rem);
             padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
@@ -905,16 +905,6 @@
         <main id="main-content">
             <section class="hero" aria-labelledby="page-title">
                 <canvas id="hero-canvas" aria-hidden="true"></canvas>
-                <div class="hero-copy">
-                    <p class="eyebrow">A personal Homebrew tap for macOS</p>
-                    <h1 id="page-title">Useful Mac tools, one tap away.</h1>
-                    <p class="hero-lede">A small collection of command-line utilities and desktop apps for people who like their tools native, focused, and easy to install.</p>
-                    <div class="hero-links">
-                        <a class="hero-link" href="#packages">Browse packages</a>
-                        <a class="hero-link secondary" href="#about">About this tap</a>
-                    </div>
-                </div>
-
                 <aside class="install-panel" id="install" aria-labelledby="install-title">
                     <div class="panel-heading">
                         <h2 id="install-title">Start in two commands.</h2>
@@ -936,6 +926,16 @@
                         <a class="detail-link" href="#packages">See all six packages →</a>
                     </div>
                 </aside>
+
+                <div class="hero-copy">
+                    <p class="eyebrow">A personal Homebrew tap for macOS</p>
+                    <h1 id="page-title">Useful Mac tools, one tap away.</h1>
+                    <p class="hero-lede">A small collection of command-line utilities and desktop apps for people who like their tools native, focused, and easy to install.</p>
+                    <div class="hero-links">
+                        <a class="hero-link" href="#packages">Browse packages</a>
+                        <a class="hero-link secondary" href="#about">About this tap</a>
+                    </div>
+                </div>
             </section>
 
             <div class="catalog-summary" aria-label="Catalog summary">

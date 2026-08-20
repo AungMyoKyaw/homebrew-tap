@@ -72,7 +72,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | git-ingest | v0.2.7 | Secure Electron desktop app that bundles any repo for LLM context |
 | gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
 | caffeinate | v2.1.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
-| dhamma-echo | v0.5.5 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
+| dhamma-echo | v0.5.6 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
 
 ```bash
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest

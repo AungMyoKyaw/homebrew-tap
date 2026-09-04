@@ -2,7 +2,7 @@
 
 **Path**: `docs/specs/2026-09-04-refresh-dhamma-cask.md`
 **Created**: 2026-09-04
-**Status**: confirmed → in-progress
+**Status**: done
 
 ## Problem
 
@@ -47,7 +47,18 @@ The tap uses Homebrew Ruby casks and a dependency-free static HTML site. Existin
 - [x] **T1 (red)**: Add a failing Node test that expects v0.5.10, the verified arm64/Intel DMG URLs and checksums, and matching README/homepage versions; the test failed against the existing v0.5.9 cask and stale documentation.
 - [x] **T2 (green)**: Update the cask, README, and homepage metadata so the new regression test passes.
 - [x] **T3 (refactor)**: Keep the regression test focused and readable, run the complete Node test suite again, and make no behavior changes.
-- [ ] **T4 (commit)**: Run Homebrew audit/style checks, perform the real cask install/reinstall and app-bundle verification, create a conventional commit, and push `origin/master`.
+- [x] **T4 (commit)**: Run Homebrew audit/style checks, perform the real cask install/reinstall and app-bundle verification, create a conventional commit, and push `origin/master`.
+
+## Verification
+
+- `gh release download v0.5.10` downloaded both DMGs; their SHA256 values match the cask.
+- `node --test tests/*.test.mjs` passed all 7 tests.
+- `git diff --check` passed.
+- `brew style Casks/dhamma-echo.rb` reported no offenses.
+- `brew audit --cask --online aungmyokyaw/tap/dhamma-echo` passed against the updated cask.
+- After `brew update`, the tap resolved to commit `d0bbcc4` and reported cask version `0.5.10`.
+- `brew reinstall --cask aungmyokyaw/tap/dhamma-echo` succeeded; `brew list --cask --versions dhamma-echo` reported `0.5.10`, and the installed app bundle reported `CFBundleShortVersionString` `0.5.10`.
+- Commit `d0bbcc4` was pushed to `origin/master`.
 
 ## Open questions
 

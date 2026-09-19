@@ -16,10 +16,10 @@ cask "caffeinate" do
 
   app "Caffeinate.app"
 
-  postflight do
-    system_command "xattr",
-                   args:         ["-d", "com.apple.quarantine", "#{appdir}/Caffeinate.app"],
-                   must_succeed: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-d", "com.apple.quarantine", "{{appdir}}/Caffeinate.app"],
+        must_succeed: false
   end
 
   zap trash: [

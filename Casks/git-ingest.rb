@@ -15,14 +15,12 @@ cask "git-ingest" do
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  depends_on macos: :catalina
-
   app "Git-Ingest.app"
 
-  postflight do
-    system_command "xattr",
-                   args:         ["-d", "com.apple.quarantine", "#{appdir}/Git-Ingest.app"],
-                   must_succeed: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-d", "com.apple.quarantine", "{{appdir}}/Git-Ingest.app"],
+        must_succeed: false
   end
 
   zap trash: [

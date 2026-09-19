@@ -19,10 +19,10 @@ cask "dhamma-echo" do
 
   app "Dhamma Echo.app"
 
-  postflight do
-    system_command "xattr",
-                   args:         ["-d", "com.apple.quarantine", "#{appdir}/Dhamma Echo.app"],
-                   must_succeed: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-d", "com.apple.quarantine", "{{appdir}}/Dhamma Echo.app"],
+        must_succeed: false
   end
 
   zap trash: [

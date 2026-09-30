@@ -87,7 +87,14 @@ brew install --cask AungMyoKyaw/homebrew-tap/receipts
 
 [Receipts](https://aungmyokyaw.github.io/receipts/) requires macOS 13.3 or later. The cask selects the Apple Silicon or Intel DMG and verifies its SHA256 checksum. No Bun, Rust or Xcode installation is needed.
 
-Builds are ad-hoc signed, not Apple Developer ID signed or notarized. If macOS blocks the first launch, use **System Settings → Privacy & Security → Open Anyway** for Receipts. The cask preserves normal macOS quarantine checks.
+Builds are ad-hoc signed, not Apple Developer ID signed or notarized. The cask recursively removes the quarantine attribute from the installed app. Existing installations need the updated tap and a reinstall:
+
+```bash
+brew update
+brew reinstall --cask aungmyokyaw/tap/receipts
+```
+
+If macOS still blocks the first launch, use **System Settings → Privacy & Security → Open Anyway** for Receipts.
 
 Regular uninstall keeps sessions. `brew uninstall --cask --zap AungMyoKyaw/homebrew-tap/receipts` also removes the local database and saved sessions.
 

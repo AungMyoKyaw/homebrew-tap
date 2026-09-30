@@ -21,8 +21,8 @@ cask "receipts" do
 
   postflight_steps do
     run "/usr/bin/xattr",
-        args:         ["-d", "com.apple.quarantine", "{{appdir}}/Receipts.app"],
-        must_succeed: false
+        args:         ["-dr", "com.apple.quarantine", "{{appdir}}/Receipts.app"],
+        must_succeed: true
   end
 
   zap trash: [

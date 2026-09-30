@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0b0d0d">
     <title>Homebrew Tap: AungMyoKyaw</title>
-    <meta name="description" content="A personal Homebrew tap for six useful macOS command-line tools and desktop apps.">
+    <meta name="description" content="A personal Homebrew tap for seven useful macOS command-line tools and desktop apps.">
     <meta name="author" content="AungMyoKyaw">
     <meta name="robots" content="index, follow">
     <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -832,6 +832,10 @@
                 gap: 1rem;
             }
 
+            .package-row::before {
+                inset: -0.4rem 0;
+            }
+
             .package-action {
                 grid-column: auto;
             }
@@ -926,7 +930,7 @@
                     <div class="install-step">
                         <span class="step-label">Step 02</span>
                         <p class="step-description">Choose a package below and copy its exact install command.</p>
-                        <a class="detail-link" href="#packages">See all six packages →</a>
+                        <a class="detail-link" href="#packages">See all seven packages →</a>
                     </div>
                 </aside>
 
@@ -942,9 +946,9 @@
             </section>
 
             <div class="catalog-summary" aria-label="Catalog summary">
-                <span class="summary-item"><span class="summary-value" data-count="total">6</span><span class="summary-label">packages</span></span>
+                <span class="summary-item"><span class="summary-value" data-count="total">7</span><span class="summary-label">packages</span></span>
                 <span class="summary-item"><span class="summary-value" data-count="formulae">2</span><span class="summary-label">formulae</span></span>
-                <span class="summary-item"><span class="summary-value" data-count="casks">4</span><span class="summary-label">casks</span></span>
+                <span class="summary-item"><span class="summary-value" data-count="casks">5</span><span class="summary-label">casks</span></span>
                 <span class="summary-item"><span class="summary-value">macOS</span><span class="summary-label">platform</span></span>
             </div>
 
@@ -1016,7 +1020,7 @@
                         <h2 id="casks-title">Casks</h2>
                         <p>Native or Electron apps you can install and keep updated through Homebrew.</p>
                     </div>
-                    <span class="section-count" data-section-count="cask">4 packages</span>
+                    <span class="section-count" data-section-count="cask">5 packages</span>
                 </div>
 
                 <div class="package-list" data-package-list="cask">
@@ -1115,6 +1119,30 @@
                             <a class="detail-link" href="https://github.com/AungMyoKyaw/dhamma-echo" rel="noreferrer" target="_blank">View source on GitHub →</a>
                         </div>
                     </article>
+
+                    <article class="package-row" data-package="receipts" data-kind="cask" data-version="0.1.0">
+                        <div class="package-identity">
+                            <h3 class="package-name">receipts</h3>
+                            <span class="package-kind">Cask</span>
+                            <span class="package-version">v0.1.0</span>
+                        </div>
+                        <div class="package-details">
+                            <p class="package-description">A local-first menu-bar time tracker. Your hours. Accounted for.</p>
+                            <ul class="package-tags" aria-label="receipts attributes">
+                                <li>Tauri</li>
+                                <li>macOS 13.3+</li>
+                                <li>AGPL-3.0-or-later</li>
+                            </ul>
+                        </div>
+                        <div class="package-action">
+                            <span class="install-label">Install receipts</span>
+                            <div class="command">
+                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/receipts</code>
+                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/receipts" aria-label="Copy receipts install command">Copy</button>
+                            </div>
+                            <a class="detail-link" href="https://aungmyokyaw.github.io/receipts/" rel="noreferrer" target="_blank">View the app and install notes →</a>
+                        </div>
+                    </article>
                 </div>
             </section>
 
@@ -1127,19 +1155,19 @@
                 <dl class="meta-list">
                     <div class="meta-row">
                         <dt>Catalog</dt>
-                        <dd data-count-label="catalog">6 packages</dd>
+                        <dd data-count-label="catalog">7 packages</dd>
                     </div>
                     <div class="meta-row">
                         <dt>Platform</dt>
                         <dd>macOS</dd>
                     </div>
                     <div class="meta-row">
-                        <dt>License</dt>
-                        <dd>MIT</dd>
+                        <dt>Licenses</dt>
+                        <dd>MIT / AGPL-3.0-or-later</dd>
                     </div>
                     <div class="meta-row">
                         <dt>Snapshot</dt>
-                        <dd>Aug 2026</dd>
+                        <dd>Sep 2026</dd>
                     </div>
                 </dl>
             </section>

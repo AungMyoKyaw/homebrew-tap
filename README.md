@@ -2,7 +2,7 @@
 
 > **Live site:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
 
-A personal Homebrew tap for six small macOS tools (2 formulae, 4 casks). All MIT licensed, all installed and updated through Homebrew.
+A personal Homebrew tap for seven small macOS tools (2 formulae, 5 casks), installed and updated through Homebrew. Package licenses vary; Receipts uses AGPL-3.0-or-later.
 
 ## Prerequisites
 
@@ -73,13 +73,23 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
 | caffeinate | v2.1.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
 | dhamma-echo | v0.5.10 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
+| receipts | v0.1.0 | Local-first menu-bar time tracker with sessions, a weekly calendar and statistics |
 
 ```bash
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
 brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
 brew install --cask AungMyoKyaw/homebrew-tap/caffeinate
 brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo
+brew install --cask AungMyoKyaw/homebrew-tap/receipts
 ```
+
+### receipts
+
+[Receipts](https://aungmyokyaw.github.io/receipts/) requires macOS 13.3 or later. The cask selects the Apple Silicon or Intel DMG and verifies its SHA256 checksum. No Bun, Rust or Xcode installation is needed.
+
+Builds are ad-hoc signed, not Apple Developer ID signed or notarized. If macOS blocks the first launch, use **System Settings → Privacy & Security → Open Anyway** for Receipts. The cask preserves normal macOS quarantine checks.
+
+Regular uninstall keeps sessions. `brew uninstall --cask --zap AungMyoKyaw/homebrew-tap/receipts` also removes the local database and saved sessions.
 
 ## Updating
 
@@ -103,7 +113,7 @@ Contributions are welcome. Please open a pull request with a focused change and 
 
 ## Security
 
-This tap distributes pre-compiled binaries from the official [apple-reminders-cli releases](https://github.com/AungMyoKyaw/apple-reminders-cli/releases). All binaries are:
+This tap distributes binaries from each package's upstream releases. Installer checksums are pinned in the corresponding formula or cask. Signing and notarization depend on the package; Receipts is ad-hoc signed and not notarized. Binaries are:
 
 - Built from open-source code
 - Signed and notarized when applicable
@@ -113,7 +123,7 @@ If you discover a security vulnerability, please report it by creating an issue 
 
 ## License
 
-The formulas in this tap reference software under their respective licenses. The `reminder` formula references software licensed under the MIT License.
+The formulas and casks reference software under their respective licenses. The `reminder` formula references MIT-licensed software. The `receipts` cask references software licensed under AGPL-3.0-or-later.
 
 ## Maintainer
 

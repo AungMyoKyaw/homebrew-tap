@@ -7,7 +7,7 @@ const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
 
 test("homepage exposes every package with an install command", () => {
-  const packageNames = ["reminder", "corenote", "git-ingest", "gitfolio", "caffeinate", "dhamma-echo"];
+  const packageNames = ["reminder", "corenote", "git-ingest", "gitfolio", "caffeinate", "dhamma-echo", "receipts"];
 
   for (const name of packageNames) {
     assert.match(html, new RegExp('data-package="' + name + '"'));
@@ -22,7 +22,8 @@ test("homepage versions match the tap source files", () => {
     "git-ingest": readFileSource("Casks/git-ingest.rb"),
     gitfolio: readFileSource("Casks/gitfolio.rb"),
     caffeinate: readFileSource("Casks/caffeinate.rb"),
-    "dhamma-echo": readFileSource("Casks/dhamma-echo.rb")
+    "dhamma-echo": readFileSource("Casks/dhamma-echo.rb"),
+    receipts: readFileSource("Casks/receipts.rb")
   };
 
   for (const [name, source] of Object.entries(sources)) {
@@ -47,9 +48,9 @@ test("homepage avoids the audited visual anti-patterns", () => {
   assert.match(html, /prefers-reduced-motion/);
 });
 
-test("README describes both formulas and all four casks", () => {
+test("README describes both formulas and all five casks", () => {
   assert.match(readme, /corenote/);
-  for (const name of ["reminder", "corenote", "git-ingest", "gitfolio", "caffeinate", "dhamma-echo"]) {
+  for (const name of ["reminder", "corenote", "git-ingest", "gitfolio", "caffeinate", "dhamma-echo", "receipts"]) {
     assert.match(readme, new RegExp("\\b" + name + "\\b"));
   }
 });

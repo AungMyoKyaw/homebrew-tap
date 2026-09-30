@@ -19,6 +19,12 @@ cask "receipts" do
 
   app "Receipts.app"
 
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-d", "com.apple.quarantine", "{{appdir}}/Receipts.app"],
+        must_succeed: false
+  end
+
   zap trash: [
     "~/Library/Application Support/com.aungmyokyaw.receipts",
     "~/Library/Caches/com.aungmyokyaw.receipts",

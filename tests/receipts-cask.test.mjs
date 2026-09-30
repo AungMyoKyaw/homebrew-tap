@@ -22,13 +22,14 @@ test("Receipts cask pins verified release assets for both architectures", () => 
   assert.doesNotMatch(cask, /:no_check/);
 });
 
-test("Receipts installation preserves quarantine and normal uninstall preserves data", () => {
+test("Receipts removes quarantine after installation and normal uninstall preserves data", () => {
   assert.match(cask, /depends_on macos: :ventura/);
   assert.match(cask, /macOS 13\.3/);
   assert.match(cask, /app "Receipts\.app"/);
+  assert.match(cask, /postflight_steps do\s+run "\/usr\/bin\/xattr",\s+args:\s+\["-d", "com\.apple\.quarantine", "\{\{appdir\}\}\/Receipts\.app"\],\s+must_succeed: false\s+end/);
   assert.match(cask, /zap trash:/);
   assert.match(cask, /not Apple Developer ID signed or notarized/);
-  assert.doesNotMatch(cask, /postflight|xattr|uninstall delete/);
+  assert.doesNotMatch(cask, /uninstall delete/);
 });
 
 test("Receipts catalog and documentation agree with the cask and license", () => {

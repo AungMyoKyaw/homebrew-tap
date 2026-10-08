@@ -73,6 +73,6 @@ test("Receipts catalog and documentation agree with the cask and license", () =>
   assert.match(readme, /brew update\s+brew reinstall --cask aungmyokyaw\/tap\/receipts/);
   assert.doesNotMatch(readme, /preserves normal macOS quarantine checks/);
   assert.doesNotMatch(readme, /All MIT licensed/);
-  assert.match(html, /data-count="total">7</);
-  assert.match(html, /data-count="casks">5</);
+  assert.match(html, /data-count="total">8</);
+  assert.match(html, /data-count="casks">6</);
 });

@@ -2,7 +2,7 @@
 
 > **Live site:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
 
-A personal Homebrew tap for seven small macOS tools (2 formulae, 5 casks), installed and updated through Homebrew. Package licenses vary; Receipts uses AGPL-3.0-or-later.
+A personal Homebrew tap for eight small macOS tools (2 formulae, 6 casks), installed and updated through Homebrew. Receipts and Rusty Pomodoro use AGPL-3.0-or-later.
 
 ## Prerequisites
 
@@ -74,6 +74,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | caffeinate | v2.1.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
 | dhamma-echo | v0.5.10 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
 | receipts | v0.1.0 | Local-first menu-bar time tracker with sessions, a weekly calendar and statistics |
+| rusty-pomodoro | v1.0.0 | Focus timer with sessions, breaks, themes, and statistics |
 
 ```bash
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
@@ -81,7 +82,12 @@ brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
 brew install --cask AungMyoKyaw/homebrew-tap/caffeinate
 brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo
 brew install --cask AungMyoKyaw/homebrew-tap/receipts
+brew install --cask AungMyoKyaw/homebrew-tap/rusty-pomodoro
 ```
+
+### rusty-pomodoro
+
+Rusty Pomodoro requires macOS 11 or later. The cask selects the Apple Silicon or Intel v1.0.0 app bundle and verifies its SHA256 checksum. The app is ad-hoc signed, not Apple Developer ID signed or notarized; the cask removes quarantine during install. `brew uninstall --cask --zap AungMyoKyaw/homebrew-tap/rusty-pomodoro` also removes local settings and history.
 
 ### receipts
 
@@ -120,7 +126,7 @@ Contributions are welcome. Please open a pull request with a focused change and 
 
 ## Security
 
-This tap distributes binaries from each package's upstream releases. Installer checksums are pinned in the corresponding formula or cask. Signing and notarization depend on the package; Receipts is ad-hoc signed and not notarized. Binaries are:
+This tap distributes binaries from each package's upstream releases. Installer checksums are pinned in the corresponding formula or cask. Signing and notarization depend on the package; Receipts and Rusty Pomodoro are ad-hoc signed and not notarized. Binaries are:
 
 - Built from open-source code
 - Signed and notarized when applicable
@@ -130,7 +136,7 @@ If you discover a security vulnerability, please report it by creating an issue 
 
 ## License
 
-The formulas and casks reference software under their respective licenses. The `reminder` formula references MIT-licensed software. The `receipts` cask references software licensed under AGPL-3.0-or-later.
+The formulas and casks reference software under their respective licenses. The `reminder` formula references MIT-licensed software. The `receipts` and `rusty-pomodoro` casks reference software licensed under AGPL-3.0-or-later.
 
 ## Maintainer
 

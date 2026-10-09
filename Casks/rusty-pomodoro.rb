@@ -1,9 +1,9 @@
 cask "rusty-pomodoro" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "1.0.0"
-  sha256 arm:   "169e9d41d63410347f95cd60dd6cd645f947236b8edfd217b45f434b2347db05",
-         intel: "2b0b23270f15e7162e1b66646ecc43c6725da24ec71b9577945e55c4a3c40f8f"
+  version "1.0.1"
+  sha256 arm:   "fab10d9b31c77f5ae58eabdffb166dced4f875ec255f20aa0b0d1d44cf37aa40",
+         intel: "861feac4b96e853a736c2ba8e6814fa1db5c4e4666b1f4bf805a2e7f018b4e2f"
 
   url "https://github.com/AungMyoKyaw/rusty-pomodoro/releases/download/v#{version}/rusty-pomodoro-v#{version}-macos-#{arch}.zip"
   name "Rusty Pomodoro"

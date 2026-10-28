@@ -19,7 +19,10 @@ test("ChatGPT Controller cask generator produces a verified ARM64 release pin", 
     assert.ok(cask.includes(`sha256 "${sha}"`));
     assert.ok(cask.includes("ChatGPT-Controller-v#{version}-macos-arm64.zip"));
     assert.match(cask, /depends_on arch: :arm64/);
-    assert.doesNotMatch(cask, /postflight_steps/);
+    assert.match(cask, /postflight_steps do/);
+    assert.match(cask, /run "\/usr\/bin\/xattr"/);
+    assert.ok(cask.includes('["-dr", "com.apple.quarantine", "{{appdir}}/ChatGPT Controller.app"]'));
+    assert.match(cask, /must_succeed: false/);
     const ruby = spawnSync("ruby", ["-c", caskPath], { encoding: "utf8" });
     assert.equal(ruby.status, 0, ruby.stderr);
   } finally {

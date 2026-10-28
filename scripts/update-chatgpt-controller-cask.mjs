@@ -28,10 +28,17 @@ const cask = `cask "chatgpt-controller" do
 
   app "ChatGPT Controller.app"
 
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-dr", "com.apple.quarantine", "{{appdir}}/ChatGPT Controller.app"],
+        must_succeed: false
+  end
+
   caveats <<~EOS
     Google Chrome and Playwright CLI (@playwright/cli) are required.
     This build is ad-hoc signed, not Apple Developer ID signed or notarized.
-    If macOS blocks the first launch, approve it in System Settings > Privacy & Security.
+    The cask attempts to remove quarantine recursively during installation.
+    If macOS still blocks launch, use System Settings > Privacy & Security.
   EOS
 
   zap trash: [

@@ -89,7 +89,7 @@ brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller
 
 ### chatgpt-controller
 
-[ChatGPT Controller](https://aungmyokyaw.github.io/chatgpt-controller-desktop/) v0.1.0 is available for Apple Silicon Macs. Install with `brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller` or download the verified ZIP from [GitHub Releases](https://github.com/AungMyoKyaw/chatgpt-controller-desktop/releases/tag/v0.1.0). Google Chrome and Playwright CLI are required separately. The app is ad-hoc signed but not notarized, so macOS may require approval in Privacy & Security.
+[ChatGPT Controller](https://aungmyokyaw.github.io/chatgpt-controller-desktop/) v0.1.0 is available for Apple Silicon Macs. Install with `brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller` or download the verified ZIP from [GitHub Releases](https://github.com/AungMyoKyaw/chatgpt-controller-desktop/releases/tag/v0.1.0). Google Chrome and Playwright CLI are required separately. The app is ad-hoc signed but not notarized. The cask recursively removes quarantine from the installed app during postflight (nonfatal if the attribute is already absent). If macOS still blocks launch, approve it in Privacy & Security. Existing installations should run brew reinstall --cask AungMyoKyaw/homebrew-tap/chatgpt-controller to apply the hook.
 
 ### rusty-pomodoro
 

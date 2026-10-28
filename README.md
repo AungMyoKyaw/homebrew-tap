@@ -2,7 +2,7 @@
 
 > **Live site:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
 
-A personal Homebrew tap for eight small macOS tools (2 formulae, 6 casks), installed and updated through Homebrew. Receipts and Rusty Pomodoro use AGPL-3.0-or-later.
+A personal Homebrew tap for nine macOS tools (2 formulae, 7 casks), installed and updated through Homebrew. ChatGPT Controller, Receipts and Rusty Pomodoro use AGPL-3.0-or-later.
 
 ## Prerequisites
 
@@ -71,10 +71,11 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | --- | --- | --- |
 | git-ingest | v0.2.7 | Secure Electron desktop app that bundles any repo for LLM context |
 | gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
-| caffeinate | v2.1.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
+| caffeinate | v3.0.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
 | dhamma-echo | v0.5.10 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
 | receipts | v0.1.0 | Local-first menu-bar time tracker with sessions, a weekly calendar and statistics |
-| rusty-pomodoro | v1.0.0 | Focus timer with sessions, breaks, themes, and statistics |
+| rusty-pomodoro | v1.0.1 | Focus timer with sessions, breaks, themes, and statistics |
+| [chatgpt-controller](https://aungmyokyaw.github.io/chatgpt-controller-desktop/) | v0.1.0 | Local ChatGPT browser controller with an authenticated localhost API (Apple Silicon) |
 
 ```bash
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
@@ -83,11 +84,16 @@ brew install --cask AungMyoKyaw/homebrew-tap/caffeinate
 brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo
 brew install --cask AungMyoKyaw/homebrew-tap/receipts
 brew install --cask AungMyoKyaw/homebrew-tap/rusty-pomodoro
+brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller
 ```
+
+### chatgpt-controller
+
+[ChatGPT Controller](https://aungmyokyaw.github.io/chatgpt-controller-desktop/) v0.1.0 is available for Apple Silicon Macs. Install with `brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller` or download the verified ZIP from [GitHub Releases](https://github.com/AungMyoKyaw/chatgpt-controller-desktop/releases/tag/v0.1.0). Google Chrome and Playwright CLI are required separately. The app is ad-hoc signed but not notarized, so macOS may require approval in Privacy & Security.
 
 ### rusty-pomodoro
 
-Rusty Pomodoro requires macOS 11 or later. The cask selects the Apple Silicon or Intel v1.0.0 app bundle and verifies its SHA256 checksum. The app is ad-hoc signed, not Apple Developer ID signed or notarized; the cask removes quarantine during install. `brew uninstall --cask --zap AungMyoKyaw/homebrew-tap/rusty-pomodoro` also removes local settings and history.
+Rusty Pomodoro requires macOS 11 or later. The cask selects the Apple Silicon or Intel v1.0.1 app bundle and verifies its SHA256 checksum. The app is ad-hoc signed, not Apple Developer ID signed or notarized; the cask removes quarantine during install. `brew uninstall --cask --zap AungMyoKyaw/homebrew-tap/rusty-pomodoro` also removes local settings and history.
 
 ### receipts
 

@@ -1,10 +1,10 @@
 cask "chatgpt-controller" do
-  version "0.2.0"
-  sha256 "baff49413f6df28f1ba89d5e62374bb57ec8556d9ee4e7c54f7cad60402eafac"
+  version "0.3.0-rc.5"
+  sha256 "271ca30f88c569a640cc00653baaee91426275cee99b061f4ad0ad93b75c074c"
 
   url "https://github.com/AungMyoKyaw/chatgpt-controller-desktop/releases/download/v#{version}/ChatGPT-Controller-v#{version}-macos-arm64.zip"
   name "ChatGPT Controller"
-  desc "Local API controller for a user-authenticated ChatGPT browser"
+  desc "Native local API controller with embedded ChatGPT sign-in"
   homepage "https://github.com/AungMyoKyaw/chatgpt-controller-desktop"
 
   livecheck do
@@ -24,7 +24,7 @@ cask "chatgpt-controller" do
   end
 
   caveats <<~EOS
-    Google Chrome and Playwright CLI (@playwright/cli) are required.
+    No external Chrome or Playwright CLI installation is required.
     This build is ad-hoc signed, not Apple Developer ID signed or notarized.
     The cask attempts to remove quarantine recursively during installation.
     If macOS still blocks launch, use System Settings > Privacy & Security.

@@ -1,6 +1,6 @@
 cask "chatgpt-controller" do
-  version "0.3.0-rc.5"
-  sha256 "271ca30f88c569a640cc00653baaee91426275cee99b061f4ad0ad93b75c074c"
+  version "0.3.0"
+  sha256 "347c5764b36c13312f0ed1666c7a4db10ae20d20dc46ca15b87f99632d1a02ec"
 
   url "https://github.com/AungMyoKyaw/chatgpt-controller-desktop/releases/download/v#{version}/ChatGPT-Controller-v#{version}-macos-arm64.zip"
   name "ChatGPT Controller"

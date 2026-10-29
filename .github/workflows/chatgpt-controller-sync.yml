@@ -37,6 +37,13 @@ jobs:
           fi
           TAG="$(jq -r .tag_name "$RUNNER_TEMP/release.json")"
           [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "::error::Unexpected release tag: $TAG"; exit 1; }
+          # shellcheck disable=SC2016 # Ruby captures the version with $1.
+          CURRENT="$(ruby -ne 'puts $1 if /^  version "([^"]+)"/' Casks/chatgpt-controller.rb)"
+          if ruby -e 'exit(Gem::Version.new(ARGV[0]) > Gem::Version.new(ARGV[1]) ? 0 : 1)' "$CURRENT" "${TAG#v}"; then
+            echo "Cask $CURRENT is newer than latest stable ${TAG#v}; preserving it."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           ZIP="ChatGPT-Controller-${TAG}-macos-arm64.zip"
           jq -e --arg n "$ZIP" '.assets | any(.name == $n)' "$RUNNER_TEMP/release.json" >/dev/null
           URL="$(jq -r '.assets[] | select(.name == "SHA256SUMS") | .browser_download_url' "$RUNNER_TEMP/release.json" | head -1)"

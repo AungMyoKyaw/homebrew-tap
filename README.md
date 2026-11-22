@@ -72,7 +72,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | git-ingest | v0.2.7 | Secure Electron desktop app that bundles any repo for LLM context |
 | gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
 | caffeinate | v3.0.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
-| dhamma-echo | v0.5.10 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
+| dhamma-echo | v0.6.0 | A quiet desktop library for Dhamma talks. Listen offline, mindfully |
 | receipts | v0.1.0 | Local-first menu-bar time tracker with sessions, a weekly calendar and statistics |
 | rusty-pomodoro | v1.0.1 | Focus timer with sessions, breaks, themes, and statistics |
 | [chatgpt-controller](https://aungmyokyaw.github.io/chatgpt-controller-desktop/) | v0.2.0 | Local ChatGPT browser controller with an authenticated localhost API (Apple Silicon) |

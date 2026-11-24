@@ -23,7 +23,7 @@ test("Rusty Pomodoro cask removes nested quarantine and documents ad-hoc signing
 
 test("tap docs and catalog expose the cask installer", () => {
   assert.match(html, /data-package="rusty-pomodoro"[^>]*data-version="1\.0\.1"/);
-  assert.match(html, /brew install &#45;&#45;cask AungMyoKyaw\/homebrew-tap\/rusty-pomodoro/);
+  assert.match(html, /brew install --cask AungMyoKyaw\/homebrew-tap\/rusty-pomodoro/);
   assert.match(readme, /\| rusty-pomodoro \| v1\.0\.1 \|/);
   assert.match(readme, /brew install --cask AungMyoKyaw\/homebrew-tap\/rusty-pomodoro/);
 });

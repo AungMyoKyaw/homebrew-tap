@@ -66,13 +66,13 @@ test("Receipts postflight removes nested quarantine without clearing other attri
 
 test("Receipts catalog and documentation agree with the cask and license", () => {
   assert.match(html, new RegExp(`data-package="receipts"[^>]*data-version="${version}"`));
-  assert.match(html, /Copy receipts install command/);
+  assert.match(html, /data-copy-command="brew install --cask AungMyoKyaw\/homebrew-tap\/receipts"/);
   assert.match(readme, new RegExp(`\\| receipts \\| v${version} \\|`));
   assert.match(html, /AGPL-3\.0-or-later/);
   assert.match(readme, /AGPL-3\.0-or-later/);
   assert.match(readme, /brew update\s+brew reinstall --cask aungmyokyaw\/tap\/receipts/);
   assert.doesNotMatch(readme, /preserves normal macOS quarantine checks/);
   assert.doesNotMatch(readme, /All MIT licensed/);
-  assert.match(html, /data-count="total">9</);
-  assert.match(html, /data-count="casks">7</);
+  assert.match(html, /All \(10\)/);
+  assert.match(html, /Casks \(8\)/);
 });

@@ -18,5 +18,5 @@ test("Dhamma Echo cask tracks the published release assets", () => {
 test("Dhamma Echo documentation shows the cask version", () => {
   assert.match(readme, new RegExp(`\\| dhamma-echo \\| v${version} \\|`));
   assert.match(homepage, new RegExp(`data-package="dhamma-echo"[^>]*data-version="${version}"`));
-  assert.match(homepage, new RegExp(`<span class="package-version">v${version}</span>`));
+  assert.match(homepage, new RegExp(`<span class="badge badge-ver">v${version}</span>`));
 });

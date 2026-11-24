@@ -1,1803 +1,438 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b0d0d">
-    <title>Homebrew Tap: AungMyoKyaw</title>
-    <meta name="description" content="A personal Homebrew tap for nine useful macOS command-line tools and desktop apps.">
-    <meta name="author" content="AungMyoKyaw">
-    <meta name="robots" content="index, follow">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23ff7a45'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='monospace' font-size='40' font-weight='700' fill='%231b100b'%3EA%3C/text%3E%3C/svg%3E">
-    <style>
-        :root {
-            color-scheme: dark;
-            --bg: #0b0d0d;
-            --surface: #121716;
-            --surface-raised: #18201e;
-            --code-bg: #080b0b;
-            --line: #2b3632;
-            --line-strong: #46534d;
-            --text: #f3f5ed;
-            --muted: #b2bbb5;
-            --subtle: #84908a;
-            --orange: #ff7a45;
-            --orange-soft: #3a2118;
-            --yellow: #ffd166;
-            --green: #25d0a0;
-            --green-soft: #12352c;
-            --focus: #f6d477;
-            --danger: #ff9580;
-            --radius-panel: 14px;
-            --radius-control: 10px;
-            --content-width: 1180px;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-width: 320px;
-            margin: 0;
-            overflow-x: hidden;
-            background: var(--bg);
-            color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        button,
-        a {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        a:focus-visible,
-        button:focus-visible {
-            outline: 3px solid var(--focus);
-            outline-offset: 4px;
-        }
-
-        .skip-link {
-            position: fixed;
-            top: 0.75rem;
-            left: 0.75rem;
-            z-index: 40;
-            padding: 0.65rem 0.9rem;
-            transform: translateY(-180%);
-            border-radius: var(--radius-control);
-            background: var(--yellow);
-            color: #15130d;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 180ms ease-out;
-        }
-
-        .skip-link:focus {
-            transform: translateY(0);
-        }
-
-        .site-shell {
-            width: min(var(--content-width), calc(100% - 2rem));
-            margin: 0 auto;
-        }
-
-        .site-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.25rem;
-            min-height: 5rem;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            min-width: 0;
-            color: var(--text);
-            text-decoration: none;
-        }
-
-        .brand-mark {
-            display: grid;
-            width: 2.5rem;
-            height: 2.5rem;
-            flex: 0 0 auto;
-            place-items: center;
-            border: 1px solid var(--orange);
-            border-radius: 8px;
-            background: var(--orange);
-            color: #1b100b;
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 1.1rem;
-            font-weight: 800;
-        }
-
-        .brand-copy {
-            display: grid;
-            gap: 0.05rem;
-            min-width: 0;
-        }
-
-        .brand-name {
-            overflow: hidden;
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .brand-caption {
-            color: var(--subtle);
-            font-size: 0.75rem;
-        }
-
-        .site-nav {
-            display: flex;
-            align-items: center;
-            gap: clamp(0.75rem, 2vw, 1.5rem);
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .site-nav a {
-            text-decoration: none;
-        }
-
-        .site-nav a:not(.nav-button):hover {
-            color: var(--text);
-        }
-
-        .nav-button,
-        .hero-link {
-            display: inline-flex;
-            min-height: 2.75rem;
-            align-items: center;
-            justify-content: center;
-            padding: 0.6rem 1rem;
-            border: 1px solid var(--line-strong);
-            border-radius: 999px;
-            color: var(--text);
-            font-weight: 700;
-        }
-
-        .nav-button {
-            border-color: var(--yellow);
-            background: var(--yellow);
-            color: #17130a;
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-            align-items: center;
-            gap: clamp(2.5rem, 7vw, 7rem);
-            padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
-        }
-
-        #hero-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            display: block;
-        }
-        #hero-canvas.is-hidden { display: none; }
-
-        #ambient-canvas {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-            display: block;
-        }
-        #ambient-canvas.is-hidden { display: none; }
-
-        .hero {
-            position: relative;
-            isolation: isolate;
-            min-height: clamp(34rem, 78vh, 56rem);
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            background:
-                radial-gradient(120% 80% at 70% 50%, rgba(11, 13, 13, 0) 0%, rgba(11, 13, 13, 0.35) 55%, rgba(11, 13, 13, 0.85) 100%),
-                linear-gradient(180deg, rgba(11, 13, 13, 0.55) 0%, rgba(11, 13, 13, 0.25) 30%, rgba(11, 13, 13, 0.65) 100%);
-        }
-
-        .hero-copy { position: relative; z-index: 1; max-width: 43rem; }
-
-        .hero-copy {
-            max-width: 43rem;
-        }
-
-        .eyebrow,
-        .section-kicker,
-        .step-label,
-        .package-kind,
-        .install-label {
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .eyebrow,
-        .section-kicker {
-            color: var(--orange);
-        }
-
-        .eyebrow {
-            margin: 0 0 1.25rem;
-        }
-
-        h1,
-        h2,
-        h3,
-        p {
-            margin-top: 0;
-        }
-
-        h1,
-        h2,
-        h3 {
-            text-wrap: balance;
-        }
-
-        h1 {
-            max-width: 10ch;
-            margin-bottom: 1.5rem;
-            color: var(--text);
-            font-size: clamp(3.25rem, 8vw, 6rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 0.98;
-        }
-
-        .hero-lede {
-            max-width: 61ch;
-            margin-bottom: 2rem;
-            color: var(--muted);
-            font-size: clamp(1.05rem, 2vw, 1.2rem);
-        }
-
-        .hero-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .hero-link {
-            border-color: var(--orange);
-            background: var(--orange);
-            color: #1b100b;
-            text-decoration: none;
-        }
-
-        .hero-link.secondary {
-            border-color: var(--line-strong);
-            background: transparent;
-            color: var(--muted);
-        }
-
-        .hero-link.secondary:hover {
-            border-color: var(--text);
-            color: var(--text);
-        }
-
-        .install-panel,
-        .about-panel {
-            border: 1px solid var(--line);
-            border-radius: var(--radius-panel);
-            background: var(--surface);
-        }
-
-        .install-panel {
-            padding: clamp(1.25rem, 3vw, 1.75rem);
-        }
-
-        .panel-heading {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .panel-heading h2 {
-            max-width: 16ch;
-            margin-bottom: 0;
-            font-size: clamp(1.35rem, 3vw, 1.8rem);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
-        .panel-mark {
-            display: grid;
-            width: 2.5rem;
-            height: 2.5rem;
-            flex: 0 0 auto;
-            place-items: center;
-            border: 1px solid var(--orange);
-            border-radius: 50%;
-            color: var(--orange);
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 0.8rem;
-        }
-
-        .install-step + .install-step {
-            margin-top: 1.25rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--line);
-        }
-
-        .step-label,
-        .install-label {
-            display: block;
-            margin-bottom: 0.6rem;
-            color: var(--subtle);
-        }
-
-        .step-label {
-            color: var(--yellow);
-        }
-
-        .step-description {
-            margin-bottom: 0.75rem;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .command {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.7rem;
-            border: 1px solid var(--line-strong);
-            border-radius: var(--radius-control);
-            background: var(--code-bg);
-        }
-
-        .command code {
-            min-width: 0;
-            color: var(--yellow);
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 0.78rem;
-            line-height: 1.5;
-            overflow-wrap: anywhere;
-            white-space: pre-wrap;
-        }
-
-        .copy-button {
-            min-width: 4.5rem;
-            min-height: 2.75rem;
-            padding: 0.55rem 0.85rem;
-            border: 1px solid var(--line-strong);
-            border-radius: 7px;
-            background: var(--surface-raised);
-            color: var(--text);
-            cursor: pointer;
-            font: inherit;
-            font-size: 0.82rem;
-            font-weight: 700;
-            transition: background-color 180ms ease-out, border-color 180ms ease-out, color 180ms ease-out;
-        }
-
-        .copy-button:hover {
-            border-color: var(--yellow);
-            background: var(--yellow);
-            color: #17130a;
-        }
-
-        .copy-button[data-status="copied"] {
-            border-color: var(--green);
-            background: var(--green-soft);
-            color: var(--green);
-        }
-
-        .copy-button[data-status="failed"] {
-            border-color: var(--danger);
-            color: var(--danger);
-        }
-
-        .copy-button:disabled {
-            cursor: wait;
-            opacity: 0.7;
-        }
-
-        .catalog-summary {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem 2rem;
-            padding: 1.1rem 0;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-            color: var(--muted);
-        }
-
-        .summary-item {
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.45rem;
-        }
-
-        .summary-value {
-            color: var(--text);
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-weight: 700;
-        }
-
-        .summary-label {
-            color: var(--subtle);
-            font-size: 0.9rem;
-        }
-
-        .catalog-section {
-            padding: clamp(3.75rem, 7vw, 6rem) 0 0;
-            scroll-margin-top: 2rem;
-        }
-
-        .section-heading {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-heading h2 {
-            margin-bottom: 0.35rem;
-            font-size: clamp(2rem, 4vw, 3.1rem);
-            letter-spacing: -0.035em;
-            line-height: 1;
-        }
-
-        .section-heading p {
-            max-width: 56ch;
-            margin-bottom: 0;
-            color: var(--muted);
-        }
-
-        .section-count {
-            flex: 0 0 auto;
-            color: var(--subtle);
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 0.78rem;
-        }
-
-        .package-list {
-            border-top: 1px solid var(--line);
-        }
-
-        .package-row {
-            display: grid;
-            grid-template-columns: minmax(10rem, 0.7fr) minmax(15rem, 1fr) minmax(20rem, 1.35fr);
-            gap: clamp(1.25rem, 3vw, 3rem);
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--line);
-            position: relative;
-            transition: opacity 600ms ease-out, transform 600ms ease-out;
-        }
-
-        .package-row.depth-pending {
-            opacity: 0;
-            transform: translateY(2.4rem);
-        }
-
-        .package-row.depth-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .package-row::before {
-            content: "";
-            position: absolute;
-            inset: -0.4rem -0.75rem;
-            z-index: -1;
-            border-radius: var(--radius-panel);
-            background: radial-gradient(60% 100% at 0% 50%, var(--row-glow, var(--orange-soft)) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 220ms ease-out;
-        }
-
-        .package-row.row-hover::before {
-            opacity: 1;
-        }
-
-        .package-row[data-kind="formula"] { --row-accent: var(--orange); --row-glow: rgba(255, 122, 69, 0.18); }
-        .package-row[data-kind="cask"] { --row-accent: var(--green); --row-glow: rgba(37, 208, 160, 0.18); }
-
-        .catalog-section {
-            position: relative;
-            transform-style: preserve-3d;
-            transform: perspective(2400px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
-            transition: transform 200ms ease-out;
-        }
-
-        .package-identity,
-        .package-details,
-        .package-action {
-            min-width: 0;
-        }
-
-        .package-identity {
-            display: flex;
-            flex-wrap: wrap;
-            align-content: flex-start;
-            align-items: baseline;
-            gap: 0.65rem;
-        }
-
-        .package-name {
-            width: 100%;
-            margin-bottom: 0;
-            color: var(--text);
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-        }
-
-        .package-kind {
-            padding: 0.25rem 0.45rem;
-            border: 1px solid var(--orange);
-            border-radius: 999px;
-            color: var(--orange);
-            font-size: 0.62rem;
-            letter-spacing: 0.05em;
-        }
-
-        .package-row[data-kind="cask"] .package-kind {
-            border-color: var(--green);
-            color: var(--green);
-        }
-
-        .package-version {
-            color: var(--subtle);
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 0.76rem;
-        }
-
-        .package-description {
-            max-width: 46ch;
-            margin-bottom: 0.85rem;
-            color: var(--muted);
-        }
-
-        .package-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .package-tags li {
-            padding: 0.2rem 0.5rem;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            color: var(--subtle);
-            font-size: 0.75rem;
-        }
-
-        .package-action {
-            align-self: start;
-        }
-
-        .package-row[data-kind="formula"] .command code {
-            color: var(--orange);
-        }
-
-        .package-row[data-kind="cask"] .command code {
-            color: var(--green);
-        }
-
-        .package-row[data-kind="cask"] .copy-button:hover {
-            border-color: var(--green);
-            background: var(--green);
-            color: #07130f;
-        }
-
-        .detail-link {
-            display: inline-block;
-            margin-top: 0.75rem;
-            color: var(--muted);
-            font-size: 0.86rem;
-            text-decoration: underline;
-            text-decoration-color: var(--line-strong);
-            text-underline-offset: 0.2em;
-        }
-
-        .detail-link:hover {
-            color: var(--text);
-            text-decoration-color: var(--text);
-        }
-
-        .about-panel {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.9fr);
-            gap: 2rem;
-            margin: clamp(4rem, 8vw, 7rem) 0 4rem;
-            padding: clamp(1.5rem, 4vw, 2.5rem);
-        }
-
-        .about-panel h2 {
-            max-width: 15ch;
-            margin-bottom: 0.9rem;
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            letter-spacing: -0.035em;
-            line-height: 1;
-        }
-
-        .about-panel p:not(.section-kicker) {
-            max-width: 58ch;
-            margin-bottom: 0;
-            color: var(--muted);
-        }
-
-        .meta-list {
-            display: grid;
-            gap: 0;
-            margin: 0;
-        }
-
-        .meta-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .meta-row:first-child {
-            padding-top: 0;
-        }
-
-        .meta-row:last-child {
-            padding-bottom: 0;
-            border-bottom: 0;
-        }
-
-        .meta-row dt {
-            color: var(--subtle);
-        }
-
-        .meta-row dd {
-            margin: 0;
-            color: var(--text);
-            font-family: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, monospace;
-            font-size: 0.84rem;
-            text-align: right;
-        }
-
-        .site-footer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1.5rem 0 2.5rem;
-            border-top: 1px solid var(--line);
-            color: var(--subtle);
-            font-size: 0.86rem;
-        }
-
-        .site-footer p {
-            margin: 0;
-        }
-
-        .site-footer a {
-            color: var(--muted);
-            text-decoration-color: var(--line-strong);
-            text-underline-offset: 0.2em;
-        }
-
-        .site-footer a:hover {
-            color: var(--text);
-        }
-
-        .copy-status {
-            position: fixed;
-            right: 1rem;
-            bottom: 1rem;
-            z-index: 30;
-            max-width: min(24rem, calc(100% - 2rem));
-            padding: 0.75rem 0.9rem;
-            border: 1px solid var(--line-strong);
-            border-radius: var(--radius-control);
-            background: var(--surface-raised);
-            color: var(--text);
-            font-size: 0.88rem;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(0.5rem);
-            transition: opacity 180ms ease-out, transform 180ms ease-out;
-        }
-
-        .copy-status.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .copy-status[data-state="success"] {
-            border-color: var(--green);
-            color: var(--green);
-        }
-
-        .copy-status[data-state="error"] {
-            border-color: var(--danger);
-            color: var(--danger);
-        }
-
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            h1 {
-                max-width: 12ch;
-            }
-
-            .package-row {
-                grid-template-columns: minmax(9rem, 0.65fr) minmax(0, 1fr);
-            }
-
-            .package-action {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .site-shell {
-                width: min(var(--content-width), calc(100% - 1.25rem));
-            }
-
-            .site-header {
-                align-items: flex-start;
-                flex-direction: column;
-                padding: 1rem 0;
-            }
-
-            .site-nav {
-                width: 100%;
-                justify-content: space-between;
-                gap: 0.65rem;
-            }
-
-            .site-nav a {
-                font-size: 0.82rem;
-            }
-
-            .nav-button {
-                min-height: 2.6rem;
-                padding: 0.5rem 0.75rem;
-            }
-
-            .hero {
-                padding-top: 3.5rem;
-            }
-
-            h1 {
-                font-size: clamp(2.75rem, 15vw, 4.4rem);
-            }
-
-            .command {
-                grid-template-columns: 1fr;
-            }
-
-            .copy-button {
-                width: 100%;
-            }
-
-            .about-panel {
-                grid-template-columns: 1fr;
-            }
-
-            .section-heading {
-                align-items: start;
-                flex-direction: column;
-                gap: 0.65rem;
-            }
-
-            .package-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .package-row::before {
-                inset: -0.4rem 0;
-            }
-
-            .package-action {
-                grid-column: auto;
-            }
-
-            .about-panel {
-                display: grid;
-            }
-
-            .site-footer {
-                flex-direction: column;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            #hero-canvas,
-            #ambient-canvas {
-                display: none;
-            }
-
-            .package-row {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            .catalog-section {
-                transform: none !important;
-            }
-        }
-    </style>
-
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"
-        }
-    }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AungMyoKyaw/homebrew-tap — macOS Homebrew Tap</title>
+  <meta name="description" content="Personal Homebrew tap distributing 8 macOS desktop casks and 2 CLI formulae. SHA256-pinned releases with one-click install commands.">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles/site.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M9 2 L23 2 C26.866 2 30 5.134 30 9 L30 23 C30 26.866 26.866 30 23 30 L9 30 C5.134 30 2 26.866 2 23 L2 9 C2 5.134 5.134 2 9 2 Z" fill="#d97706"/>
+    <line x1="9" y1="11" x2="14" y2="16" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="14" y1="16" x2="9" y2="21" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="21" x2="23" y2="21" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="21" cy="12" r="2" fill="#ffffff"/>
+  </g>
+</svg></span>
+        <span>AungMyoKyaw / homebrew-tap</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#casks">Casks</a>
+        <a href="#formulae">Formulae</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/AungMyoKyaw/homebrew-tap" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <button type="button" id="theme-toggle" class="theme-btn" aria-label="Toggle color theme">◐ Dark</button>
+      </nav>
+    </div>
+  </header>
 
-    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+  <main class="wrap">
+    <section class="hero" id="install">
+      <span class="eyebrow">Personal Homebrew Tap · macOS</span>
+      <h1>Native macOS tools, installed via Homebrew.</h1>
+      <p class="hero-sub">8 desktop casks and 2 CLI formulae. SHA256-pinned releases, automatic quarantine cleanup, zero telemetry.</p>
+      <div class="cmd-bar cmd-bar-lg">
+        <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew tap AungMyoKyaw/homebrew-tap</span></code>
+        <button type="button" class="copy-btn copy-btn-primary" data-copy-command="brew tap AungMyoKyaw/homebrew-tap" aria-label="Copy brew tap command">Copy command</button>
+      </div>
+    </section>
 
-    <div class="site-shell">
-        <header class="site-header">
-            <a class="brand" href="index.html" aria-label="AungMyoKyaw Homebrew tap home">
-                <span class="brand-mark" aria-hidden="true">A</span>
-                <span class="brand-copy">
-                    <span class="brand-name">AungMyoKyaw / homebrew-tap</span>
-                    <span class="brand-caption">macOS tools, shipped simply</span>
-                </span>
-            </a>
-
-            <nav class="site-nav" aria-label="Primary navigation">
-                <a href="#packages">Packages</a>
-                <a href="#install">Install</a>
-                <a href="README.md">README</a>
-                <a class="nav-button" href="https://github.com/AungMyoKyaw" rel="noreferrer" target="_blank">GitHub</a>
-            </nav>
-        </header>
-
-        <main id="main-content">
-            <section class="hero" aria-labelledby="page-title">
-                <canvas id="hero-canvas" aria-hidden="true"></canvas>
-                <aside class="install-panel" id="install" aria-labelledby="install-title">
-                    <div class="panel-heading">
-                        <h2 id="install-title">Start in two commands.</h2>
-                        <span class="panel-mark" aria-hidden="true">⌘</span>
-                    </div>
-
-                    <div class="install-step">
-                        <span class="step-label">Step 01</span>
-                        <p class="step-description">Add the tap to Homebrew once.</p>
-                        <div class="command">
-                            <code>brew tap AungMyoKyaw/homebrew-tap</code>
-                            <button class="copy-button" type="button" data-copy-command="brew tap AungMyoKyaw/homebrew-tap" aria-label="Copy Homebrew tap command">Copy</button>
-                        </div>
-                    </div>
-
-                    <div class="install-step">
-                        <span class="step-label">Step 02</span>
-                        <p class="step-description">Choose a package below and copy its exact install command.</p>
-                        <a class="detail-link" href="#packages">See all nine packages →</a>
-                    </div>
-                </aside>
-
-                <div class="hero-copy">
-                    <p class="eyebrow">A personal Homebrew tap for macOS</p>
-                    <h1 id="page-title">Useful Mac tools, one tap away.</h1>
-                    <p class="hero-lede">A small collection of command-line utilities and desktop apps for people who like their tools native, focused, and easy to install.</p>
-                    <div class="hero-links">
-                        <a class="hero-link" href="#packages">Browse packages</a>
-                        <a class="hero-link secondary" href="#about">About this tap</a>
-                    </div>
-                </div>
-            </section>
-
-            <div class="catalog-summary" aria-label="Catalog summary">
-                <span class="summary-item"><span class="summary-value" data-count="total">9</span><span class="summary-label">packages</span></span>
-                <span class="summary-item"><span class="summary-value" data-count="formulae">2</span><span class="summary-label">formulae</span></span>
-                <span class="summary-item"><span class="summary-value" data-count="casks">7</span><span class="summary-label">casks</span></span>
-                <span class="summary-item"><span class="summary-value">macOS</span><span class="summary-label">platform</span></span>
-            </div>
-
-            <section class="catalog-section" id="packages" aria-labelledby="formulae-title">
-                <div class="section-heading">
-                    <div>
-                        <p class="section-kicker">Command line</p>
-                        <h2 id="formulae-title">Formulae</h2>
-                        <p>Terminal tools that work with the native apps already on your Mac.</p>
-                    </div>
-                    <span class="section-count" data-section-count="formula">2 packages</span>
-                </div>
-
-                <div class="package-list" data-package-list="formula">
-                    <article class="package-row" data-package="reminder" data-kind="formula" data-version="3.0.4">
-                        <div class="package-identity">
-                            <h3 class="package-name">reminder</h3>
-                            <span class="package-kind">Formula</span>
-                            <span class="package-version">v3.0.4</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">Powerful command-line interface for Apple Reminders with full EventKit integration.</p>
-                            <ul class="package-tags" aria-label="reminder attributes">
-                                <li>Swift</li>
-                                <li>macOS</li>
-                                <li>MIT</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install reminder</span>
-                            <div class="command">
-                                <code>brew install AungMyoKyaw/homebrew-tap/reminder</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install AungMyoKyaw/homebrew-tap/reminder" aria-label="Copy reminder install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="reminder.html">View reminder details →</a>
-                        </div>
-                    </article>
-
-                    <article class="package-row" data-package="corenote" data-kind="formula" data-version="0.1.0">
-                        <div class="package-identity">
-                            <h3 class="package-name">corenote</h3>
-                            <span class="package-kind">Formula</span>
-                            <span class="package-version">v0.1.0</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">CLI frontend to Apple Notes via direct SQLite access. Fast and native.</p>
-                            <ul class="package-tags" aria-label="corenote attributes">
-                                <li>Swift</li>
-                                <li>macOS</li>
-                                <li>MIT</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install corenote</span>
-                            <div class="command">
-                                <code>brew install AungMyoKyaw/homebrew-tap/corenote</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install AungMyoKyaw/homebrew-tap/corenote" aria-label="Copy corenote install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="corenote.html">View corenote details →</a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section class="catalog-section" aria-labelledby="casks-title">
-                <div class="section-heading">
-                    <div>
-                        <p class="section-kicker">Desktop apps</p>
-                        <h2 id="casks-title">Casks</h2>
-                        <p>Native or Electron apps you can install and keep updated through Homebrew.</p>
-                    </div>
-                    <span class="section-count" data-section-count="cask">7 packages</span>
-                </div>
-
-                <div class="package-list" data-package-list="cask">
-                    <article class="package-row" data-package="git-ingest" data-kind="cask" data-version="0.2.7">
-                        <div class="package-identity">
-                            <h3 class="package-name">git-ingest</h3>
-                            <span class="package-kind">Cask</span>
-                            <span class="package-version">v0.2.7</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">Secure Electron desktop app for Git-Ingest. Bundle any repo for LLM context.</p>
-                            <ul class="package-tags" aria-label="git-ingest attributes">
-                                <li>Electron</li>
-                                <li>macOS</li>
-                                <li>MIT</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install git-ingest</span>
-                            <div class="command">
-                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/git-ingest</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/git-ingest" aria-label="Copy git-ingest install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="https://github.com/AungMyoKyaw/git-ingest-desktop" rel="noreferrer" target="_blank">View source on GitHub →</a>
-                        </div>
-                    </article>
-
-                    <article class="package-row" data-package="gitfolio" data-kind="cask" data-version="1.0.2">
-                        <div class="package-identity">
-                            <h3 class="package-name">gitfolio</h3>
-                            <span class="package-kind">Cask</span>
-                            <span class="package-version">v1.0.2</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">Git contribution portfolio exporter for macOS. Visualize your year of work.</p>
-                            <ul class="package-tags" aria-label="gitfolio attributes">
-                                <li>Swift</li>
-                                <li>macOS</li>
-                                <li>MIT</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install gitfolio</span>
-                            <div class="command">
-                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/gitfolio</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/gitfolio" aria-label="Copy gitfolio install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="https://github.com/AungMyoKyaw/GitFolio" rel="noreferrer" target="_blank">View source on GitHub →</a>
-                        </div>
-                    </article>
-
-                    <article class="package-row" data-package="caffeinate" data-kind="cask" data-version="3.0.0">
-                        <div class="package-identity">
-                            <h3 class="package-name">caffeinate</h3>
-                            <span class="package-kind">Cask</span>
-                            <span class="package-version">v3.0.0</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">Keep your Mac awake during long builds, downloads, renders, and remote sessions.</p>
-                            <ul class="package-tags" aria-label="caffeinate attributes">
-                                <li>Swift</li>
-                                <li>macOS</li>
-                                <li>MIT</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install caffeinate</span>
-                            <div class="command">
-                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/caffeinate</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/caffeinate" aria-label="Copy caffeinate install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="https://github.com/AungMyoKyaw/caffeinate-app" rel="noreferrer" target="_blank">View source on GitHub →</a>
-                        </div>
-                    </article>
-
-                    <article class="package-row" data-package="dhamma-echo" data-kind="cask" data-version="0.6.0">
-                        <div class="package-identity">
-                            <h3 class="package-name">dhamma-echo</h3>
-                            <span class="package-kind">Cask</span>
-                            <span class="package-version">v0.6.0</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">A fast, private pure-Rust GPUI desktop library for Dhamma talks.</p>
-                            <ul class="package-tags" aria-label="dhamma-echo attributes">
-                                <li>Rust / GPUI</li>
-                                <li>macOS</li>
-                                <li>PolyForm Noncommercial</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install dhamma-echo</span>
-                            <div class="command">
-                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/dhamma-echo</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/dhamma-echo" aria-label="Copy dhamma-echo install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="https://github.com/AungMyoKyaw/dhamma-echo" rel="noreferrer" target="_blank">View source on GitHub →</a>
-                        </div>
-                    </article>
-
-                    <article class="package-row" data-package="receipts" data-kind="cask" data-version="0.1.0">
-                        <div class="package-identity">
-                            <h3 class="package-name">receipts</h3>
-                            <span class="package-kind">Cask</span>
-                            <span class="package-version">v0.1.0</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">A local-first menu-bar time tracker. Your hours. Accounted for.</p>
-                            <ul class="package-tags" aria-label="receipts attributes">
-                                <li>Tauri</li>
-                                <li>macOS 13.3+</li>
-                                <li>AGPL-3.0-or-later</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install receipts</span>
-                            <div class="command">
-                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/receipts</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/receipts" aria-label="Copy receipts install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="https://aungmyokyaw.github.io/receipts/" rel="noreferrer" target="_blank">View the app and install notes →</a>
-                        </div>
-                    </article>
-
-                    <article class="package-row" data-package="rusty-pomodoro" data-kind="cask" data-version="1.0.1">
-                        <div class="package-identity">
-                            <h3 class="package-name">rusty-pomodoro</h3>
-                            <span class="package-kind">Cask</span>
-                            <span class="package-version">v1.0.1</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">A focused Pomodoro timer with sessions, breaks, themes, and statistics.</p>
-                            <ul class="package-tags" aria-label="rusty-pomodoro attributes">
-                                <li>Rust</li>
-                                <li>macOS 11+</li>
-                                <li>AGPL-3.0-or-later</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install rusty-pomodoro</span>
-                            <div class="command">
-                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/rusty-pomodoro</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/rusty-pomodoro" aria-label="Copy rusty-pomodoro install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="https://github.com/AungMyoKyaw/rusty-pomodoro" rel="noreferrer" target="_blank">View source on GitHub →</a>
-                        </div>
-                    </article>
-                    <article class="package-row" data-package="chatgpt-controller" data-kind="cask" data-version="0.2.0">
-                        <div class="package-identity">
-                            <h3 class="package-name">chatgpt-controller</h3>
-                            <span class="package-kind">Cask</span>
-                            <span class="package-version">v0.2.0</span>
-                        </div>
-                        <div class="package-details">
-                            <p class="package-description">A lightweight Rust-based macOS control center exposing an authenticated localhost API for your signed-in ChatGPT browser.</p>
-                            <ul class="package-tags" aria-label="chatgpt-controller attributes">
-                                <li>Tauri</li>
-                                <li>Apple Silicon</li>
-                                <li>AGPL-3.0-or-later</li>
-                            </ul>
-                        </div>
-                        <div class="package-action">
-                            <span class="install-label">Install chatgpt-controller</span>
-                            <div class="command">
-                                <code>brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/chatgpt-controller</code>
-                                <button class="copy-button" type="button" data-copy-command="brew install &#45;&#45;cask AungMyoKyaw/homebrew-tap/chatgpt-controller" aria-label="Copy chatgpt-controller install command">Copy</button>
-                            </div>
-                            <a class="detail-link" href="https://aungmyokyaw.github.io/chatgpt-controller-desktop/" rel="noreferrer" target="_blank">Product website →</a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section class="about-panel" id="about" aria-labelledby="about-title">
-                <div>
-                    <p class="section-kicker">About this tap</p>
-                    <h2 id="about-title">Small tools, one dependable entry point.</h2>
-                    <p>This tap collects useful macOS utilities under one Homebrew namespace. Formulae are command-line tools; casks are desktop apps. Install what you need, update it with Homebrew, and keep the rest out of your way.</p>
-                </div>
-                <dl class="meta-list">
-                    <div class="meta-row">
-                        <dt>Catalog</dt>
-                        <dd data-count-label="catalog">9 packages</dd>
-                    </div>
-                    <div class="meta-row">
-                        <dt>Platform</dt>
-                        <dd>macOS</dd>
-                    </div>
-                    <div class="meta-row">
-                        <dt>Licenses</dt>
-                        <dd>MIT / AGPL-3.0-or-later</dd>
-                    </div>
-                    <div class="meta-row">
-                        <dt>Snapshot</dt>
-                        <dd>Oct 2026</dd>
-                    </div>
-                </dl>
-            </section>
-        </main>
-
-        <footer class="site-footer">
-            <p>Maintained by <a href="https://github.com/AungMyoKyaw" rel="noreferrer" target="_blank">@AungMyoKyaw</a>.</p>
-            <p><a href="README.md">Read the install notes</a> · <a href="https://github.com/AungMyoKyaw/homebrew-tap" rel="noreferrer" target="_blank">View the tap on GitHub</a></p>
-        </footer>
+    <div class="controls" role="region" aria-label="Filter packages">
+      <div class="filter-group" role="group" aria-label="Package type filter">
+        <button type="button" class="filter-pill" data-filter="all" aria-pressed="true">All (10)</button>
+        <button type="button" class="filter-pill" data-filter="cask" aria-pressed="false">Casks (8)</button>
+        <button type="button" class="filter-pill" data-filter="formula" aria-pressed="false">Formulae (2)</button>
+      </div>
+      <div class="search-wrap">
+        <label class="sr-only" for="package-search">Filter packages</label>
+        <input id="package-search" class="search-input" type="search" placeholder="Filter packages by name or keyword..." autocomplete="off">
+        <span class="search-kbd" aria-hidden="true">⌘K</span>
+      </div>
     </div>
 
-    <div class="copy-status" id="copy-status" role="status" aria-live="polite" aria-atomic="true"></div>
-
-    <script>
-        (() => {
-            const status = document.getElementById("copy-status");
-            const copyButtons = document.querySelectorAll("[data-copy-command]");
-            let statusTimer;
-
-            const announce = (message, state) => {
-                window.clearTimeout(statusTimer);
-                status.textContent = message;
-                status.dataset.state = state;
-                status.classList.add("is-visible");
-                statusTimer = window.setTimeout(() => {
-                    status.classList.remove("is-visible");
-                }, 2600);
-            };
-
-            const copyWithFallback = async (text) => {
-                if (navigator.clipboard && window.isSecureContext) {
-                    await navigator.clipboard.writeText(text);
-                    return;
-                }
-
-                if (typeof document.execCommand !== "function") {
-                    throw new Error("Clipboard is unavailable");
-                }
-
-                const textarea = document.createElement("textarea");
-                textarea.value = text;
-                textarea.setAttribute("readonly", "");
-                textarea.style.position = "fixed";
-                textarea.style.opacity = "0";
-                document.body.appendChild(textarea);
-                textarea.select();
-
-                const copied = document.execCommand("copy");
-                textarea.remove();
-
-                if (!copied) {
-                    throw new Error("Copy command failed");
-                }
-            };
-
-            copyButtons.forEach((button) => {
-                button.addEventListener("click", async () => {
-                    const originalLabel = button.textContent;
-                    const command = button.dataset.copyCommand;
-                    const packageName = button.closest("[data-package]")?.dataset.package || "Homebrew";
-
-                    button.disabled = true;
-                    try {
-                        await copyWithFallback(command);
-                        button.dataset.status = "copied";
-                        button.textContent = "Copied";
-                        announce("Copied the " + packageName + " install command.", "success");
-                    } catch (error) {
-                        button.dataset.status = "failed";
-                        button.textContent = "Try again";
-                        announce("Copy failed. Select the command and copy it manually.", "error");
-                    } finally {
-                        window.setTimeout(() => {
-                            button.disabled = false;
-                            button.textContent = originalLabel;
-                            delete button.dataset.status;
-                        }, 2200);
-                    }
-                });
-            });
-
-            const formulaCount = document.querySelectorAll('[data-package][data-kind="formula"]').length;
-            const caskCount = document.querySelectorAll('[data-package][data-kind="cask"]').length;
-            const totalCount = formulaCount + caskCount;
-
-            document.querySelector('[data-count="formulae"]').textContent = String(formulaCount);
-            document.querySelector('[data-count="casks"]').textContent = String(caskCount);
-            document.querySelector('[data-count="total"]').textContent = String(totalCount);
-            document.querySelector('[data-count-label="catalog"]').textContent = totalCount + " packages";
-            document.querySelector('[data-section-count="formula"]').textContent = formulaCount + " packages";
-            document.querySelector('[data-section-count="cask"]').textContent = caskCount + " packages";
-        })();
-    </script>
-
-    <script type="module">
-        import * as THREE from 'three';
-
-        const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        const WEBGL_OK = (() => {
-            try {
-                const probe = document.createElement('canvas');
-                return !!(window.WebGLRenderingContext && (probe.getContext('webgl2') || probe.getContext('webgl')));
-            } catch (e) {
-                return false;
-            }
-        })();
-
-        // ============================================================
-        // initHero — kinetic Three.js scene on the brew-tap landing.
-        // A "brew" of orbiting torus rings + emissive core + particles
-        // + glyph sprites + volumetric beams, parented to .hero.
-        // ============================================================
-        function initHero(canvas) {
-            if (!canvas) return false;
-            if (REDUCED_MOTION || !WEBGL_OK) {
-                canvas.classList.add('is-hidden');
-                return false;
-            }
-
-            let renderer;
-            try {
-                renderer = new THREE.WebGLRenderer({
-                    canvas,
-                    antialias: true,
-                    alpha: true,
-                    powerPreference: 'low-power',
-                });
-            } catch (err) {
-                console.error('[hero] WebGL renderer failed', err);
-                canvas.classList.add('is-hidden');
-                return false;
-            }
-
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
-            renderer.setClearColor(0x000000, 0);
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 200);
-            camera.position.set(0, 0, 12);
-
-            scene.add(new THREE.AmbientLight(0x22343a, 0.55));
-
-            const keyLight = new THREE.PointLight(0xff7a45, 4.5, 30, 1.6);
-            keyLight.position.set(6, 4, 6);
-            scene.add(keyLight);
-
-            const rimLight = new THREE.PointLight(0x25d0a0, 3.5, 28, 1.8);
-            rimLight.position.set(-7, -3, -4);
-            scene.add(rimLight);
-
-            const accentLight = new THREE.PointLight(0xffd166, 2.5, 22, 2.0);
-            accentLight.position.set(0, 6, -6);
-            scene.add(accentLight);
-
-            const brewGroup = new THREE.Group();
-            brewGroup.position.set(3.6, 0.2, -1.2);
-            scene.add(brewGroup);
-
-            const rings = [];
-            const ringConfigs = [
-                { radius: 2.4, tube: 0.09, segments: 32, radial: 96, color: 0xff7a45, emissive: 0x4a1a0c, rot: [Math.PI / 2.6, 0.0, 0.0], spin: 0.12 },
-                { radius: 1.85, tube: 0.07, segments: 28, radial: 88, color: 0xffd166, emissive: 0x3a2a08, rot: [Math.PI / 2.0, 0.0, 0.2], spin: -0.18 },
-                { radius: 3.05, tube: 0.06, segments: 24, radial: 96, color: 0x25d0a0, emissive: 0x07291d, rot: [Math.PI / 2.4, 0.25, 0.0], spin: 0.08 },
-                { radius: 1.2, tube: 0.05, segments: 22, radial: 72, color: 0xff9580, emissive: 0x3a1408, rot: [Math.PI / 1.8, 0.0, 0.0], spin: -0.32 },
-            ];
-
-            ringConfigs.forEach((cfg, i) => {
-                const geo = new THREE.TorusGeometry(cfg.radius, cfg.tube, cfg.segments, cfg.radial);
-                const mat = new THREE.MeshStandardMaterial({
-                    color: cfg.color,
-                    roughness: 0.35,
-                    metalness: 0.7,
-                    emissive: cfg.emissive,
-                    emissiveIntensity: 0.65,
-                });
-                const mesh = new THREE.Mesh(geo, mat);
-                mesh.rotation.set(cfg.rot[0], cfg.rot[1], cfg.rot[2]);
-                mesh.userData.spin = cfg.spin;
-                mesh.userData.phase = i * 0.7;
-                brewGroup.add(mesh);
-                rings.push(mesh);
-            });
-
-            const coreGeo = new THREE.IcosahedronGeometry(0.45, 3);
-            const coreMat = new THREE.MeshStandardMaterial({
-                color: 0xffe4a0,
-                emissive: 0xffd166,
-                emissiveIntensity: 1.8,
-                roughness: 0.25,
-                metalness: 0.4,
-            });
-            const core = new THREE.Mesh(coreGeo, coreMat);
-            brewGroup.add(core);
-
-            const particleCount = 240;
-            const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
-            const palette = [
-                [1.0, 0.48, 0.27],
-                [1.0, 0.82, 0.4],
-                [0.15, 0.82, 0.63],
-                [0.95, 0.58, 0.5],
-            ];
-            for (let i = 0; i < particleCount; i++) {
-                const theta = Math.random() * Math.PI * 2;
-                const radius = 4 + Math.random() * 14;
-                positions[i * 3 + 0] = Math.cos(theta) * radius;
-                positions[i * 3 + 1] = (Math.random() - 0.5) * 14;
-                positions[i * 3 + 2] = Math.sin(theta) * radius * 0.7 - Math.random() * 8;
-                const c = palette[i % palette.length];
-                colors[i * 3 + 0] = c[0];
-                colors[i * 3 + 1] = c[1];
-                colors[i * 3 + 2] = c[2];
-            }
-            const pGeo = new THREE.BufferGeometry();
-            pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-            const pMat = new THREE.PointsMaterial({
-                size: 0.06,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.55,
-                depthWrite: false,
-                sizeAttenuation: true,
-                blending: THREE.AdditiveBlending,
-            });
-            const particles = new THREE.Points(pGeo, pMat);
-            scene.add(particles);
-
-            const glyphs = ['⌘', '⌥', '⌃', '⇧', '›', '»', '§', '∞', '∴', '◇', '◈', '◊'];
-            const spriteCount = 22;
-            const spriteGroup = new THREE.Group();
-            for (let i = 0; i < spriteCount; i++) {
-                const char = glyphs[i % glyphs.length];
-                const canvasTex = document.createElement('canvas');
-                canvasTex.width = 128;
-                canvasTex.height = 128;
-                const ctx = canvasTex.getContext('2d');
-                ctx.fillStyle = i % 3 === 0 ? '#ffd166' : i % 3 === 1 ? '#ff7a45' : '#25d0a0';
-                ctx.font = 'bold 96px monospace';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.shadowColor = ctx.fillStyle;
-                ctx.shadowBlur = 24;
-                ctx.fillText(char, 64, 64);
-                const tex = new THREE.CanvasTexture(canvasTex);
-                tex.minFilter = THREE.LinearFilter;
-                const mat = new THREE.SpriteMaterial({
-                    map: tex,
-                    transparent: true,
-                    opacity: 0.18,
-                    depthWrite: false,
-                    blending: THREE.AdditiveBlending,
-                });
-                const sprite = new THREE.Sprite(mat);
-                sprite.userData.t0 = Math.random() * Math.PI * 2;
-                sprite.userData.speed = 0.4 + Math.random() * 0.6;
-                sprite.userData.radius = 5 + Math.random() * 10;
-                sprite.userData.drift = (Math.random() - 0.5) * 6;
-                sprite.position.set(0, 0, 0);
-                sprite.scale.set(0.55, 0.55, 0.55);
-                spriteGroup.add(sprite);
-            }
-            scene.add(spriteGroup);
-
-            const beamGeo = new THREE.PlaneGeometry(0.04, 18);
-            const beamMat = new THREE.MeshBasicMaterial({
-                color: 0xffd166,
-                transparent: true,
-                opacity: 0.06,
-                depthWrite: false,
-                blending: THREE.AdditiveBlending,
-                side: THREE.DoubleSide,
-            });
-            const beam1 = new THREE.Mesh(beamGeo, beamMat);
-            brewGroup.add(beam1);
-            const beam2 = new THREE.Mesh(beamGeo, beamMat.clone());
-            beam2.material.color.set(0xff7a45);
-            brewGroup.add(beam2);
-            const beam3 = new THREE.Mesh(beamGeo, beamMat.clone());
-            beam3.material.color.set(0x25d0a0);
-            brewGroup.add(beam3);
-
-            const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
-            window.addEventListener('pointermove', (e) => {
-                pointer.tx = (e.clientX / window.innerWidth) - 0.5;
-                pointer.ty = (e.clientY / window.innerHeight) - 0.5;
-            }, { passive: true });
-
-            const resize = () => {
-                const rect = canvas.getBoundingClientRect();
-                const w = Math.round(rect.width);
-                const h = Math.round(rect.height);
-                if (w === 0 || h === 0) return;
-                renderer.setSize(w, h, false);
-                camera.aspect = w / h;
-                camera.updateProjectionMatrix();
-            };
-            resize();
-            requestAnimationFrame(resize);
-            requestAnimationFrame(() => requestAnimationFrame(resize));
-            window.addEventListener('resize', resize, { passive: true });
-            if (window.ResizeObserver) {
-                new ResizeObserver(resize).observe(canvas);
-            }
-
-            const clock = new THREE.Clock();
-
-            const animate = () => {
-                const t = clock.getElapsedTime();
-
-                pointer.x += (pointer.tx - pointer.x) * 0.05;
-                pointer.y += (pointer.ty - pointer.y) * 0.05;
-
-                camera.position.x = pointer.x * 1.4;
-                camera.position.y = -pointer.y * 0.9;
-                camera.lookAt(brewGroup.position.x * 0.6, 0, 0);
-
-                brewGroup.rotation.y = t * 0.16 + Math.sin(t * 0.3) * 0.05;
-                brewGroup.rotation.x = Math.sin(t * 0.22) * 0.12;
-
-                rings.forEach((ring, i) => {
-                    ring.rotation.z = t * ring.userData.spin + ring.userData.phase;
-                    const breath = 1 + Math.sin(t * 0.7 + ring.userData.phase) * 0.015;
-                    ring.scale.set(breath, breath, 1);
-                });
-
-                const corePulse = 1 + Math.sin(t * 1.4) * 0.08;
-                core.scale.set(corePulse, corePulse, corePulse);
-                core.rotation.x = t * 0.5;
-                core.rotation.y = t * 0.35;
-
-                keyLight.position.x = Math.cos(t * 0.4) * 7;
-                keyLight.position.z = Math.sin(t * 0.4) * 7;
-                rimLight.position.y = Math.sin(t * 0.3) * 5;
-                accentLight.position.x = Math.cos(-t * 0.2) * 5;
-
-                particles.rotation.y = t * 0.018;
-                particles.rotation.x = Math.sin(t * 0.1) * 0.05;
-
-                spriteGroup.children.forEach((sprite) => {
-                    const angle = t * sprite.userData.speed * 0.25 + sprite.userData.t0;
-                    const r = sprite.userData.radius;
-                    sprite.position.x = Math.cos(angle) * r;
-                    sprite.position.z = Math.sin(angle) * r * 0.6 - 2;
-                    sprite.position.y = Math.sin(t * 0.6 + sprite.userData.t0) * sprite.userData.drift;
-                    const wobble = 0.5 + 0.5 * Math.sin(t * 0.8 + sprite.userData.t0);
-                    sprite.material.opacity = 0.1 + wobble * 0.18;
-                });
-
-                beam1.rotation.z = t * 0.3;
-                beam2.rotation.z = -t * 0.25 + 1.0;
-                beam3.rotation.z = t * 0.2 + 2.0;
-
-                renderer.render(scene, camera);
-            };
-            renderer.setAnimationLoop(animate);
-
-            if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries) => {
-                    for (const e of entries) {
-                        renderer.setAnimationLoop(e.isIntersecting ? animate : null);
-                    }
-                });
-                io.observe(canvas);
-            }
-
-            return true;
-        }
-
-        // ============================================================
-        // initAmbient — full-page starfield + sweeping beams behind
-        // the entire page.
-        // ============================================================
-        function initAmbient(canvas) {
-            if (!canvas) return false;
-            if (REDUCED_MOTION || !WEBGL_OK) {
-                canvas.classList.add('is-hidden');
-                return false;
-            }
-
-            let renderer;
-            try {
-                renderer = new THREE.WebGLRenderer({
-                    canvas,
-                    antialias: false,
-                    alpha: true,
-                    powerPreference: 'low-power',
-                });
-            } catch (err) {
-                console.error('[ambient] WebGL renderer failed', err);
-                canvas.classList.add('is-hidden');
-                return false;
-            }
-
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
-            renderer.setClearColor(0x000000, 0);
-
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
-            camera.position.set(0, 0, 30);
-
-            const particleCount = 720;
-            const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
-            const palette = [
-                [1.0, 0.48, 0.27],
-                [1.0, 0.82, 0.4],
-                [0.15, 0.82, 0.63],
-                [0.95, 0.62, 0.5],
-                [0.78, 0.78, 0.78],
-            ];
-            for (let i = 0; i < particleCount; i++) {
-                positions[i * 3 + 0] = (Math.random() - 0.5) * 100;
-                positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
-                positions[i * 3 + 2] = -Math.random() * 80;
-                const c = palette[Math.floor(Math.random() * palette.length)];
-                colors[i * 3 + 0] = c[0];
-                colors[i * 3 + 1] = c[1];
-                colors[i * 3 + 2] = c[2];
-            }
-            const geo = new THREE.BufferGeometry();
-            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            const mat = new THREE.PointsMaterial({
-                size: 0.12,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.6,
-                depthWrite: false,
-                sizeAttenuation: true,
-                blending: THREE.AdditiveBlending,
-            });
-            const points = new THREE.Points(geo, mat);
-            scene.add(points);
-
-            const beamGroup = new THREE.Group();
-            scene.add(beamGroup);
-
-            const beamColors = [0xff7a45, 0xffd166, 0x25d0a0];
-            const beams = [];
-            for (let i = 0; i < 3; i++) {
-                const planeGeo = new THREE.PlaneGeometry(0.08, 60);
-                const planeMat = new THREE.MeshBasicMaterial({
-                    color: beamColors[i],
-                    transparent: true,
-                    opacity: 0.05,
-                    depthWrite: false,
-                    blending: THREE.AdditiveBlending,
-                    side: THREE.DoubleSide,
-                });
-                const beam = new THREE.Mesh(planeGeo, planeMat);
-                beam.rotation.z = (i * Math.PI) / 4;
-                beam.userData.t0 = Math.random() * Math.PI * 2;
-                beam.userData.swings = 0.18 + i * 0.04;
-                beam.position.set(0, 0, -10 - i * 4);
-                beamGroup.add(beam);
-                beams.push(beam);
-            }
-
-            const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
-            window.addEventListener('pointermove', (e) => {
-                pointer.tx = (e.clientX / window.innerWidth) - 0.5;
-                pointer.ty = (e.clientY / window.innerHeight) - 0.5;
-            }, { passive: true });
-
-            const resize = () => {
-                const w = window.innerWidth;
-                const h = window.innerHeight;
-                if (w === 0 || h === 0) return;
-                renderer.setSize(w, h, false);
-                camera.aspect = w / h;
-                camera.updateProjectionMatrix();
-            };
-            resize();
-            requestAnimationFrame(resize);
-            requestAnimationFrame(() => requestAnimationFrame(resize));
-            window.addEventListener('resize', resize, { passive: true });
-
-            const clock = new THREE.Clock();
-
-            const animate = () => {
-                const t = clock.getElapsedTime();
-
-                pointer.x += (pointer.tx - pointer.x) * 0.025;
-                pointer.y += (pointer.ty - pointer.y) * 0.025;
-
-                camera.position.x = pointer.x * 1.8;
-                camera.position.y = -pointer.y * 1.2;
-                camera.lookAt(0, 0, 0);
-
-                points.rotation.y = t * 0.012;
-                points.rotation.x = Math.sin(t * 0.05) * 0.04;
-
-                beams.forEach((beam) => {
-                    beam.rotation.z = beam.userData.t0 + Math.sin(t * beam.userData.swings) * 0.5;
-                    beam.material.opacity = 0.035 + 0.04 * (0.5 + 0.5 * Math.sin(t * 0.5 + beam.userData.t0));
-                });
-
-                renderer.render(scene, camera);
-            };
-            renderer.setAnimationLoop(animate);
-
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    renderer.setAnimationLoop(null);
-                } else {
-                    renderer.setAnimationLoop(animate);
-                }
-            });
-
-            return true;
-        }
-
-        // ============================================================
-        // initCatalogDepth — scroll reveal + pointer parallax on the
-        // catalog section + per-row hover glow.
-        // ============================================================
-        function initCatalogDepth() {
-            const rows = document.querySelectorAll('.package-row');
-            if (!rows.length) return;
-
-            if (REDUCED_MOTION) return;
-
-            rows.forEach((row) => row.classList.add('depth-pending'));
-
-            if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries) => {
-                    for (const entry of entries) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('depth-in');
-                            entry.target.classList.remove('depth-pending');
-                            io.unobserve(entry.target);
-                        }
-                    }
-                }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-
-                rows.forEach((row) => io.observe(row));
-            } else {
-                rows.forEach((row) => {
-                    row.classList.add('depth-in');
-                    row.classList.remove('depth-pending');
-                });
-            }
-
-            const sections = document.querySelectorAll('.catalog-section');
-            if (sections.length) {
-                const onMove = (e) => {
-                    const nx = (e.clientX / window.innerWidth) - 0.5;
-                    const ny = (e.clientY / window.innerHeight) - 0.5;
-                    sections.forEach((section) => {
-                        const rect = section.getBoundingClientRect();
-                        const visible = rect.bottom > 0 && rect.top < window.innerHeight;
-                        if (!visible) return;
-                        section.style.setProperty('--tilt-x', `${(-ny * 1.4).toFixed(3)}deg`);
-                        section.style.setProperty('--tilt-y', `${(nx * 1.0).toFixed(3)}deg`);
-                    });
-                };
-                window.addEventListener('pointermove', onMove, { passive: true });
-            }
-
-            rows.forEach((row) => {
-                row.addEventListener('pointerenter', () => row.classList.add('row-hover'));
-                row.addEventListener('pointerleave', () => row.classList.remove('row-hover'));
-            });
-        }
-
-        // ---- Bootstrap ------------------------------------------------
-        function bootstrap() {
-            const hero = document.getElementById('hero-canvas');
-            const ambient = document.getElementById('ambient-canvas');
-            initHero(hero);
-            initAmbient(ambient);
-            initCatalogDepth();
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', bootstrap, { once: true });
-        } else {
-            bootstrap();
-        }
-    </script>
+    <section class="catalog-section" id="casks" aria-labelledby="casks-heading">
+      <div class="section-head">
+        <h2 id="casks-heading">Desktop Apps — Casks</h2>
+        <span class="section-meta">8 packages · brew install --cask</span>
+      </div>
+      <div class="cask-grid">
+        <article class="pkg-card" data-package="life-manager" data-version="0.1.0" data-kind="cask" data-search="life-manager Life Manager Local-first GPUI productivity app for tasks, calendar, focus, habits, and goals + life CLI. arm64 macOS 13+ tasks calendar habits goals gpui mcp cli productivity">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M6.5 4 L11.5 4 C12.881 4 14 5.119 14 6.5 L14 11.5 C14 12.881 12.881 14 11.5 14 L6.5 14 C5.119 14 4 12.881 4 11.5 L4 6.5 C4 5.119 5.119 4 6.5 4 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.5 4 L25.5 4 C26.881 4 28 5.119 28 6.5 L28 11.5 C28 12.881 26.881 14 25.5 14 L20.5 14 C19.119 14 18 12.881 18 11.5 L18 6.5 C18 5.119 19.119 4 20.5 4 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.5 18 L11.5 18 C12.881 18 14 19.119 14 20.5 L14 25.5 C14 26.881 12.881 28 11.5 28 L6.5 28 C5.119 28 4 26.881 4 25.5 L4 20.5 C4 19.119 5.119 18 6.5 18 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.5 18 L25.5 18 C26.881 18 28 19.119 28 20.5 L28 25.5 C28 26.881 26.881 28 25.5 28 L20.5 28 C19.119 28 18 26.881 18 25.5 L18 20.5 C18 19.119 19.119 18 20.5 18 Z" fill="var(--accent)"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">Life Manager</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v0.1.0</span>
+                  <span class="badge badge-meta">arm64 · macOS 13+</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://github.com/AungMyoKyaw/life-manager" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Local-first GPUI productivity app for tasks, calendar, focus, habits, and goals + life CLI.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/life-manager</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/life-manager" aria-label="Copy install command for Life Manager">Copy</button>
+          </div>
+          <details class="pkg-details">
+            <summary>Install &amp; signing notes</summary>
+            <div class="pkg-details-body">Ad-hoc signed. Quarantine is removed automatically in postflight. Includes the `life` CLI binary. Run `brew uninstall --cask --zap` to remove the local SQLite database and preferences.</div>
+          </details>
+        </article>
+        <article class="pkg-card" data-package="chatgpt-controller" data-version="0.3.0" data-kind="cask" data-search="chatgpt-controller ChatGPT Controller Native Rust local API controller with embedded ChatGPT sign-in. Zero external Chrome needed. arm64 macOS chatgpt rust api localhost ai automation">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <polygon points="16,5 25.526,10.5 25.526,21.5 16,27 6.474,21.5 6.474,10.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="5" x2="16" y2="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="21" x2="16" y2="27" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="16" cy="16" r="3.5" fill="var(--accent)"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">ChatGPT Controller</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v0.3.0</span>
+                  <span class="badge badge-meta">arm64 · macOS</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://aungmyokyaw.github.io/chatgpt-controller-desktop/" target="_blank" rel="noopener noreferrer">Site ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Native Rust local API controller with embedded ChatGPT sign-in. Zero external Chrome needed.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller" aria-label="Copy install command for ChatGPT Controller">Copy</button>
+          </div>
+          <details class="pkg-details">
+            <summary>Install &amp; signing notes</summary>
+            <div class="pkg-details-body">No external Chrome or Playwright CLI installation is required.
+This build is ad-hoc signed, not Apple Developer ID signed or notarized.
+The cask attempts to remove quarantine recursively during installation.
+If macOS still blocks launch, use System Settings &gt; Privacy &amp; Security.</div>
+          </details>
+        </article>
+        <article class="pkg-card" data-package="dhamma-echo" data-version="0.6.0" data-kind="cask" data-search="dhamma-echo Dhamma Echo Fast, private native GPUI desktop library for Dhamma talks. Listen offline, mindfully. arm64 macOS 13+ dhamma audio offline gpui library player">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="16" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="16" cy="16" r="3" fill="var(--accent)"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">Dhamma Echo</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v0.6.0</span>
+                  <span class="badge badge-meta">arm64 · macOS 13+</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://github.com/AungMyoKyaw/dhamma-echo" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Fast, private native GPUI desktop library for Dhamma talks. Listen offline, mindfully.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo" aria-label="Copy install command for Dhamma Echo">Copy</button>
+          </div>
+          <details class="pkg-details">
+            <summary>Install &amp; signing notes</summary>
+            <div class="pkg-details-body">Native Apple Silicon GPUI app. Quarantine attribute is cleared automatically during install.</div>
+          </details>
+        </article>
+        <article class="pkg-card" data-package="receipts" data-version="0.1.0" data-kind="cask" data-search="receipts Receipts Local-first menu-bar time tracker with sessions, weekly calendar, and statistics. arm64 · x64 macOS 13+ time tracker menubar sessions agpl productivity">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M9 4 L23 4 C24.657 4 26 5.343 26 7 L26 25 C26 26.657 24.657 28 23 28 L9 28 C7.343 28 6 26.657 6 25 L6 7 C6 5.343 7.343 4 9 4 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="10" y1="10" x2="22" y2="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="10" y1="15" x2="19" y2="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="10" y1="21" x2="22" y2="21" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">Receipts</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v0.1.0</span>
+                  <span class="badge badge-meta">arm64 · x64 · macOS 13+</span>
+                  <span class="badge badge-meta">AGPL-3.0-or-later</span>
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://aungmyokyaw.github.io/receipts/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Local-first menu-bar time tracker with sessions, weekly calendar, and statistics.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/receipts</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/receipts" aria-label="Copy install command for Receipts">Copy</button>
+          </div>
+          <details class="pkg-details">
+            <summary>Install &amp; signing notes</summary>
+            <div class="pkg-details-body">Receipts requires macOS 13.3 or later.
+Builds are ad-hoc signed, not Apple Developer ID signed or notarized.
+If macOS blocks the first launch, choose Open Anyway for Receipts in
+System Settings &gt; Privacy &amp; Security.
+Regular uninstall keeps your sessions; --zap removes the local database.</div>
+          </details>
+        </article>
+        <article class="pkg-card" data-package="rusty-pomodoro" data-version="1.0.1" data-kind="cask" data-search="rusty-pomodoro Rusty Pomodoro Focused Pomodoro timer with sessions, breaks, themes, and statistics. arm64 · x64 macOS 11+ pomodoro timer focus rust slint agpl">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <circle cx="16" cy="18" r="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="13" y1="3.5" x2="19" y2="3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="3.5" x2="16" y2="7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="18" x2="21.5" y2="13.5" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="16" cy="18" r="2" fill="var(--accent)"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">Rusty Pomodoro</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v1.0.1</span>
+                  <span class="badge badge-meta">arm64 · x64 · macOS 11+</span>
+                  <span class="badge badge-meta">AGPL-3.0-or-later</span>
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://github.com/AungMyoKyaw/rusty-pomodoro" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Focused Pomodoro timer with sessions, breaks, themes, and statistics.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/rusty-pomodoro</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/rusty-pomodoro" aria-label="Copy install command for Rusty Pomodoro">Copy</button>
+          </div>
+          <details class="pkg-details">
+            <summary>Install &amp; signing notes</summary>
+            <div class="pkg-details-body">Requires macOS 11 or later.
+The app is ad-hoc signed, not Apple Developer ID signed or notarized.
+The cask removes quarantine during installation. If macOS still blocks first launch,
+choose Open Anyway for Rusty Pomodoro in System Settings &gt; Privacy &amp; Security.
+`brew uninstall --cask --zap` also removes local settings and history.</div>
+          </details>
+        </article>
+        <article class="pkg-card" data-package="caffeinate" data-version="3.0.0" data-kind="cask" data-search="caffeinate Caffeinate Keep your Mac awake during long builds, downloads, renders, and remote sessions. Universal macOS 12+ awake sleep menubar utility universal">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M8 12 L18 12 C19.657 12 21 13.343 21 15 L21 23 C21 24.657 19.657 26 18 26 L8 26 C6.343 26 5 24.657 5 23 L5 15 C5 13.343 6.343 12 8 12 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23 15 L24 15 C25.105 15 26 15.895 26 17 L26 20 C26 21.105 25.105 22 24 22 L23 22 C21.895 22 21 21.105 21 20 L21 17 C21 15.895 21.895 15 23 15 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="9.5" y1="5" x2="9.5" y2="8.5" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="13" y1="4" x2="13" y2="8.5" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16.5" y1="5" x2="16.5" y2="8.5" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">Caffeinate</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v3.0.0</span>
+                  <span class="badge badge-meta">Universal · macOS 12+</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://github.com/AungMyoKyaw/caffeinate-app" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Keep your Mac awake during long builds, downloads, renders, and remote sessions.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/caffeinate</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/caffeinate" aria-label="Copy install command for Caffeinate">Copy</button>
+          </div>
+        </article>
+        <article class="pkg-card" data-package="gitfolio" data-version="1.0.2" data-kind="cask" data-search="gitfolio GitFolio Git contribution portfolio exporter for macOS. Turn local commit history into visual reports. arm64 · x64 macOS git portfolio commits export developer">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M5.5 4 L8.5 4 C9.328 4 10 4.672 10 5.5 L10 8.5 C10 9.328 9.328 10 8.5 10 L5.5 10 C4.672 10 4 9.328 4 8.5 L4 5.5 C4 4.672 4.672 4 5.5 4 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5 4 L17.5 4 C18.328 4 19 4.672 19 5.5 L19 8.5 C19 9.328 18.328 10 17.5 10 L14.5 10 C13.672 10 13 9.328 13 8.5 L13 5.5 C13 4.672 13.672 4 14.5 4 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.5 4 L26.5 4 C27.328 4 28 4.672 28 5.5 L28 8.5 C28 9.328 27.328 10 26.5 10 L23.5 10 C22.672 10 22 9.328 22 8.5 L22 5.5 C22 4.672 22.672 4 23.5 4 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.5 13 L8.5 13 C9.328 13 10 13.672 10 14.5 L10 17.5 C10 18.328 9.328 19 8.5 19 L5.5 19 C4.672 19 4 18.328 4 17.5 L4 14.5 C4 13.672 4.672 13 5.5 13 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.5 22 L26.5 22 C27.328 22 28 22.672 28 23.5 L28 26.5 C28 27.328 27.328 28 26.5 28 L23.5 28 C22.672 28 22 27.328 22 26.5 L22 23.5 C22 22.672 22.672 22 23.5 22 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.5 13 L17.5 13 C18.328 13 19 13.672 19 14.5 L19 17.5 C19 18.328 18.328 19 17.5 19 L14.5 19 C13.672 19 13 18.328 13 17.5 L13 14.5 C13 13.672 13.672 13 14.5 13 Z" fill="var(--accent)"/>
+    <path d="M23.5 13 L26.5 13 C27.328 13 28 13.672 28 14.5 L28 17.5 C28 18.328 27.328 19 26.5 19 L23.5 19 C22.672 19 22 18.328 22 17.5 L22 14.5 C22 13.672 22.672 13 23.5 13 Z" fill="var(--accent)"/>
+    <path d="M5.5 22 L8.5 22 C9.328 22 10 22.672 10 23.5 L10 26.5 C10 27.328 9.328 28 8.5 28 L5.5 28 C4.672 28 4 27.328 4 26.5 L4 23.5 C4 22.672 4.672 22 5.5 22 Z" fill="var(--accent)"/>
+    <path d="M14.5 22 L17.5 22 C18.328 22 19 22.672 19 23.5 L19 26.5 C19 27.328 18.328 28 17.5 28 L14.5 28 C13.672 28 13 27.328 13 26.5 L13 23.5 C13 22.672 13.672 22 14.5 22 Z" fill="var(--accent)"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">GitFolio</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v1.0.2</span>
+                  <span class="badge badge-meta">arm64 · x64 · macOS</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://github.com/AungMyoKyaw/GitFolio" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Git contribution portfolio exporter for macOS. Turn local commit history into visual reports.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/gitfolio</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/gitfolio" aria-label="Copy install command for GitFolio">Copy</button>
+          </div>
+        </article>
+        <article class="pkg-card" data-package="git-ingest" data-version="0.2.7" data-kind="cask" data-search="git-ingest Git-Ingest Secure desktop app that bundles any repository into clean, structured LLM context. arm64 · x64 macOS git llm context prompt electron repo">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="8" y1="11" x2="16" y2="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24" y1="11" x2="16" y2="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 20 L20 20 C21.105 20 22 20.895 22 22 L22 25 C22 26.105 21.105 27 20 27 L12 27 C10.895 27 10 26.105 10 25 L10 22 C10 20.895 10.895 20 12 20 Z" fill="var(--accent)"/>
+  </g>
+</svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">Git-Ingest</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v0.2.7</span>
+                  <span class="badge badge-meta">arm64 · x64 · macOS</span>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://github.com/AungMyoKyaw/git-ingest-desktop" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Secure desktop app that bundles any repository into clean, structured LLM context.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/git-ingest</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/git-ingest" aria-label="Copy install command for Git-Ingest">Copy</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="formulae" aria-labelledby="formulae-heading">
+      <div class="section-head">
+        <h2 id="formulae-heading">CLI Tools — Formulae</h2>
+        <span class="section-meta">2 packages · brew install</span>
+      </div>
+      <div class="formula-list">
+        <article class="formula-row" data-package="reminder" data-version="3.0.4" data-kind="formula" data-search="reminder reminder Native Swift CLI for Apple Reminders with full EventKit integration. MIT Swift · EventKit reminders apple eventkit swift cli tasks">
+          <div class="formula-main">
+            <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M8 5 L24 5 C26.209 5 28 6.791 28 9 L28 23 C28 25.209 26.209 27 24 27 L8 27 C5.791 27 4 25.209 4 23 L4 9 C4 6.791 5.791 5 8 5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="9" y1="13" x2="13" y2="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="13" y1="16" x2="9" y2="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="16" r="3" fill="var(--accent)"/>
+  </g>
+</svg></div>
+            <div class="pkg-title-block">
+              <div class="formula-name-line">
+                <h3 class="formula-name">reminder</h3>
+                <span class="badge badge-ver">v3.0.4</span>
+                <span class="badge badge-meta">MIT · Swift · EventKit</span>
+              </div>
+              <p class="pkg-desc">Native Swift CLI for Apple Reminders with full EventKit integration.</p>
+            </div>
+          </div>
+          <div class="cmd-bar formula-cmd">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install AungMyoKyaw/homebrew-tap/reminder</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install AungMyoKyaw/homebrew-tap/reminder" aria-label="Copy install command for reminder">Copy</button>
+          </div>
+          <a class="docs-link" href="./reminder.html">Docs →</a>
+        </article>
+        <article class="formula-row" data-package="corenote" data-version="0.1.0" data-kind="formula" data-search="corenote corenote CLI frontend to Apple Notes via direct local SQLite access. MIT SQLite · macOS notes apple sqlite cli search export">
+          <div class="formula-main">
+            <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Layer_1" data-name="Layer 1">
+    <ellipse cx="16" cy="8.5" rx="10" ry="3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="6" y1="8.5" x2="6" y2="23.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="26" y1="8.5" x2="26" y2="23.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="16" cy="23.5" rx="10" ry="3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="10" y1="16" x2="22" y2="16" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg></div>
+            <div class="pkg-title-block">
+              <div class="formula-name-line">
+                <h3 class="formula-name">corenote</h3>
+                <span class="badge badge-ver">v0.1.0</span>
+                <span class="badge badge-meta">MIT · SQLite · macOS</span>
+              </div>
+              <p class="pkg-desc">CLI frontend to Apple Notes via direct local SQLite access.</p>
+            </div>
+          </div>
+          <div class="cmd-bar formula-cmd">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install AungMyoKyaw/homebrew-tap/corenote</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install AungMyoKyaw/homebrew-tap/corenote" aria-label="Copy install command for corenote">Copy</button>
+          </div>
+          <a class="docs-link" href="./corenote.html">Docs →</a>
+        </article>
+      </div>
+    </section>
+
+    <div id="empty-state" class="empty-state" hidden>
+      No packages match your filter. Clear the search query or switch back to <strong>All</strong>.
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Update All</h3>
+          <p><code>brew update &amp;&amp; brew upgrade</code><br>Add <code>--cask</code> when upgrading desktop apps.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Signing &amp; Quarantine</h3>
+          <p>All binaries are SHA256-pinned. Ad-hoc signed casks clear <code>com.apple.quarantine</code> automatically in postflight.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Uninstall &amp; Zap</h3>
+          <p>Use <code>brew uninstall --cask --zap &lt;pkg&gt;</code> to remove local preferences and SQLite data.</p>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span>Maintained by <a href="https://github.com/AungMyoKyaw" target="_blank" rel="noopener noreferrer">@AungMyoKyaw</a> · Generated from Formula/*.rb &amp; Casks/*.rb</span>
+        <span><a href="https://github.com/AungMyoKyaw/homebrew-tap" target="_blank" rel="noopener noreferrer">Source repository ↗</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="copy-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <script src="./scripts/site.js" defer></script>
 </body>
 </html>

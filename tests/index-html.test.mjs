@@ -1,63 +1,79 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
+import { basename } from "node:path";
 import test from "node:test";
 
+const rootDir = new URL("../", import.meta.url);
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+const css = await readFile(new URL("../styles/site.css", import.meta.url), "utf8");
+const js = await readFile(new URL("../scripts/site.js", import.meta.url), "utf8");
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
 
-test("homepage exposes every package with an install command", () => {
-  const packageNames = ["reminder", "corenote", "git-ingest", "gitfolio", "caffeinate", "dhamma-echo", "receipts", "rusty-pomodoro", "chatgpt-controller"];
+function discoverSources(dir) {
+  return readdirSync(new URL("../" + dir + "/", import.meta.url))
+    .filter((f) => f.endsWith(".rb"))
+    .map((f) => ({
+      name: basename(f, ".rb"),
+      source: readFileSync(new URL("../" + dir + "/" + f, import.meta.url), "utf8"),
+    }));
+}
 
-  for (const name of packageNames) {
-    assert.match(html, new RegExp('data-package="' + name + '"'));
-    assert.match(html, new RegExp('data-copy-command="[^"]*' + name));
+const formulas = discoverSources("Formula");
+const casks = discoverSources("Casks");
+const allPackages = [...formulas, ...casks];
+
+test("homepage exposes every formula and cask with an install command", () => {
+  assert.ok(allPackages.length >= 10, "expected at least 10 packages");
+  for (const pkg of allPackages) {
+    assert.match(html, new RegExp('data-package="' + pkg.name + '"'));
+    assert.match(html, new RegExp('data-copy-command="[^"]*' + pkg.name));
   }
 });
 
-test("homepage versions match the tap source files", () => {
-  const sources = {
-    reminder: readFileSource("Formula/reminder.rb"),
-    corenote: readFileSource("Formula/corenote.rb"),
-    "git-ingest": readFileSource("Casks/git-ingest.rb"),
-    gitfolio: readFileSource("Casks/gitfolio.rb"),
-    caffeinate: readFileSource("Casks/caffeinate.rb"),
-    "dhamma-echo": readFileSource("Casks/dhamma-echo.rb"),
-    receipts: readFileSource("Casks/receipts.rb"),
-    "rusty-pomodoro": readFileSource("Casks/rusty-pomodoro.rb"),
-    "chatgpt-controller": readFileSource("Casks/chatgpt-controller.rb")
-  };
+test("homepage versions match every tap source file", () => {
+  for (const pkg of allPackages) {
+    const versionMatch =
+      pkg.source.match(/version\s+["']([^"']+)["']/) ||
+      pkg.source.match(/releases\/download\/v([^/]+)/);
+    assert.ok(versionMatch, "version missing for " + pkg.name);
+    assert.match(
+      html,
+      new RegExp('data-package="' + pkg.name + '"[^>]*data-version="' + versionMatch[1] + '"')
+    );
+  }
+});
 
-  for (const [name, source] of Object.entries(sources)) {
-    const versionMatch = source.match(/version\s+["']([^"']+)["']/) || source.match(/releases\/download\/v([^/]+)/);
-    assert.ok(versionMatch, "version missing for " + name);
-    assert.match(html, new RegExp('data-package="' + name + '"[^>]*data-version="' + versionMatch[1] + '"'));
+test("formula detail pages exist and match formula versions", async () => {
+  for (const pkg of formulas) {
+    const page = await readFile(new URL(`../${pkg.name}.html`, import.meta.url), "utf8");
+    const versionMatch =
+      pkg.source.match(/version\s+["']([^"']+)["']/) ||
+      pkg.source.match(/releases\/download\/v([^/]+)/);
+    assert.match(page, new RegExp(`data-package="${pkg.name}"[^>]*data-version="${versionMatch[1]}"`));
+    assert.match(page, new RegExp(`data-copy-command="brew install [^"]*${pkg.name}"`));
   }
 });
 
 test("copy controls are keyboard-accessible and resilient", () => {
   assert.doesNotMatch(html, /\bonclick\s*=/i);
   assert.match(html, /aria-live="polite"/);
-  assert.match(html, /navigator\.clipboard/);
-  assert.match(html, /catch\s*\(/);
-  assert.match(html, /:focus-visible/);
+  assert.match(js, /navigator\.clipboard/);
+  assert.match(js, /catch\s*[({]/);
+  assert.match(css, /:focus-visible/);
 });
 
-test("homepage avoids the audited visual anti-patterns", () => {
-  assert.doesNotMatch(html, /background-clip\s*:\s*text/i);
-  assert.doesNotMatch(html, /cubic-bezier\([^)]*1\.56/);
-  assert.doesNotMatch(html, /Space Grotesk|Syne/);
-  assert.match(html, /prefers-reduced-motion/);
+test("site supports dual theme and reduced motion without visual anti-patterns", () => {
+  assert.doesNotMatch(css, /background-clip\s*:\s*text/i);
+  assert.doesNotMatch(css, /cubic-bezier\([^)]*1\.56/);
+  assert.doesNotMatch(css, /Space Grotesk|Syne/);
+  assert.match(css, /prefers-reduced-motion/);
+  assert.match(css, /prefers-color-scheme:\s*dark/);
+  assert.match(html, /id="theme-toggle"/);
 });
 
-test("README describes both formulas and all seven casks", () => {
-  assert.match(readme, /corenote/);
-  for (const name of ["reminder", "corenote", "git-ingest", "gitfolio", "caffeinate", "dhamma-echo", "receipts", "rusty-pomodoro", "chatgpt-controller"]) {
-    assert.match(readme, new RegExp("\\b" + name + "\\b"));
+test("README lists every formula and cask", () => {
+  for (const pkg of allPackages) {
+    assert.match(readme, new RegExp("\\b" + pkg.name + "\\b"));
   }
 });
-
-function readFileSource(path) {
-  const source = readFileSync(new URL("../" + path, import.meta.url), "utf8");
-  return source;
-}

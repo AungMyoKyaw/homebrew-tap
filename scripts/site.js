@@ -1,120 +1,153 @@
-/* =================================================================
- * site.js — shared behavior for the homebrew-tap landing.
- *   copyStatus   — toast announcement helper for any [data-copy-command]
- *   initCopyButtons() — wires every copy button on the page
- *   initTypewriter()  — types out the install command on first paint
- *
- * The Three.js scene (per-page glyph or hero) is loaded separately as
- * a module from each page since each scene is bespoke.
- * ================================================================= */
+(() => {
+  const root = document.documentElement;
+  const statusEl = document.getElementById("copy-status");
+  const themeBtn = document.getElementById("theme-toggle");
 
-(function () {
-    "use strict";
+  // Theme management
+  const STORAGE_KEY = "homebrew-tap-theme";
+  function currentTheme() {
+    const explicit = root.getAttribute("data-theme");
+    if (explicit === "dark" || explicit === "light") return explicit;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
 
-    // ---- Toast -----------------------------------------------------
-    function getStatusEl() {
-        return document.getElementById("copy-status");
+  function applyTheme(theme, persist = false) {
+    root.setAttribute("data-theme", theme);
+    if (persist) {
+      try {
+        localStorage.setItem(STORAGE_KEY, theme);
+      } catch {
+        // ignore storage errors
+      }
     }
-
-    let statusTimer = 0;
-
-    function announceStatus(message, state) {
-        const status = getStatusEl();
-        if (!status) return;
-        window.clearTimeout(statusTimer);
-        status.textContent = message;
-        status.dataset.state = state;
-        status.classList.add("is-visible");
-        statusTimer = window.setTimeout(() => {
-            status.classList.remove("is-visible");
-        }, 2400);
+    if (themeBtn) {
+      themeBtn.textContent = theme === "dark" ? "☀ Light" : "◐ Dark";
+      themeBtn.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} theme`);
     }
+  }
 
-    // ---- Clipboard -------------------------------------------------
-    async function writeToClipboard(text) {
-        if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(text);
-            return;
-        }
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "dark" || saved === "light") applyTheme(saved, false);
+    else applyTheme(currentTheme(), false);
+  } catch {
+    applyTheme(currentTheme(), false);
+  }
 
-        if (typeof document.execCommand !== "function") {
-            throw new Error("Clipboard unavailable");
-        }
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      applyTheme(currentTheme() === "dark" ? "light" : "dark", true);
+    });
+  }
 
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.setAttribute("readonly", "");
-        ta.style.position = "fixed";
-        ta.style.opacity = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        const ok = document.execCommand("copy");
-        ta.remove();
-        if (!ok) throw new Error("Copy command failed");
+  // Clipboard copy with resilient fallback
+  async function copyText(text) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      // fall through to textarea fallback
     }
-
-    // ---- Copy buttons ---------------------------------------------
-    function initCopyButtons() {
-        const buttons = document.querySelectorAll("[data-copy-command]");
-        if (!buttons.length) return;
-
-        buttons.forEach((button) => {
-            button.addEventListener("click", async (event) => {
-                const originalLabel = button.textContent;
-                const command = button.dataset.copyCommand;
-                const pkg = event.currentTarget.closest("[data-package]")?.dataset.package;
-
-                button.disabled = true;
-                try {
-                    await writeToClipboard(command);
-                    button.dataset.status = "copied";
-                    button.textContent = "Copied";
-                    announceStatus(
-                        pkg ? "Copied the " + pkg + " install command." : "Copied install command.",
-                        "success"
-                    );
-                } catch (err) {
-                    button.dataset.status = "failed";
-                    button.textContent = "Try again";
-                    announceStatus("Copy failed. Select the command and copy it manually.", "error");
-                } finally {
-                    window.setTimeout(() => {
-                        button.disabled = false;
-                        button.textContent = originalLabel;
-                        delete button.dataset.status;
-                    }, 2200);
-                }
-            });
-        });
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    } catch {
+      return false;
     }
+  }
 
-    // ---- Typewriter ------------------------------------------------
-    // The typewriter effect was removed: it replaced the install
-    // command's text content with partial strings while running, which
-    // meant a click on the adjacent copy button would copy text the
-    // user couldn't yet see, and screen readers announced partial text.
-    // The blinking caret still provides motion without mutating content.
-    function initTypewriter() {
-        // Intentionally a no-op. Kept as a stub so future motion
-        // experiments have a known hook to replace.
-    }
+  document.addEventListener("click", async (event) => {
+    const btn = event.target.closest("[data-copy-command]");
+    if (!btn) return;
+    const command = btn.getAttribute("data-copy-command");
+    if (!command) return;
 
-    // ---- Boot ------------------------------------------------------
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            initCopyButtons();
-            initTypewriter();
-        });
+    const ok = await copyText(command);
+    const original = btn.getAttribute("data-label") || btn.textContent;
+    btn.setAttribute("data-label", original);
+
+    if (ok) {
+      btn.setAttribute("data-copied", "true");
+      btn.textContent = "Copied ✓";
+      if (statusEl) statusEl.textContent = `Copied: ${command}`;
     } else {
-        initCopyButtons();
-        initTypewriter();
+      btn.textContent = "Failed";
+      if (statusEl) statusEl.textContent = "Unable to copy command to clipboard.";
     }
 
-    // Expose for page-specific extensions (e.g. count-driven labels
-    // on the index). Keeping these on a single namespace avoids
-    // polluting the global scope with multiple identifiers.
-    window.tapSite = {
-        announceStatus,
-        writeToClipboard,
-    };
+    clearTimeout(btn._copyTimer);
+    btn._copyTimer = setTimeout(() => {
+      btn.removeAttribute("data-copied");
+      btn.textContent = original;
+    }, 1800);
+  });
+
+  // Catalog filter & instant search (index.html only)
+  const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+  const searchInput = document.getElementById("package-search");
+  const packageCards = Array.from(document.querySelectorAll("[data-package]"));
+  const caskSection = document.getElementById("casks");
+  const formulaSection = document.getElementById("formulae");
+  const emptyState = document.getElementById("empty-state");
+
+  let activeFilter = "all";
+
+  function applyFilter() {
+    if (!packageCards.length) return;
+    const query = (searchInput ? searchInput.value : "").trim().toLowerCase();
+    let visibleCasks = 0;
+    let visibleFormulae = 0;
+
+    for (const el of packageCards) {
+      const kind = el.getAttribute("data-kind");
+      const hay = (el.getAttribute("data-search") || "").toLowerCase();
+      const matchesKind = activeFilter === "all" || activeFilter === kind;
+      const matchesQuery = !query || hay.includes(query);
+      const show = matchesKind && matchesQuery;
+      el.hidden = !show;
+      if (show) {
+        if (kind === "cask") visibleCasks++;
+        else visibleFormulae++;
+      }
+    }
+
+    if (caskSection) caskSection.hidden = visibleCasks === 0;
+    if (formulaSection) formulaSection.hidden = visibleFormulae === 0;
+    if (emptyState) emptyState.hidden = visibleCasks + visibleFormulae > 0;
+  }
+
+  for (const btn of filterButtons) {
+    btn.addEventListener("click", () => {
+      activeFilter = btn.getAttribute("data-filter") || "all";
+      for (const other of filterButtons) {
+        other.setAttribute("aria-pressed", String(other === btn));
+      }
+      applyFilter();
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", applyFilter);
+    document.addEventListener("keydown", (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      } else if (event.key === "Escape" && document.activeElement === searchInput) {
+        searchInput.value = "";
+        searchInput.blur();
+        applyFilter();
+      }
+    });
+  }
 })();

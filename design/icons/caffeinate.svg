@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <title>caffeinate</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path d="M8 12 L18 12 C19.657 12 21 13.343 21 15 L21 23 C21 24.657 19.657 26 18 26 L8 26 C6.343 26 5 24.657 5 23 L5 15 C5 13.343 6.343 12 8 12 Z" fill="none" stroke="#18181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23 15 L24 15 C25.105 15 26 15.895 26 17 L26 20 C26 21.105 25.105 22 24 22 L23 22 C21.895 22 21 21.105 21 20 L21 17 C21 15.895 21.895 15 23 15 Z" fill="none" stroke="#18181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="9.5" y1="5" x2="9.5" y2="8.5" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="13" y1="4" x2="13" y2="8.5" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16.5" y1="5" x2="16.5" y2="8.5" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

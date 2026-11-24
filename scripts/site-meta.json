@@ -1,0 +1,94 @@
+{
+  "tap": "AungMyoKyaw/homebrew-tap",
+  "repoUrl": "https://github.com/AungMyoKyaw/homebrew-tap",
+  "caskOrder": [
+    "life-manager",
+    "chatgpt-controller",
+    "dhamma-echo",
+    "receipts",
+    "rusty-pomodoro",
+    "caffeinate",
+    "gitfolio",
+    "git-ingest"
+  ],
+  "formulaOrder": ["reminder", "corenote"],
+  "packages": {
+    "life-manager": {
+      "summary": "Local-first GPUI productivity app for tasks, calendar, focus, habits, and goals + life CLI.",
+      "keywords": ["tasks", "calendar", "habits", "goals", "gpui", "mcp", "cli", "productivity"],
+      "notes": "Ad-hoc signed. Quarantine is removed automatically in postflight. Includes the `life` CLI binary. Run `brew uninstall --cask --zap` to remove the local SQLite database and preferences."
+    },
+    "chatgpt-controller": {
+      "summary": "Native Rust local API controller with embedded ChatGPT sign-in. Zero external Chrome needed.",
+      "keywords": ["chatgpt", "rust", "api", "localhost", "ai", "automation"],
+      "website": "https://aungmyokyaw.github.io/chatgpt-controller-desktop/"
+    },
+    "dhamma-echo": {
+      "summary": "Fast, private native GPUI desktop library for Dhamma talks. Listen offline, mindfully.",
+      "keywords": ["dhamma", "audio", "offline", "gpui", "library", "player"],
+      "notes": "Native Apple Silicon GPUI app. Quarantine attribute is cleared automatically during install."
+    },
+    "receipts": {
+      "summary": "Local-first menu-bar time tracker with sessions, weekly calendar, and statistics.",
+      "keywords": ["time", "tracker", "menubar", "sessions", "agpl", "productivity"],
+      "license": "AGPL-3.0-or-later"
+    },
+    "rusty-pomodoro": {
+      "summary": "Focused Pomodoro timer with sessions, breaks, themes, and statistics.",
+      "keywords": ["pomodoro", "timer", "focus", "rust", "slint", "agpl"],
+      "license": "AGPL-3.0-or-later"
+    },
+    "caffeinate": {
+      "summary": "Keep your Mac awake during long builds, downloads, renders, and remote sessions.",
+      "keywords": ["awake", "sleep", "menubar", "utility", "universal"]
+    },
+    "gitfolio": {
+      "summary": "Git contribution portfolio exporter for macOS. Turn local commit history into visual reports.",
+      "keywords": ["git", "portfolio", "commits", "export", "developer"]
+    },
+    "git-ingest": {
+      "summary": "Secure desktop app that bundles any repository into clean, structured LLM context.",
+      "keywords": ["git", "llm", "context", "prompt", "electron", "repo"]
+    },
+    "reminder": {
+      "summary": "Native Swift CLI for Apple Reminders with full EventKit integration.",
+      "keywords": ["reminders", "apple", "eventkit", "swift", "cli", "tasks"],
+      "tech": "Swift · EventKit",
+      "docsPage": "reminder.html",
+      "lead": "Native macOS command-line interface for Apple Reminders with full EventKit integration, instant execution, and zero external runtime dependencies.",
+      "examples": [
+        { "cmd": "reminder list", "comment": "List upcoming reminders" },
+        { "cmd": "reminder add \"Ship homebrew-tap\"", "comment": "Create a reminder in default list" },
+        { "cmd": "reminder complete 1", "comment": "Mark item #1 complete" },
+        { "cmd": "reminder --help", "comment": "Full subcommand reference" }
+      ],
+      "capabilities": [
+        "Direct EventKit sync with iCloud & Apple Reminders",
+        "Native compiled Swift binary — sub-20ms startup",
+        "Scriptable plain-text output for shell pipelines",
+        "Automatic quarantine removal during brew install"
+      ],
+      "troubleshooting": "On first run, macOS prompts Terminal for Reminders access — choose Allow.\n\nIf macOS still flags the binary:\nxattr -d com.apple.quarantine \"$(brew --prefix)/bin/reminder\""
+    },
+    "corenote": {
+      "summary": "CLI frontend to Apple Notes via direct local SQLite access.",
+      "keywords": ["notes", "apple", "sqlite", "cli", "search", "export"],
+      "tech": "SQLite · macOS",
+      "docsPage": "corenote.html",
+      "lead": "Fast command-line interface to your local Apple Notes database via direct read-safe SQLite access — search, inspect, and pipe notes straight from your terminal.",
+      "examples": [
+        { "cmd": "corenote list", "comment": "List recent Apple Notes" },
+        { "cmd": "corenote search \"architecture\"", "comment": "Full-text search across notes" },
+        { "cmd": "corenote show <id>", "comment": "Print a note body to stdout" },
+        { "cmd": "corenote --help", "comment": "Full subcommand reference" }
+      ],
+      "capabilities": [
+        "Direct local SQLite access to Apple Notes store",
+        "Fast offline search without opening Notes.app",
+        "Clean plain-text output for grep, jq, and scripts",
+        "Automatic quarantine removal during brew install"
+      ],
+      "troubleshooting": "macOS requires Full Disk Access for your terminal app to read the local Apple Notes SQLite database (System Settings → Privacy & Security → Full Disk Access).\n\nIf macOS still flags the binary:\nxattr -d com.apple.quarantine \"$(brew --prefix)/bin/corenote\""
+    }
+  }
+}

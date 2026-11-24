@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <title>git-ingest</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <circle cx="8" cy="8" r="3" fill="none" stroke="#18181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="8" r="3" fill="none" stroke="#18181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="8" y1="11" x2="16" y2="18" fill="none" stroke="#18181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="24" y1="11" x2="16" y2="18" fill="none" stroke="#18181b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 20 L20 20 C21.105 20 22 20.895 22 22 L22 25 C22 26.105 21.105 27 20 27 L12 27 C10.895 27 10 26.105 10 25 L10 22 C10 20.895 10.895 20 12 20 Z" fill="#d97706"/>
+  </g>
+</svg>

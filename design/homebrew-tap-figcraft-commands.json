@@ -1,0 +1,9084 @@
+[
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "topbar-bg",
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 64,
+      "props": {
+        "fill": "#FFFFFF"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "topbar-border",
+      "x": 0,
+      "y": 63,
+      "width": 1440,
+      "height": 1,
+      "props": {
+        "fill": "#E4DFD5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "brand-mark",
+      "x": 160,
+      "y": 16,
+      "width": 32,
+      "height": 32,
+      "props": {
+        "fill": "#D97706",
+        "cornerRadius": 8
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "brand-mark-glyph",
+      "text": ">_",
+      "x": 165,
+      "y": 23,
+      "width": 22,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "brand-title",
+      "text": "AungMyoKyaw / homebrew-tap",
+      "x": 204,
+      "y": 21,
+      "width": 320,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 15,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "nav-casks",
+      "text": "Casks",
+      "x": 920,
+      "y": 23,
+      "width": 56,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "nav-formulae",
+      "text": "Formulae",
+      "x": 988,
+      "y": 23,
+      "width": 72,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "nav-install",
+      "text": "Install",
+      "x": 1072,
+      "y": 23,
+      "width": 52,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "nav-gh",
+      "text": "GitHub ↗",
+      "x": 1134,
+      "y": 23,
+      "width": 72,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "theme-toggle-bg",
+      "x": 1206,
+      "y": 18,
+      "width": 74,
+      "height": 28,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "theme-toggle-txt",
+      "text": "◐ Dark",
+      "x": 1214,
+      "y": 24,
+      "width": 58,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "hero-eyebrow-bg",
+      "x": 160,
+      "y": 108,
+      "width": 236,
+      "height": 26,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "hero-eyebrow-txt",
+      "text": "PERSONAL HOMEBREW TAP · MACOS",
+      "x": 168,
+      "y": 113,
+      "width": 220,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "hero-h1",
+      "text": "Native macOS tools, installed via Homebrew.",
+      "x": 160,
+      "y": 148,
+      "width": 860,
+      "height": 48,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 38,
+        "fontStyle": "Bold",
+        "fill": "#18181B",
+        "letterSpacing": -0.8
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "hero-sub",
+      "text": "8 desktop casks and 2 CLI formulae. SHA256-pinned releases, automatic quarantine cleanup, zero telemetry.",
+      "x": 160,
+      "y": 202,
+      "width": 820,
+      "height": 26,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "tap-cmd-box",
+      "x": 160,
+      "y": 244,
+      "width": 1120,
+      "height": 56,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 10,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "tap-cmd-prompt",
+      "text": "$",
+      "x": 180,
+      "y": 262,
+      "width": 16,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 15,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "tap-cmd-str",
+      "text": "brew tap AungMyoKyaw/homebrew-tap",
+      "x": 200,
+      "y": 262,
+      "width": 520,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 15,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "tap-cmd-copy-bg",
+      "x": 1146,
+      "y": 256,
+      "width": 120,
+      "height": 32,
+      "props": {
+        "fill": "#D97706",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "tap-cmd-copy-txt",
+      "text": "Copy command",
+      "x": 1154,
+      "y": 264,
+      "width": 104,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "filter-divider",
+      "x": 160,
+      "y": 314,
+      "width": 1120,
+      "height": 1,
+      "props": {
+        "fill": "#E4DFD5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "flt-all-bg",
+      "x": 160,
+      "y": 328,
+      "width": 86,
+      "height": 34,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "flt-all-txt",
+      "text": "All (10)",
+      "x": 168,
+      "y": 337,
+      "width": 70,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F7F5F0",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "flt-casks-bg",
+      "x": 256,
+      "y": 328,
+      "width": 96,
+      "height": 34,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "flt-casks-txt",
+      "text": "Casks (8)",
+      "x": 264,
+      "y": 337,
+      "width": 80,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "flt-formulae-bg",
+      "x": 362,
+      "y": 328,
+      "width": 114,
+      "height": 34,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "flt-formulae-txt",
+      "text": "Formulae (2)",
+      "x": 370,
+      "y": 337,
+      "width": 98,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "search-input",
+      "x": 960,
+      "y": 328,
+      "width": 320,
+      "height": 34,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "search-ph",
+      "text": "Filter packages by name or keyword...",
+      "x": 974,
+      "y": 337,
+      "width": 250,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "search-kbd-bg",
+      "x": 1230,
+      "y": 334,
+      "width": 40,
+      "height": 22,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "search-kbd-txt",
+      "text": "⌘K",
+      "x": 1238,
+      "y": 337,
+      "width": 24,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "sec-casks-title",
+      "text": "DESKTOP APPS — CASKS",
+      "x": 160,
+      "y": 390,
+      "width": 300,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fontStyle": "Bold",
+        "fill": "#78716C",
+        "letterSpacing": 1.2
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "sec-casks-count",
+      "text": "8 packages · brew install --cask",
+      "x": 1020,
+      "y": 390,
+      "width": 260,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-life-manager-card",
+      "x": 160,
+      "y": 420,
+      "width": 552,
+      "height": 224,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#D97706",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-life-manager-glyph-bg",
+      "x": 180,
+      "y": 440,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-glyph-txt",
+      "text": "LM",
+      "x": 180,
+      "y": 451,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-name",
+      "text": "Life Manager",
+      "x": 230,
+      "y": 440,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-life-manager-ver-bg",
+      "x": 230,
+      "y": 464,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-ver-txt",
+      "text": "v0.1.0",
+      "x": 238,
+      "y": 466,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-life-manager-arch-bg",
+      "x": 298,
+      "y": 464,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-arch-txt",
+      "text": "arm64 · macOS 13+",
+      "x": 306,
+      "y": 466,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 442,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-desc",
+      "text": "Local-first GPUI productivity app for tasks, calendar, focus, habits, and goals + life CLI.",
+      "x": 180,
+      "y": 496,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-life-manager-cmd-bg",
+      "x": 180,
+      "y": 540,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/life-manager",
+      "x": 192,
+      "y": 551,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-life-manager-copy-bg",
+      "x": 606,
+      "y": 546,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-copy-txt",
+      "text": "Copy",
+      "x": 614,
+      "y": 551,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-life-manager-note-bg",
+      "x": 180,
+      "y": 588,
+      "width": 512,
+      "height": 40,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-life-manager-note-txt",
+      "text": "Ad-hoc signed · quarantine auto-cleared on install · includes `life` CLI binary · --zap removes SQLite DB.",
+      "x": 190,
+      "y": 596,
+      "width": 492,
+      "height": 26,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11.5,
+        "fill": "#57534E",
+        "lineHeight": 15
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-card",
+      "x": 728,
+      "y": 420,
+      "width": 552,
+      "height": 224,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-glyph-bg",
+      "x": 748,
+      "y": 440,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-glyph-txt",
+      "text": "CC",
+      "x": 748,
+      "y": 451,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-name",
+      "text": "ChatGPT Controller",
+      "x": 798,
+      "y": 440,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-ver-bg",
+      "x": 798,
+      "y": 464,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-ver-txt",
+      "text": "v0.3.0",
+      "x": 806,
+      "y": 466,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-arch-bg",
+      "x": 866,
+      "y": 464,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-arch-txt",
+      "text": "arm64 · macOS",
+      "x": 874,
+      "y": 466,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 442,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-desc",
+      "text": "Native Rust local API controller with embedded ChatGPT sign-in. Zero external Chrome needed.",
+      "x": 748,
+      "y": 496,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-cmd-bg",
+      "x": 748,
+      "y": 540,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller",
+      "x": 760,
+      "y": 551,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-copy-bg",
+      "x": 1174,
+      "y": 546,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-chatgpt-controller-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 551,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-dhamma-echo-card",
+      "x": 160,
+      "y": 660,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-dhamma-echo-glyph-bg",
+      "x": 180,
+      "y": 680,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-glyph-txt",
+      "text": "DE",
+      "x": 180,
+      "y": 691,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-name",
+      "text": "Dhamma Echo",
+      "x": 230,
+      "y": 680,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-dhamma-echo-ver-bg",
+      "x": 230,
+      "y": 704,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-ver-txt",
+      "text": "v0.6.0",
+      "x": 238,
+      "y": 706,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-dhamma-echo-arch-bg",
+      "x": 298,
+      "y": 704,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-arch-txt",
+      "text": "arm64 · macOS 13+",
+      "x": 306,
+      "y": 706,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 682,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-desc",
+      "text": "Fast, private native GPUI desktop library for Dhamma talks. Listen offline, mindfully.",
+      "x": 180,
+      "y": 736,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-dhamma-echo-cmd-bg",
+      "x": 180,
+      "y": 780,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo",
+      "x": 192,
+      "y": 791,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-dhamma-echo-copy-bg",
+      "x": 606,
+      "y": 786,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-dhamma-echo-copy-txt",
+      "text": "Copy",
+      "x": 614,
+      "y": 791,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-receipts-card",
+      "x": 728,
+      "y": 660,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-receipts-glyph-bg",
+      "x": 748,
+      "y": 680,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-glyph-txt",
+      "text": "RC",
+      "x": 748,
+      "y": 691,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-name",
+      "text": "Receipts",
+      "x": 798,
+      "y": 680,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-receipts-ver-bg",
+      "x": 798,
+      "y": 704,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-ver-txt",
+      "text": "v0.1.0",
+      "x": 806,
+      "y": 706,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-receipts-arch-bg",
+      "x": 866,
+      "y": 704,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-arch-txt",
+      "text": "arm64 · x64 · macOS 13.3+",
+      "x": 874,
+      "y": 706,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 682,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-desc",
+      "text": "Local-first menu-bar time tracker with sessions, weekly calendar, and statistics.",
+      "x": 748,
+      "y": 736,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-receipts-cmd-bg",
+      "x": 748,
+      "y": 780,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/receipts",
+      "x": 760,
+      "y": 791,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-receipts-copy-bg",
+      "x": 1174,
+      "y": 786,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-receipts-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 791,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-card",
+      "x": 160,
+      "y": 854,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-glyph-bg",
+      "x": 180,
+      "y": 874,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-glyph-txt",
+      "text": "RP",
+      "x": 180,
+      "y": 885,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-name",
+      "text": "Rusty Pomodoro",
+      "x": 230,
+      "y": 874,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-ver-bg",
+      "x": 230,
+      "y": 898,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-ver-txt",
+      "text": "v1.0.1",
+      "x": 238,
+      "y": 900,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-arch-bg",
+      "x": 298,
+      "y": 898,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-arch-txt",
+      "text": "arm64 · x64 · macOS 11+",
+      "x": 306,
+      "y": 900,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 876,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-desc",
+      "text": "Focused Pomodoro timer with sessions, breaks, themes, and statistics.",
+      "x": 180,
+      "y": 930,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-cmd-bg",
+      "x": 180,
+      "y": 974,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/rusty-pomodoro",
+      "x": 192,
+      "y": 985,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-copy-bg",
+      "x": 606,
+      "y": 980,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-rusty-pomodoro-copy-txt",
+      "text": "Copy",
+      "x": 614,
+      "y": 985,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-caffeinate-card",
+      "x": 728,
+      "y": 854,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-caffeinate-glyph-bg",
+      "x": 748,
+      "y": 874,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-glyph-txt",
+      "text": "CF",
+      "x": 748,
+      "y": 885,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-name",
+      "text": "Caffeinate",
+      "x": 798,
+      "y": 874,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-caffeinate-ver-bg",
+      "x": 798,
+      "y": 898,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-ver-txt",
+      "text": "v3.0.0",
+      "x": 806,
+      "y": 900,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-caffeinate-arch-bg",
+      "x": 866,
+      "y": 898,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-arch-txt",
+      "text": "Universal · macOS 12+",
+      "x": 874,
+      "y": 900,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 876,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-desc",
+      "text": "Keep your Mac awake during long builds, downloads, renders, and remote sessions.",
+      "x": 748,
+      "y": 930,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-caffeinate-cmd-bg",
+      "x": 748,
+      "y": 974,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/caffeinate",
+      "x": 760,
+      "y": 985,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-caffeinate-copy-bg",
+      "x": 1174,
+      "y": 980,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-caffeinate-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 985,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-gitfolio-card",
+      "x": 160,
+      "y": 1048,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-gitfolio-glyph-bg",
+      "x": 180,
+      "y": 1068,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-glyph-txt",
+      "text": "GF",
+      "x": 180,
+      "y": 1079,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-name",
+      "text": "GitFolio",
+      "x": 230,
+      "y": 1068,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-gitfolio-ver-bg",
+      "x": 230,
+      "y": 1092,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-ver-txt",
+      "text": "v1.0.2",
+      "x": 238,
+      "y": 1094,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-gitfolio-arch-bg",
+      "x": 298,
+      "y": 1092,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-arch-txt",
+      "text": "arm64 · x64 · macOS",
+      "x": 306,
+      "y": 1094,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 1070,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-desc",
+      "text": "Git contribution portfolio exporter for macOS. Turn local commit history into visual reports.",
+      "x": 180,
+      "y": 1124,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-gitfolio-cmd-bg",
+      "x": 180,
+      "y": 1168,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/gitfolio",
+      "x": 192,
+      "y": 1179,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-gitfolio-copy-bg",
+      "x": 606,
+      "y": 1174,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-gitfolio-copy-txt",
+      "text": "Copy",
+      "x": 614,
+      "y": 1179,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-git-ingest-card",
+      "x": 728,
+      "y": 1048,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-git-ingest-glyph-bg",
+      "x": 748,
+      "y": 1068,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-glyph-txt",
+      "text": "GI",
+      "x": 748,
+      "y": 1079,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-name",
+      "text": "Git-Ingest",
+      "x": 798,
+      "y": 1068,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-git-ingest-ver-bg",
+      "x": 798,
+      "y": 1092,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-ver-txt",
+      "text": "v0.2.7",
+      "x": 806,
+      "y": 1094,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-git-ingest-arch-bg",
+      "x": 866,
+      "y": 1092,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-arch-txt",
+      "text": "arm64 · x64 · macOS",
+      "x": 874,
+      "y": 1094,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 1070,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-desc",
+      "text": "Secure desktop app that bundles any repository into clean, structured LLM context.",
+      "x": 748,
+      "y": 1124,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-git-ingest-cmd-bg",
+      "x": 748,
+      "y": 1168,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/git-ingest",
+      "x": 760,
+      "y": 1179,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "cask-git-ingest-copy-bg",
+      "x": 1174,
+      "y": 1174,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "cask-git-ingest-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 1179,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "sec-formulae-title",
+      "text": "CLI TOOLS — FORMULAE",
+      "x": 160,
+      "y": 1270,
+      "width": 300,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fontStyle": "Bold",
+        "fill": "#78716C",
+        "letterSpacing": 1.2
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "sec-formulae-count",
+      "text": "2 packages · brew install",
+      "x": 1020,
+      "y": 1270,
+      "width": 260,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fill": "#78716C",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-reminder-row",
+      "x": 160,
+      "y": 1300,
+      "width": 1120,
+      "height": 82,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-reminder-glyph-bg",
+      "x": 180,
+      "y": 1322,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-glyph-txt",
+      "text": ">_",
+      "x": 180,
+      "y": 1333,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-name",
+      "text": "reminder",
+      "x": 232,
+      "y": 1318,
+      "width": 140,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 16,
+        "fontStyle": "Bold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-reminder-ver-bg",
+      "x": 335,
+      "y": 1318,
+      "width": 60,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-ver-txt",
+      "text": "v3.0.4",
+      "x": 343,
+      "y": 1320,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-reminder-meta-bg",
+      "x": 403,
+      "y": 1318,
+      "width": 110,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-meta-txt",
+      "text": "MIT · EventKit",
+      "x": 411,
+      "y": 1320,
+      "width": 94,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-desc",
+      "text": "Native Swift CLI for Apple Reminders with full EventKit integration.",
+      "x": 232,
+      "y": 1346,
+      "width": 480,
+      "height": 20,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-reminder-cmd-bg",
+      "x": 732,
+      "y": 1322,
+      "width": 434,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-cmd-txt",
+      "text": "$ brew install AungMyoKyaw/homebrew-tap/reminder",
+      "x": 744,
+      "y": 1333,
+      "width": 344,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-reminder-copy-bg",
+      "x": 1098,
+      "y": 1328,
+      "width": 60,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-copy-txt",
+      "text": "Copy",
+      "x": 1106,
+      "y": 1333,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-reminder-docs",
+      "text": "Docs →",
+      "x": 1196,
+      "y": 1332,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "SemiBold",
+        "fill": "#D97706",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-corenote-row",
+      "x": 160,
+      "y": 1396,
+      "width": 1120,
+      "height": 82,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-corenote-glyph-bg",
+      "x": 180,
+      "y": 1418,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 8,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-glyph-txt",
+      "text": "DB",
+      "x": 180,
+      "y": 1429,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-name",
+      "text": "corenote",
+      "x": 232,
+      "y": 1414,
+      "width": 140,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 16,
+        "fontStyle": "Bold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-corenote-ver-bg",
+      "x": 335,
+      "y": 1414,
+      "width": 60,
+      "height": 20,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-ver-txt",
+      "text": "v0.1.0",
+      "x": 343,
+      "y": 1416,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-corenote-meta-bg",
+      "x": 403,
+      "y": 1414,
+      "width": 110,
+      "height": 20,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-meta-txt",
+      "text": "MIT · SQLite",
+      "x": 411,
+      "y": 1416,
+      "width": 94,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-desc",
+      "text": "CLI frontend to Apple Notes via direct local SQLite access.",
+      "x": 232,
+      "y": 1442,
+      "width": 480,
+      "height": 20,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-corenote-cmd-bg",
+      "x": 732,
+      "y": 1418,
+      "width": 434,
+      "height": 38,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 7,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-cmd-txt",
+      "text": "$ brew install AungMyoKyaw/homebrew-tap/corenote",
+      "x": 744,
+      "y": 1429,
+      "width": 344,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "formula-corenote-copy-bg",
+      "x": 1098,
+      "y": 1424,
+      "width": 60,
+      "height": 26,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-copy-txt",
+      "text": "Copy",
+      "x": 1106,
+      "y": 1429,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "formula-corenote-docs",
+      "text": "Docs →",
+      "x": 1196,
+      "y": 1428,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "SemiBold",
+        "fill": "#D97706",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 2,
+      "name": "footer-line",
+      "x": 160,
+      "y": 1524,
+      "width": 1120,
+      "height": 1,
+      "props": {
+        "fill": "#E4DFD5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "foot-t-0",
+      "text": "UPDATE ALL",
+      "x": 160,
+      "y": 1548,
+      "width": 362.6666666666667,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#78716C",
+        "letterSpacing": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "foot-b-0",
+      "text": "brew update && brew upgrade\nAdd --cask when upgrading desktop apps.",
+      "x": 160,
+      "y": 1570,
+      "width": 362.6666666666667,
+      "height": 40,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 18
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "foot-t-1",
+      "text": "SIGNING & QUARANTINE",
+      "x": 538.6666666666667,
+      "y": 1548,
+      "width": 362.6666666666667,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#78716C",
+        "letterSpacing": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "foot-b-1",
+      "text": "Binaries are SHA256-pinned. Ad-hoc casks clear com.apple.quarantine in postflight.",
+      "x": 538.6666666666667,
+      "y": 1570,
+      "width": 362.6666666666667,
+      "height": 40,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 18
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "foot-t-2",
+      "text": "UNINSTALL & ZAP",
+      "x": 917.3333333333334,
+      "y": 1548,
+      "width": 362.6666666666667,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#78716C",
+        "letterSpacing": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "foot-b-2",
+      "text": "Use brew uninstall --cask --zap <pkg> to remove local preferences and SQLite data.",
+      "x": 917.3333333333334,
+      "y": 1570,
+      "width": 362.6666666666667,
+      "height": 40,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 18
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 2,
+      "name": "copyright",
+      "text": "Maintained by @AungMyoKyaw · Generated from Formula/*.rb & Casks/*.rb",
+      "x": 160,
+      "y": 1634,
+      "width": 1120,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "topbar-bg",
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 64,
+      "props": {
+        "fill": "#15181C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "topbar-border",
+      "x": 0,
+      "y": 63,
+      "width": 1440,
+      "height": 1,
+      "props": {
+        "fill": "#262B33"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "brand-mark",
+      "x": 160,
+      "y": 16,
+      "width": 32,
+      "height": 32,
+      "props": {
+        "fill": "#F59E0B",
+        "cornerRadius": 8
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "brand-mark-glyph",
+      "text": ">_",
+      "x": 165,
+      "y": 23,
+      "width": 22,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "brand-title",
+      "text": "AungMyoKyaw / homebrew-tap",
+      "x": 204,
+      "y": 21,
+      "width": 320,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 15,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "nav-casks",
+      "text": "Casks",
+      "x": 920,
+      "y": 23,
+      "width": 56,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "nav-formulae",
+      "text": "Formulae",
+      "x": 988,
+      "y": 23,
+      "width": 72,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "nav-install",
+      "text": "Install",
+      "x": 1072,
+      "y": 23,
+      "width": 52,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "nav-gh",
+      "text": "GitHub ↗",
+      "x": 1134,
+      "y": 23,
+      "width": 72,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "theme-toggle-bg",
+      "x": 1206,
+      "y": 18,
+      "width": 74,
+      "height": 28,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "theme-toggle-txt",
+      "text": "☀ Light",
+      "x": 1214,
+      "y": 24,
+      "width": 58,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "hero-eyebrow-bg",
+      "x": 160,
+      "y": 108,
+      "width": 236,
+      "height": 26,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "hero-eyebrow-txt",
+      "text": "PERSONAL HOMEBREW TAP · MACOS",
+      "x": 168,
+      "y": 113,
+      "width": 220,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "hero-h1",
+      "text": "Native macOS tools, installed via Homebrew.",
+      "x": 160,
+      "y": 148,
+      "width": 860,
+      "height": 48,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 38,
+        "fontStyle": "Bold",
+        "fill": "#F4F4F5",
+        "letterSpacing": -0.8
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "hero-sub",
+      "text": "8 desktop casks and 2 CLI formulae. SHA256-pinned releases, automatic quarantine cleanup, zero telemetry.",
+      "x": 160,
+      "y": 202,
+      "width": 820,
+      "height": 26,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fill": "#A1A1AA"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "tap-cmd-box",
+      "x": 160,
+      "y": 244,
+      "width": 1120,
+      "height": 56,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 10,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "tap-cmd-prompt",
+      "text": "$",
+      "x": 180,
+      "y": 262,
+      "width": 16,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 15,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "tap-cmd-str",
+      "text": "brew tap AungMyoKyaw/homebrew-tap",
+      "x": 200,
+      "y": 262,
+      "width": 520,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 15,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "tap-cmd-copy-bg",
+      "x": 1146,
+      "y": 256,
+      "width": 120,
+      "height": 32,
+      "props": {
+        "fill": "#F59E0B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "tap-cmd-copy-txt",
+      "text": "Copy command",
+      "x": 1154,
+      "y": 264,
+      "width": 104,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "filter-divider",
+      "x": 160,
+      "y": 314,
+      "width": 1120,
+      "height": 1,
+      "props": {
+        "fill": "#262B33"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "flt-all-bg",
+      "x": 160,
+      "y": 328,
+      "width": 86,
+      "height": 34,
+      "props": {
+        "fill": "#F4F4F5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "flt-all-txt",
+      "text": "All (10)",
+      "x": 168,
+      "y": 337,
+      "width": 70,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#0E1012",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "flt-casks-bg",
+      "x": 256,
+      "y": 328,
+      "width": 96,
+      "height": 34,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "flt-casks-txt",
+      "text": "Casks (8)",
+      "x": 264,
+      "y": 337,
+      "width": 80,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "flt-formulae-bg",
+      "x": 362,
+      "y": 328,
+      "width": 114,
+      "height": 34,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "flt-formulae-txt",
+      "text": "Formulae (2)",
+      "x": 370,
+      "y": 337,
+      "width": 98,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "search-input",
+      "x": 960,
+      "y": 328,
+      "width": 320,
+      "height": 34,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "search-ph",
+      "text": "Filter packages by name or keyword...",
+      "x": 974,
+      "y": 337,
+      "width": 250,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fill": "#71717A"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "search-kbd-bg",
+      "x": 1230,
+      "y": 334,
+      "width": 40,
+      "height": 22,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "search-kbd-txt",
+      "text": "⌘K",
+      "x": 1238,
+      "y": 337,
+      "width": 24,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "sec-casks-title",
+      "text": "DESKTOP APPS — CASKS",
+      "x": 160,
+      "y": 390,
+      "width": 300,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fontStyle": "Bold",
+        "fill": "#71717A",
+        "letterSpacing": 1.2
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "sec-casks-count",
+      "text": "8 packages · brew install --cask",
+      "x": 1020,
+      "y": 390,
+      "width": 260,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-life-manager-card",
+      "x": 160,
+      "y": 420,
+      "width": 552,
+      "height": 224,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#F59E0B",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-life-manager-glyph-bg",
+      "x": 180,
+      "y": 440,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-glyph-txt",
+      "text": "LM",
+      "x": 180,
+      "y": 451,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-name",
+      "text": "Life Manager",
+      "x": 230,
+      "y": 440,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-life-manager-ver-bg",
+      "x": 230,
+      "y": 464,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-ver-txt",
+      "text": "v0.1.0",
+      "x": 238,
+      "y": 466,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-life-manager-arch-bg",
+      "x": 298,
+      "y": 464,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-arch-txt",
+      "text": "arm64 · macOS 13+",
+      "x": 306,
+      "y": 466,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 442,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-desc",
+      "text": "Local-first GPUI productivity app for tasks, calendar, focus, habits, and goals + life CLI.",
+      "x": 180,
+      "y": 496,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-life-manager-cmd-bg",
+      "x": 180,
+      "y": 540,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/life-manager",
+      "x": 192,
+      "y": 551,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-life-manager-copy-bg",
+      "x": 606,
+      "y": 546,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#10B981",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-copy-txt",
+      "text": "Copied ✓",
+      "x": 614,
+      "y": 551,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-life-manager-note-bg",
+      "x": 180,
+      "y": 588,
+      "width": 512,
+      "height": 40,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-life-manager-note-txt",
+      "text": "Ad-hoc signed · quarantine auto-cleared on install · includes `life` CLI binary · --zap removes SQLite DB.",
+      "x": 190,
+      "y": 596,
+      "width": 492,
+      "height": 26,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 15
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-card",
+      "x": 728,
+      "y": 420,
+      "width": 552,
+      "height": 224,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-glyph-bg",
+      "x": 748,
+      "y": 440,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-glyph-txt",
+      "text": "CC",
+      "x": 748,
+      "y": 451,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-name",
+      "text": "ChatGPT Controller",
+      "x": 798,
+      "y": 440,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-ver-bg",
+      "x": 798,
+      "y": 464,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-ver-txt",
+      "text": "v0.3.0",
+      "x": 806,
+      "y": 466,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-arch-bg",
+      "x": 866,
+      "y": 464,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-arch-txt",
+      "text": "arm64 · macOS",
+      "x": 874,
+      "y": 466,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 442,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-desc",
+      "text": "Native Rust local API controller with embedded ChatGPT sign-in. Zero external Chrome needed.",
+      "x": 748,
+      "y": 496,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-cmd-bg",
+      "x": 748,
+      "y": 540,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller",
+      "x": 760,
+      "y": 551,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-copy-bg",
+      "x": 1174,
+      "y": 546,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-chatgpt-controller-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 551,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-dhamma-echo-card",
+      "x": 160,
+      "y": 660,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-dhamma-echo-glyph-bg",
+      "x": 180,
+      "y": 680,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-glyph-txt",
+      "text": "DE",
+      "x": 180,
+      "y": 691,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-name",
+      "text": "Dhamma Echo",
+      "x": 230,
+      "y": 680,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-dhamma-echo-ver-bg",
+      "x": 230,
+      "y": 704,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-ver-txt",
+      "text": "v0.6.0",
+      "x": 238,
+      "y": 706,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-dhamma-echo-arch-bg",
+      "x": 298,
+      "y": 704,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-arch-txt",
+      "text": "arm64 · macOS 13+",
+      "x": 306,
+      "y": 706,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 682,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-desc",
+      "text": "Fast, private native GPUI desktop library for Dhamma talks. Listen offline, mindfully.",
+      "x": 180,
+      "y": 736,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-dhamma-echo-cmd-bg",
+      "x": 180,
+      "y": 780,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo",
+      "x": 192,
+      "y": 791,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-dhamma-echo-copy-bg",
+      "x": 606,
+      "y": 786,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-dhamma-echo-copy-txt",
+      "text": "Copy",
+      "x": 614,
+      "y": 791,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-receipts-card",
+      "x": 728,
+      "y": 660,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-receipts-glyph-bg",
+      "x": 748,
+      "y": 680,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-glyph-txt",
+      "text": "RC",
+      "x": 748,
+      "y": 691,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-name",
+      "text": "Receipts",
+      "x": 798,
+      "y": 680,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-receipts-ver-bg",
+      "x": 798,
+      "y": 704,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-ver-txt",
+      "text": "v0.1.0",
+      "x": 806,
+      "y": 706,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-receipts-arch-bg",
+      "x": 866,
+      "y": 704,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-arch-txt",
+      "text": "arm64 · x64 · macOS 13.3+",
+      "x": 874,
+      "y": 706,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 682,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-desc",
+      "text": "Local-first menu-bar time tracker with sessions, weekly calendar, and statistics.",
+      "x": 748,
+      "y": 736,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-receipts-cmd-bg",
+      "x": 748,
+      "y": 780,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/receipts",
+      "x": 760,
+      "y": 791,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-receipts-copy-bg",
+      "x": 1174,
+      "y": 786,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-receipts-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 791,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-card",
+      "x": 160,
+      "y": 854,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-glyph-bg",
+      "x": 180,
+      "y": 874,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-glyph-txt",
+      "text": "RP",
+      "x": 180,
+      "y": 885,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-name",
+      "text": "Rusty Pomodoro",
+      "x": 230,
+      "y": 874,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-ver-bg",
+      "x": 230,
+      "y": 898,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-ver-txt",
+      "text": "v1.0.1",
+      "x": 238,
+      "y": 900,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-arch-bg",
+      "x": 298,
+      "y": 898,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-arch-txt",
+      "text": "arm64 · x64 · macOS 11+",
+      "x": 306,
+      "y": 900,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 876,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-desc",
+      "text": "Focused Pomodoro timer with sessions, breaks, themes, and statistics.",
+      "x": 180,
+      "y": 930,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-cmd-bg",
+      "x": 180,
+      "y": 974,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/rusty-pomodoro",
+      "x": 192,
+      "y": 985,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-copy-bg",
+      "x": 606,
+      "y": 980,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-rusty-pomodoro-copy-txt",
+      "text": "Copy",
+      "x": 614,
+      "y": 985,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-caffeinate-card",
+      "x": 728,
+      "y": 854,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-caffeinate-glyph-bg",
+      "x": 748,
+      "y": 874,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-glyph-txt",
+      "text": "CF",
+      "x": 748,
+      "y": 885,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-name",
+      "text": "Caffeinate",
+      "x": 798,
+      "y": 874,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-caffeinate-ver-bg",
+      "x": 798,
+      "y": 898,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-ver-txt",
+      "text": "v3.0.0",
+      "x": 806,
+      "y": 900,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-caffeinate-arch-bg",
+      "x": 866,
+      "y": 898,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-arch-txt",
+      "text": "Universal · macOS 12+",
+      "x": 874,
+      "y": 900,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 876,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-desc",
+      "text": "Keep your Mac awake during long builds, downloads, renders, and remote sessions.",
+      "x": 748,
+      "y": 930,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-caffeinate-cmd-bg",
+      "x": 748,
+      "y": 974,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/caffeinate",
+      "x": 760,
+      "y": 985,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-caffeinate-copy-bg",
+      "x": 1174,
+      "y": 980,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-caffeinate-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 985,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-gitfolio-card",
+      "x": 160,
+      "y": 1048,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-gitfolio-glyph-bg",
+      "x": 180,
+      "y": 1068,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-glyph-txt",
+      "text": "GF",
+      "x": 180,
+      "y": 1079,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-name",
+      "text": "GitFolio",
+      "x": 230,
+      "y": 1068,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-gitfolio-ver-bg",
+      "x": 230,
+      "y": 1092,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-ver-txt",
+      "text": "v1.0.2",
+      "x": 238,
+      "y": 1094,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-gitfolio-arch-bg",
+      "x": 298,
+      "y": 1092,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-arch-txt",
+      "text": "arm64 · x64 · macOS",
+      "x": 306,
+      "y": 1094,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-link",
+      "text": "GitHub ↗",
+      "x": 628,
+      "y": 1070,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-desc",
+      "text": "Git contribution portfolio exporter for macOS. Turn local commit history into visual reports.",
+      "x": 180,
+      "y": 1124,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-gitfolio-cmd-bg",
+      "x": 180,
+      "y": 1168,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/gitfolio",
+      "x": 192,
+      "y": 1179,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-gitfolio-copy-bg",
+      "x": 606,
+      "y": 1174,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-gitfolio-copy-txt",
+      "text": "Copy",
+      "x": 614,
+      "y": 1179,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-git-ingest-card",
+      "x": 728,
+      "y": 1048,
+      "width": 552,
+      "height": 178,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-git-ingest-glyph-bg",
+      "x": 748,
+      "y": 1068,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-glyph-txt",
+      "text": "GI",
+      "x": 748,
+      "y": 1079,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-name",
+      "text": "Git-Ingest",
+      "x": 798,
+      "y": 1068,
+      "width": 220,
+      "height": 22,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fontStyle": "SemiBold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-git-ingest-ver-bg",
+      "x": 798,
+      "y": 1092,
+      "width": 62,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-ver-txt",
+      "text": "v0.2.7",
+      "x": 806,
+      "y": 1094,
+      "width": 46,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-git-ingest-arch-bg",
+      "x": 866,
+      "y": 1092,
+      "width": 152,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-arch-txt",
+      "text": "arm64 · x64 · macOS",
+      "x": 874,
+      "y": 1094,
+      "width": 136,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-link",
+      "text": "GitHub ↗",
+      "x": 1196,
+      "y": 1070,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "Medium",
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-desc",
+      "text": "Secure desktop app that bundles any repository into clean, structured LLM context.",
+      "x": 748,
+      "y": 1124,
+      "width": 512,
+      "height": 34,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 19
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-git-ingest-cmd-bg",
+      "x": 748,
+      "y": 1168,
+      "width": 512,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-cmd-txt",
+      "text": "$ brew install --cask AungMyoKyaw/homebrew-tap/git-ingest",
+      "x": 760,
+      "y": 1179,
+      "width": 412,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "cask-git-ingest-copy-bg",
+      "x": 1174,
+      "y": 1174,
+      "width": 78,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "cask-git-ingest-copy-txt",
+      "text": "Copy",
+      "x": 1182,
+      "y": 1179,
+      "width": 62,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "sec-formulae-title",
+      "text": "CLI TOOLS — FORMULAE",
+      "x": 160,
+      "y": 1270,
+      "width": 300,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fontStyle": "Bold",
+        "fill": "#71717A",
+        "letterSpacing": 1.2
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "sec-formulae-count",
+      "text": "2 packages · brew install",
+      "x": 1020,
+      "y": 1270,
+      "width": 260,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fill": "#71717A",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-reminder-row",
+      "x": 160,
+      "y": 1300,
+      "width": 1120,
+      "height": 82,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-reminder-glyph-bg",
+      "x": 180,
+      "y": 1322,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-glyph-txt",
+      "text": ">_",
+      "x": 180,
+      "y": 1333,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-name",
+      "text": "reminder",
+      "x": 232,
+      "y": 1318,
+      "width": 140,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 16,
+        "fontStyle": "Bold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-reminder-ver-bg",
+      "x": 335,
+      "y": 1318,
+      "width": 60,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-ver-txt",
+      "text": "v3.0.4",
+      "x": 343,
+      "y": 1320,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-reminder-meta-bg",
+      "x": 403,
+      "y": 1318,
+      "width": 110,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-meta-txt",
+      "text": "MIT · EventKit",
+      "x": 411,
+      "y": 1320,
+      "width": 94,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-desc",
+      "text": "Native Swift CLI for Apple Reminders with full EventKit integration.",
+      "x": 232,
+      "y": 1346,
+      "width": 480,
+      "height": 20,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-reminder-cmd-bg",
+      "x": 732,
+      "y": 1322,
+      "width": 434,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-cmd-txt",
+      "text": "$ brew install AungMyoKyaw/homebrew-tap/reminder",
+      "x": 744,
+      "y": 1333,
+      "width": 344,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-reminder-copy-bg",
+      "x": 1098,
+      "y": 1328,
+      "width": 60,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-copy-txt",
+      "text": "Copy",
+      "x": 1106,
+      "y": 1333,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-reminder-docs",
+      "text": "Docs →",
+      "x": 1196,
+      "y": 1332,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "SemiBold",
+        "fill": "#F59E0B",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-corenote-row",
+      "x": 160,
+      "y": 1396,
+      "width": 1120,
+      "height": 82,
+      "props": {
+        "fill": "#15181C",
+        "cornerRadius": 10,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-corenote-glyph-bg",
+      "x": 180,
+      "y": 1418,
+      "width": 38,
+      "height": 38,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 8,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-glyph-txt",
+      "text": "DB",
+      "x": 180,
+      "y": 1429,
+      "width": 38,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13,
+        "fontStyle": "Bold",
+        "fill": "#F59E0B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-name",
+      "text": "corenote",
+      "x": 232,
+      "y": 1414,
+      "width": 140,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 16,
+        "fontStyle": "Bold",
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-corenote-ver-bg",
+      "x": 335,
+      "y": 1414,
+      "width": 60,
+      "height": 20,
+      "props": {
+        "fill": "#2E210B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-ver-txt",
+      "text": "v0.1.0",
+      "x": 343,
+      "y": 1416,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FCD34D",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-corenote-meta-bg",
+      "x": 403,
+      "y": 1414,
+      "width": 110,
+      "height": 20,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-meta-txt",
+      "text": "MIT · SQLite",
+      "x": 411,
+      "y": 1416,
+      "width": 94,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#A1A1AA",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-desc",
+      "text": "CLI frontend to Apple Notes via direct local SQLite access.",
+      "x": 232,
+      "y": 1442,
+      "width": 480,
+      "height": 20,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#A1A1AA"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-corenote-cmd-bg",
+      "x": 732,
+      "y": 1418,
+      "width": 434,
+      "height": 38,
+      "props": {
+        "fill": "#090A0C",
+        "cornerRadius": 7,
+        "stroke": "#23272F",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-cmd-txt",
+      "text": "$ brew install AungMyoKyaw/homebrew-tap/corenote",
+      "x": 744,
+      "y": 1429,
+      "width": 344,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#E4E4E7"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "formula-corenote-copy-bg",
+      "x": 1098,
+      "y": 1424,
+      "width": 60,
+      "height": 26,
+      "props": {
+        "fill": "#1C2026",
+        "cornerRadius": 6,
+        "stroke": "#262B33",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-copy-txt",
+      "text": "Copy",
+      "x": 1106,
+      "y": 1429,
+      "width": 44,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F4F4F5",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "formula-corenote-docs",
+      "text": "Docs →",
+      "x": 1196,
+      "y": 1428,
+      "width": 64,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13,
+        "fontStyle": "SemiBold",
+        "fill": "#F59E0B",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 3,
+      "name": "footer-line",
+      "x": 160,
+      "y": 1524,
+      "width": 1120,
+      "height": 1,
+      "props": {
+        "fill": "#262B33"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "foot-t-0",
+      "text": "UPDATE ALL",
+      "x": 160,
+      "y": 1548,
+      "width": 362.6666666666667,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#71717A",
+        "letterSpacing": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "foot-b-0",
+      "text": "brew update && brew upgrade\nAdd --cask when upgrading desktop apps.",
+      "x": 160,
+      "y": 1570,
+      "width": 362.6666666666667,
+      "height": 40,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 18
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "foot-t-1",
+      "text": "SIGNING & QUARANTINE",
+      "x": 538.6666666666667,
+      "y": 1548,
+      "width": 362.6666666666667,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#71717A",
+        "letterSpacing": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "foot-b-1",
+      "text": "Binaries are SHA256-pinned. Ad-hoc casks clear com.apple.quarantine in postflight.",
+      "x": 538.6666666666667,
+      "y": 1570,
+      "width": 362.6666666666667,
+      "height": 40,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 18
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "foot-t-2",
+      "text": "UNINSTALL & ZAP",
+      "x": 917.3333333333334,
+      "y": 1548,
+      "width": 362.6666666666667,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#71717A",
+        "letterSpacing": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "foot-b-2",
+      "text": "Use brew uninstall --cask --zap <pkg> to remove local preferences and SQLite data.",
+      "x": 917.3333333333334,
+      "y": 1570,
+      "width": 362.6666666666667,
+      "height": 40,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#A1A1AA",
+        "lineHeight": 18
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 3,
+      "name": "copyright",
+      "text": "Maintained by @AungMyoKyaw · Generated from Formula/*.rb & Casks/*.rb",
+      "x": 160,
+      "y": 1634,
+      "width": 1120,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fill": "#71717A"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-top-bg",
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 56,
+      "props": {
+        "fill": "#FFFFFF"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-top-border",
+      "x": 0,
+      "y": 55,
+      "width": 390,
+      "height": 1,
+      "props": {
+        "fill": "#E4DFD5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-mark",
+      "x": 20,
+      "y": 14,
+      "width": 28,
+      "height": 28,
+      "props": {
+        "fill": "#D97706",
+        "cornerRadius": 7
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-mark-g",
+      "text": ">_",
+      "x": 24,
+      "y": 20,
+      "width": 20,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-title",
+      "text": "homebrew-tap",
+      "x": 58,
+      "y": 19,
+      "width": 160,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 14,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-theme-bg",
+      "x": 302,
+      "y": 14,
+      "width": 68,
+      "height": 28,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-theme-txt",
+      "text": "◐ Dark",
+      "x": 310,
+      "y": 20,
+      "width": 52,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-h1",
+      "text": "Native macOS tools,\nvia Homebrew.",
+      "x": 20,
+      "y": 80,
+      "width": 350,
+      "height": 68,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 26,
+        "fontStyle": "Bold",
+        "fill": "#18181B",
+        "lineHeight": 32
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-sub",
+      "text": "8 desktop casks · 2 CLI formulae · SHA256 pinned.",
+      "x": 20,
+      "y": 154,
+      "width": 350,
+      "height": 20,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-tap-bg",
+      "x": 20,
+      "y": 188,
+      "width": 350,
+      "height": 50,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 8,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-tap-str",
+      "text": "$ brew tap AungMyoKyaw/homebrew-tap",
+      "x": 32,
+      "y": 205,
+      "width": 266,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 10.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-tap-copy-bg",
+      "x": 308,
+      "y": 199,
+      "width": 52,
+      "height": 28,
+      "props": {
+        "fill": "#D97706",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-tap-copy-txt",
+      "text": "Copy",
+      "x": 316,
+      "y": 205,
+      "width": 36,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-all-bg",
+      "x": 20,
+      "y": 256,
+      "width": 76,
+      "height": 30,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-all-txt",
+      "text": "All (10)",
+      "x": 28,
+      "y": 263,
+      "width": 60,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#F7F5F0",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-casks-bg",
+      "x": 104,
+      "y": 256,
+      "width": 86,
+      "height": 30,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-casks-txt",
+      "text": "Casks (8)",
+      "x": 112,
+      "y": 263,
+      "width": 70,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-form-bg",
+      "x": 198,
+      "y": 256,
+      "width": 102,
+      "height": 30,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-form-txt",
+      "text": "Formulae (2)",
+      "x": 206,
+      "y": 263,
+      "width": 86,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-sec-casks",
+      "text": "DESKTOP APPS — CASKS (8)",
+      "x": 20,
+      "y": 304,
+      "width": 350,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-life-manager-card",
+      "x": 20,
+      "y": 328,
+      "width": 350,
+      "height": 150,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-life-manager-g",
+      "x": 34,
+      "y": 342,
+      "width": 32,
+      "height": 32,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 7,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-life-manager-gt",
+      "text": "LM",
+      "x": 34,
+      "y": 351,
+      "width": 32,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-life-manager-n",
+      "text": "Life Manager",
+      "x": 76,
+      "y": 342,
+      "width": 180,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-life-manager-v-bg",
+      "x": 76,
+      "y": 363,
+      "width": 56,
+      "height": 18,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-life-manager-v-txt",
+      "text": "v0.1.0",
+      "x": 84,
+      "y": 364,
+      "width": 40,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-life-manager-a-bg",
+      "x": 138,
+      "y": 363,
+      "width": 96,
+      "height": 18,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-life-manager-a-txt",
+      "text": "arm64",
+      "x": 146,
+      "y": 364,
+      "width": 80,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-life-manager-d",
+      "text": "Local-first GPUI productivity app for tasks, calendar, focus, habits, and goals + life CLI.",
+      "x": 34,
+      "y": 390,
+      "width": 322,
+      "height": 32,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 16
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-life-manager-cb",
+      "x": 34,
+      "y": 432,
+      "width": 322,
+      "height": 34,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-life-manager-ct",
+      "text": "$ brew install --cask .../life-manager",
+      "x": 42,
+      "y": 442,
+      "width": 246,
+      "height": 14,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 10.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-life-manager-cp-bg",
+      "x": 298,
+      "y": 437,
+      "width": 50,
+      "height": 24,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-life-manager-cp-txt",
+      "text": "Copy",
+      "x": 306,
+      "y": 441,
+      "width": 34,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-card",
+      "x": 20,
+      "y": 492,
+      "width": 350,
+      "height": 150,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-g",
+      "x": 34,
+      "y": 506,
+      "width": 32,
+      "height": 32,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 7,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-gt",
+      "text": "CC",
+      "x": 34,
+      "y": 515,
+      "width": 32,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-n",
+      "text": "ChatGPT Controller",
+      "x": 76,
+      "y": 506,
+      "width": 180,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-v-bg",
+      "x": 76,
+      "y": 527,
+      "width": 56,
+      "height": 18,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-v-txt",
+      "text": "v0.3.0",
+      "x": 84,
+      "y": 528,
+      "width": 40,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-a-bg",
+      "x": 138,
+      "y": 527,
+      "width": 96,
+      "height": 18,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-a-txt",
+      "text": "arm64",
+      "x": 146,
+      "y": 528,
+      "width": 80,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-d",
+      "text": "Native Rust local API controller with embedded ChatGPT sign-in. Zero external Chrome needed.",
+      "x": 34,
+      "y": 554,
+      "width": 322,
+      "height": 32,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 16
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-cb",
+      "x": 34,
+      "y": 596,
+      "width": 322,
+      "height": 34,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-ct",
+      "text": "$ brew install --cask .../chatgpt-controller",
+      "x": 42,
+      "y": 606,
+      "width": 246,
+      "height": 14,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 10.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-cp-bg",
+      "x": 298,
+      "y": 601,
+      "width": 50,
+      "height": 24,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-chatgpt-controller-cp-txt",
+      "text": "Copy",
+      "x": 306,
+      "y": 605,
+      "width": 34,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-card",
+      "x": 20,
+      "y": 656,
+      "width": 350,
+      "height": 150,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-g",
+      "x": 34,
+      "y": 670,
+      "width": 32,
+      "height": 32,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 7,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-gt",
+      "text": "DE",
+      "x": 34,
+      "y": 679,
+      "width": 32,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-n",
+      "text": "Dhamma Echo",
+      "x": 76,
+      "y": 670,
+      "width": 180,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-v-bg",
+      "x": 76,
+      "y": 691,
+      "width": 56,
+      "height": 18,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-v-txt",
+      "text": "v0.6.0",
+      "x": 84,
+      "y": 692,
+      "width": 40,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-a-bg",
+      "x": 138,
+      "y": 691,
+      "width": 96,
+      "height": 18,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-a-txt",
+      "text": "arm64",
+      "x": 146,
+      "y": 692,
+      "width": 80,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-d",
+      "text": "Fast, private native GPUI desktop library for Dhamma talks. Listen offline, mindfully.",
+      "x": 34,
+      "y": 718,
+      "width": 322,
+      "height": 32,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 16
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-cb",
+      "x": 34,
+      "y": 760,
+      "width": 322,
+      "height": 34,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-ct",
+      "text": "$ brew install --cask .../dhamma-echo",
+      "x": 42,
+      "y": 770,
+      "width": 246,
+      "height": 14,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 10.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-cp-bg",
+      "x": 298,
+      "y": 765,
+      "width": 50,
+      "height": 24,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-dhamma-echo-cp-txt",
+      "text": "Copy",
+      "x": 306,
+      "y": 769,
+      "width": 34,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-receipts-card",
+      "x": 20,
+      "y": 820,
+      "width": 350,
+      "height": 150,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-receipts-g",
+      "x": 34,
+      "y": 834,
+      "width": 32,
+      "height": 32,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 7,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-receipts-gt",
+      "text": "RC",
+      "x": 34,
+      "y": 843,
+      "width": 32,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-receipts-n",
+      "text": "Receipts",
+      "x": 76,
+      "y": 834,
+      "width": 180,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 15,
+        "fontStyle": "SemiBold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-receipts-v-bg",
+      "x": 76,
+      "y": 855,
+      "width": 56,
+      "height": 18,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-receipts-v-txt",
+      "text": "v0.1.0",
+      "x": 84,
+      "y": 856,
+      "width": 40,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-receipts-a-bg",
+      "x": 138,
+      "y": 855,
+      "width": 96,
+      "height": 18,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-receipts-a-txt",
+      "text": "arm64 · x64",
+      "x": 146,
+      "y": 856,
+      "width": 80,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-receipts-d",
+      "text": "Local-first menu-bar time tracker with sessions, weekly calendar, and statistics.",
+      "x": 34,
+      "y": 882,
+      "width": 322,
+      "height": 32,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 16
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-receipts-cb",
+      "x": 34,
+      "y": 924,
+      "width": 322,
+      "height": 34,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-receipts-ct",
+      "text": "$ brew install --cask .../receipts",
+      "x": 42,
+      "y": 934,
+      "width": 246,
+      "height": 14,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 10.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-c-receipts-cp-bg",
+      "x": 298,
+      "y": 929,
+      "width": 50,
+      "height": 24,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-c-receipts-cp-txt",
+      "text": "Copy",
+      "x": 306,
+      "y": 933,
+      "width": 34,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-sec-form",
+      "text": "CLI TOOLS — FORMULAE (2)",
+      "x": 20,
+      "y": 1000,
+      "width": 350,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Bold",
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-reminder-card",
+      "x": 20,
+      "y": 1024,
+      "width": 350,
+      "height": 126,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-reminder-n",
+      "text": "reminder  v3.0.4",
+      "x": 34,
+      "y": 1038,
+      "width": 220,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 14,
+        "fontStyle": "Bold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-reminder-docs",
+      "text": "Docs →",
+      "x": 296,
+      "y": 1038,
+      "width": 60,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "SemiBold",
+        "fill": "#D97706",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-reminder-d",
+      "text": "Native Swift CLI for Apple Reminders with full EventKit integration.",
+      "x": 34,
+      "y": 1062,
+      "width": 322,
+      "height": 32,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 16
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-reminder-cb",
+      "x": 34,
+      "y": 1104,
+      "width": 322,
+      "height": 34,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-reminder-ct",
+      "text": "$ brew install .../reminder",
+      "x": 42,
+      "y": 1114,
+      "width": 246,
+      "height": 14,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 10.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-reminder-cp-bg",
+      "x": 298,
+      "y": 1109,
+      "width": 50,
+      "height": 24,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-reminder-cp-txt",
+      "text": "Copy",
+      "x": 306,
+      "y": 1113,
+      "width": 34,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-corenote-card",
+      "x": 20,
+      "y": 1164,
+      "width": 350,
+      "height": 126,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-corenote-n",
+      "text": "corenote  v0.1.0",
+      "x": 34,
+      "y": 1178,
+      "width": 220,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 14,
+        "fontStyle": "Bold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-corenote-docs",
+      "text": "Docs →",
+      "x": 296,
+      "y": 1178,
+      "width": 60,
+      "height": 18,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12,
+        "fontStyle": "SemiBold",
+        "fill": "#D97706",
+        "textAlign": "right"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-corenote-d",
+      "text": "CLI frontend to Apple Notes via direct local SQLite access.",
+      "x": 34,
+      "y": 1202,
+      "width": 322,
+      "height": 32,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 12.5,
+        "fill": "#57534E",
+        "lineHeight": 16
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-corenote-cb",
+      "x": 34,
+      "y": 1244,
+      "width": 322,
+      "height": 34,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-corenote-ct",
+      "text": "$ brew install .../corenote",
+      "x": 42,
+      "y": 1254,
+      "width": 246,
+      "height": 14,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 10.5,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 4,
+      "name": "m-f-corenote-cp-bg",
+      "x": 298,
+      "y": 1249,
+      "width": 50,
+      "height": 24,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 4,
+      "name": "m-f-corenote-cp-txt",
+      "text": "Copy",
+      "x": 306,
+      "y": 1253,
+      "width": 34,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-top",
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 64,
+      "props": {
+        "fill": "#FFFFFF"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-top-b",
+      "x": 0,
+      "y": 63,
+      "width": 1440,
+      "height": 1,
+      "props": {
+        "fill": "#E4DFD5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-crumb",
+      "text": "← homebrew-tap  /  formulae  /  reminder",
+      "x": 220,
+      "y": 22,
+      "width": 420,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13.5,
+        "fontStyle": "Medium",
+        "fill": "#57534E"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-theme-bg",
+      "x": 1146,
+      "y": 18,
+      "width": 74,
+      "height": 28,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-theme-txt",
+      "text": "◐ Dark",
+      "x": 1154,
+      "y": 24,
+      "width": 58,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#18181B",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-glyph",
+      "x": 220,
+      "y": 110,
+      "width": 48,
+      "height": 48,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-glyph-t",
+      "text": ">_",
+      "x": 220,
+      "y": 124,
+      "width": 48,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 16,
+        "fontStyle": "Bold",
+        "fill": "#D97706",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-title",
+      "text": "reminder",
+      "x": 284,
+      "y": 112,
+      "width": 260,
+      "height": 40,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 32,
+        "fontStyle": "Bold",
+        "fill": "#18181B"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-v-bg",
+      "x": 460,
+      "y": 120,
+      "width": 68,
+      "height": 24,
+      "props": {
+        "fill": "#FEF3C7",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-v-txt",
+      "text": "v3.0.4",
+      "x": 468,
+      "y": 124,
+      "width": 52,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#92400E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-lic-bg",
+      "x": 536,
+      "y": 120,
+      "width": 164,
+      "height": 24,
+      "props": {
+        "fill": "#EFECE5",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-lic-txt",
+      "text": "MIT · Swift · EventKit",
+      "x": 544,
+      "y": 124,
+      "width": 148,
+      "height": 16,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#57534E",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-sub",
+      "text": "Native macOS command-line interface for Apple Reminders with full EventKit integration, instant execution, and zero external runtime dependencies.",
+      "x": 220,
+      "y": 176,
+      "width": 820,
+      "height": 46,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 16,
+        "fill": "#57534E",
+        "lineHeight": 24
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-inst-bg",
+      "x": 220,
+      "y": 240,
+      "width": 1000,
+      "height": 56,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 10,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-inst-txt",
+      "text": "$ brew install AungMyoKyaw/homebrew-tap/reminder",
+      "x": 240,
+      "y": 258,
+      "width": 640,
+      "height": 20,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 15,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-inst-cp-bg",
+      "x": 1086,
+      "y": 252,
+      "width": 120,
+      "height": 32,
+      "props": {
+        "fill": "#D97706",
+        "cornerRadius": 6
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-inst-cp-txt",
+      "text": "Copy command",
+      "x": 1094,
+      "y": 260,
+      "width": 104,
+      "height": 16,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 11,
+        "fontStyle": "Medium",
+        "fill": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-use-h",
+      "text": "QUICK START",
+      "x": 220,
+      "y": 328,
+      "width": 200,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 12,
+        "fontStyle": "Bold",
+        "fill": "#78716C",
+        "letterSpacing": 1.2
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-use-box",
+      "x": 220,
+      "y": 354,
+      "width": 1000,
+      "height": 186,
+      "props": {
+        "fill": "#18181B",
+        "cornerRadius": 10,
+        "stroke": "#27272A",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-c-0",
+      "text": "$ reminder list",
+      "x": 244,
+      "y": 378,
+      "width": 420,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 14,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-m-0",
+      "text": "# List upcoming reminders",
+      "x": 680,
+      "y": 378,
+      "width": 480,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13.5,
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-c-1",
+      "text": "$ reminder add \"Ship homebrew-tap\"",
+      "x": 244,
+      "y": 414,
+      "width": 420,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 14,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-m-1",
+      "text": "# Create a reminder in default list",
+      "x": 680,
+      "y": 414,
+      "width": 480,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13.5,
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-c-2",
+      "text": "$ reminder complete 1",
+      "x": 244,
+      "y": 450,
+      "width": 420,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 14,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-m-2",
+      "text": "# Mark item #1 complete",
+      "x": 680,
+      "y": 450,
+      "width": 480,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13.5,
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-c-3",
+      "text": "$ reminder --help",
+      "x": 244,
+      "y": 486,
+      "width": 420,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 14,
+        "fill": "#F4F4F5"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-ex-m-3",
+      "text": "# Full subcommand reference",
+      "x": 680,
+      "y": 486,
+      "width": 480,
+      "height": 22,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 13.5,
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-card-1",
+      "x": 220,
+      "y": 572,
+      "width": 490,
+      "height": 210,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-c1-h",
+      "text": "CAPABILITIES",
+      "x": 244,
+      "y": 594,
+      "width": 200,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fontStyle": "Bold",
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-c1-b",
+      "text": "• Direct EventKit sync with iCloud & Apple Reminders\n• Native compiled Swift binary — sub-20ms startup\n• Scriptable plain-text output for shell pipelines\n• Automatic quarantine removal during brew install",
+      "x": 244,
+      "y": 624,
+      "width": 442,
+      "height": 130,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 24
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "rectangle",
+      "parent": 5,
+      "name": "fd-card-2",
+      "x": 730,
+      "y": 572,
+      "width": 490,
+      "height": 210,
+      "props": {
+        "fill": "#FFFFFF",
+        "cornerRadius": 10,
+        "stroke": "#E4DFD5",
+        "strokeWeight": 1
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-c2-h",
+      "text": "PERMISSIONS & TROUBLESHOOTING",
+      "x": 754,
+      "y": 594,
+      "width": 320,
+      "height": 18,
+      "props": {
+        "fontFamily": "JetBrains Mono",
+        "fontSize": 11.5,
+        "fontStyle": "Bold",
+        "fill": "#78716C"
+      }
+    }
+  },
+  {
+    "command": "node.create",
+    "params": {
+      "type": "text",
+      "parent": 5,
+      "name": "fd-c2-b",
+      "text": "On first run, macOS prompts Terminal for Reminders access — choose Allow.\n\nIf macOS still flags the binary:\nxattr -d com.apple.quarantine \"$(brew --prefix)/bin/reminder\"",
+      "x": 754,
+      "y": 624,
+      "width": 442,
+      "height": 130,
+      "props": {
+        "fontFamily": "Inter",
+        "fontSize": 13.5,
+        "fill": "#57534E",
+        "lineHeight": 22
+      }
+    }
+  }
+]

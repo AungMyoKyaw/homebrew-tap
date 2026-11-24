@@ -2,7 +2,7 @@
 
 > **Live site:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
 
-A personal Homebrew tap for nine macOS tools (2 formulae, 7 casks), installed and updated through Homebrew. ChatGPT Controller, Receipts and Rusty Pomodoro use AGPL-3.0-or-later.
+A personal Homebrew tap for ten macOS tools (2 formulae, 8 casks), installed and updated through Homebrew. ChatGPT Controller, Receipts and Rusty Pomodoro use AGPL-3.0-or-later.
 
 ## Prerequisites
 
@@ -76,6 +76,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | receipts | v0.1.0 | Local-first menu-bar time tracker with sessions, a weekly calendar and statistics |
 | rusty-pomodoro | v1.0.1 | Focus timer with sessions, breaks, themes, and statistics |
 | [chatgpt-controller](https://aungmyokyaw.github.io/chatgpt-controller-desktop/) | v0.2.0 | Local ChatGPT browser controller with an authenticated localhost API (Apple Silicon) |
+| life-manager | v0.1.0 | Local-first GPUI personal productivity app (tasks, calendar, focus, habits, goals) and CLI/MCP |
 
 ```bash
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
@@ -85,6 +86,7 @@ brew install --cask AungMyoKyaw/homebrew-tap/dhamma-echo
 brew install --cask AungMyoKyaw/homebrew-tap/receipts
 brew install --cask AungMyoKyaw/homebrew-tap/rusty-pomodoro
 brew install --cask AungMyoKyaw/homebrew-tap/chatgpt-controller
+brew install --cask AungMyoKyaw/homebrew-tap/life-manager
 ```
 
 ### chatgpt-controller
@@ -109,6 +111,10 @@ brew reinstall --cask aungmyokyaw/tap/receipts
 If macOS still blocks the first launch, use **System Settings → Privacy & Security → Open Anyway** for Receipts.
 
 Regular uninstall keeps sessions. `brew uninstall --cask --zap AungMyoKyaw/homebrew-tap/receipts` also removes the local database and saved sessions.
+
+### life-manager
+
+Life Manager requires macOS 13 (Ventura) or later on Apple Silicon. The cask installs `Life Manager.app` and links the `life` CLI binary. The v0.1.0 build is ad-hoc signed and not notarized; the cask removes `com.apple.quarantine` during postflight. If macOS still blocks the first launch, use **System Settings → Privacy & Security → Open Anyway**. `brew uninstall --cask --zap AungMyoKyaw/homebrew-tap/life-manager` removes the local SQLite database and preferences.
 
 ## Updating
 

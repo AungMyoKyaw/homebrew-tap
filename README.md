@@ -69,7 +69,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 
 | Package | Version | What it does |
 | --- | --- | --- |
-| [block-clock](https://aungmyokyaw.github.io/block-clock/) | v0.2.2 | Native GPUI desktop clock visualizing the day as 1,440 continuous minute blocks |
+| [block-clock](https://aungmyokyaw.github.io/block-clock/) | v0.2.4 | Native GPUI desktop clock visualizing the day as 1,440 continuous minute blocks |
 | git-ingest | v0.2.7 | Secure Electron desktop app that bundles any repo for LLM context |
 | gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
 | caffeinate | v3.0.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |

@@ -1,9 +1,9 @@
 cask "block-clock" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.2.2"
-  sha256 arm:   "971a905c80f3ce02050b5dfa259b4ed6ed2e6d58c03a794c2ec423cf1a4ce585",
-         intel: "7e92f96e429c43ad19e268fba36eb82c98a32c2856a857173f558bc68db79446"
+  version "0.2.4"
+  sha256 arm:   "20c2df160270b4684f8d7554eb5245dd9077c1828d921e5fdfbb1c3090c4c20c",
+         intel: "4bb85599b0915e6e51c71badb0e5fc3951d3da1ca5dc57521421578e60aeff6e"
 
   url "https://github.com/AungMyoKyaw/block-clock/releases/download/v#{version}/block-clock-macos-#{arch}.zip"
   name "Block Clock"

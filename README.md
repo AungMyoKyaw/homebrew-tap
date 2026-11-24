@@ -2,7 +2,7 @@
 
 > **Live site:** [aungmyokyaw.github.io/homebrew-tap](https://aungmyokyaw.github.io/homebrew-tap/)
 
-A personal Homebrew tap for ten macOS tools (2 formulae, 8 casks), installed and updated through Homebrew. ChatGPT Controller, Receipts and Rusty Pomodoro use AGPL-3.0-or-later.
+A personal Homebrew tap for eleven macOS tools (2 formulae, 9 casks), installed and updated through Homebrew. ChatGPT Controller, Receipts and Rusty Pomodoro use AGPL-3.0-or-later.
 
 ## Prerequisites
 
@@ -69,6 +69,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 
 | Package | Version | What it does |
 | --- | --- | --- |
+| [block-clock](https://aungmyokyaw.github.io/block-clock/) | v0.2.2 | Native GPUI desktop clock visualizing the day as 1,440 continuous minute blocks |
 | git-ingest | v0.2.7 | Secure Electron desktop app that bundles any repo for LLM context |
 | gitfolio | v1.0.2 | Git contribution portfolio exporter for macOS |
 | caffeinate | v3.0.0 | Keep your Mac awake during long builds, downloads, renders, and remote sessions |
@@ -79,6 +80,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | life-manager | v0.1.0 | Local-first GPUI personal productivity app (tasks, calendar, focus, habits, goals) and CLI/MCP |
 
 ```bash
+brew install --cask AungMyoKyaw/homebrew-tap/block-clock
 brew install --cask AungMyoKyaw/homebrew-tap/git-ingest
 brew install --cask AungMyoKyaw/homebrew-tap/gitfolio
 brew install --cask AungMyoKyaw/homebrew-tap/caffeinate

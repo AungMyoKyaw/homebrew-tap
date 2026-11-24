@@ -2,6 +2,7 @@
   "tap": "AungMyoKyaw/homebrew-tap",
   "repoUrl": "https://github.com/AungMyoKyaw/homebrew-tap",
   "caskOrder": [
+    "block-clock",
     "life-manager",
     "chatgpt-controller",
     "dhamma-echo",
@@ -13,6 +14,13 @@
   ],
   "formulaOrder": ["reminder", "corenote"],
   "packages": {
+    "block-clock": {
+      "summary": "Native GPUI desktop clock that visualizes the day as 1,440 continuous minute blocks.",
+      "keywords": ["clock", "time", "focus", "gpui", "rust", "productivity", "minimalist"],
+      "website": "https://aungmyokyaw.github.io/block-clock/",
+      "license": "PolyForm-Noncommercial-1.0.0",
+      "notes": "Native Rust + GPUI app for Apple Silicon and Intel. Quarantine is removed automatically during install."
+    },
     "life-manager": {
       "summary": "Local-first GPUI productivity app for tasks, calendar, focus, habits, and goals + life CLI.",
       "keywords": ["tasks", "calendar", "habits", "goals", "gpui", "mcp", "cli", "productivity"],

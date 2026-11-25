@@ -1,11 +1,11 @@
 cask "focusbar" do
-  version "1.2.0"
-  sha256 "81cafcab1d878fdb176d8c30a7f004b2cf487e7cf960a17ca31b50f8e9035c5a"
+  version "2.0.0"
+  sha256 "70fdb6b63a8e828e7d536185a952a7d334c8775e56e6bef8a195d6ba1b539b6b"
 
   url "https://github.com/AungMyoKyaw/FocusBar/releases/download/v#{version}/FocusBar.app.zip"
   name "FocusBar"
   desc "Menu bar Pomodoro timer with gamification and Apple Reminders integration"
-  homepage "https://github.com/AungMyoKyaw/FocusBar"
+  homepage "https://aungmyokyaw.github.io/FocusBar/"
 
   livecheck do
     url :url

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AungMyoKyaw/homebrew-tap — macOS Homebrew Tap</title>
-  <meta name="description" content="Personal Homebrew tap distributing 10 macOS desktop casks and 2 CLI formulae. SHA256-pinned releases with one-click install commands.">
+  <meta name="description" content="Personal Homebrew tap distributing 11 macOS desktop casks and 2 CLI formulae. SHA256-pinned releases with one-click install commands.">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="stylesheet" href="./styles/site.css">
 </head>
@@ -37,7 +37,7 @@
     <section class="hero" id="install">
       <span class="eyebrow">Personal Homebrew Tap · macOS</span>
       <h1>Native macOS tools, installed via Homebrew.</h1>
-      <p class="hero-sub">10 desktop casks and 2 CLI formulae. SHA256-pinned releases, automatic quarantine cleanup, zero telemetry.</p>
+      <p class="hero-sub">11 desktop casks and 2 CLI formulae. SHA256-pinned releases, automatic quarantine cleanup, zero telemetry.</p>
       <div class="cmd-bar cmd-bar-lg">
         <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew tap AungMyoKyaw/homebrew-tap</span></code>
         <button type="button" class="copy-btn copy-btn-primary" data-copy-command="brew tap AungMyoKyaw/homebrew-tap" aria-label="Copy brew tap command">Copy command</button>
@@ -46,8 +46,8 @@
 
     <div class="controls" role="region" aria-label="Filter packages">
       <div class="filter-group" role="group" aria-label="Package type filter">
-        <button type="button" class="filter-pill" data-filter="all" aria-pressed="true">All (12)</button>
-        <button type="button" class="filter-pill" data-filter="cask" aria-pressed="false">Casks (10)</button>
+        <button type="button" class="filter-pill" data-filter="all" aria-pressed="true">All (13)</button>
+        <button type="button" class="filter-pill" data-filter="cask" aria-pressed="false">Casks (11)</button>
         <button type="button" class="filter-pill" data-filter="formula" aria-pressed="false">Formulae (2)</button>
       </div>
       <div class="search-wrap">
@@ -60,10 +60,37 @@
     <section class="catalog-section" id="casks" aria-labelledby="casks-heading">
       <div class="section-head">
         <h2 id="casks-heading">Desktop Apps — Casks</h2>
-        <span class="section-meta">10 packages · brew install --cask</span>
+        <span class="section-meta">11 packages · brew install --cask</span>
       </div>
       <div class="cask-grid">
-        <article class="pkg-card" data-package="focusbar" data-version="2.0.0" data-kind="cask" data-search="focusbar FocusBar Menu bar Pomodoro timer with gamification and Apple Reminders integration. Universal macOS 14+ pomodoro timer focus menubar reminders gamification productivity">
+        <article class="pkg-card" data-package="motaa-desktop" data-version="0.2.0" data-kind="cask" data-search="motaa-desktop MOTAA Desktop Offline-first Myanmar astrology desktop workspace built with Rust and GPUI. arm64 · x64 macOS 13+ astrology myanmar burmese gpui rust offline desktop">
+          <div class="pkg-top">
+            <div class="pkg-id">
+              <div class="pkg-glyph"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="4" width="24" height="24" rx="6" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="pkg-title-block">
+                <h3 class="pkg-name">MOTAA Desktop</h3>
+                <div class="pkg-badges">
+                  <span class="badge badge-ver">v0.2.0</span>
+                  <span class="badge badge-meta">arm64 · x64 · macOS 13+</span>
+                  <span class="badge badge-meta">MIT</span>
+                </div>
+              </div>
+            </div>
+            <div class="pkg-links">
+              <a class="pkg-link" href="https://aungmyokyaw.github.io/motaa-desktop/" target="_blank" rel="noopener noreferrer">Site ↗</a>
+            </div>
+          </div>
+          <p class="pkg-desc">Offline-first Myanmar astrology desktop workspace built with Rust and GPUI.</p>
+          <div class="cmd-bar">
+            <code class="cmd-code"><span class="cmd-prompt">$</span><span>brew install --cask AungMyoKyaw/homebrew-tap/motaa-desktop</span></code>
+            <button type="button" class="copy-btn" data-copy-command="brew install --cask AungMyoKyaw/homebrew-tap/motaa-desktop" aria-label="Copy install command for MOTAA Desktop">Copy</button>
+          </div>
+          <details class="pkg-details">
+            <summary>Install &amp; signing notes</summary>
+            <div class="pkg-details-body">Native Rust + GPUI app for Apple Silicon and Intel.</div>
+          </details>
+        </article>
+        <article class="pkg-card" data-package="focusbar" data-version="2.0.1" data-kind="cask" data-search="focusbar FocusBar Menu bar Pomodoro timer with gamification and Apple Reminders integration. Universal macOS 14+ pomodoro timer focus menubar reminders gamification productivity">
           <div class="pkg-top">
             <div class="pkg-id">
               <div class="pkg-glyph"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -77,7 +104,7 @@
               <div class="pkg-title-block">
                 <h3 class="pkg-name">FocusBar</h3>
                 <div class="pkg-badges">
-                  <span class="badge badge-ver">v2.0.0</span>
+                  <span class="badge badge-ver">v2.0.1</span>
                   <span class="badge badge-meta">Universal · macOS 14+</span>
                   
                 </div>

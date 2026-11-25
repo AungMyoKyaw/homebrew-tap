@@ -1,6 +1,6 @@
 cask "focusbar" do
-  version "2.0.0"
-  sha256 "70fdb6b63a8e828e7d536185a952a7d334c8775e56e6bef8a195d6ba1b539b6b"
+  version "2.0.1"
+  sha256 "2116cf2d48dd1c4e4bb2827e88c7a255382e0e7b2a595c5e21aef8bdc40d483b"
 
   url "https://github.com/AungMyoKyaw/FocusBar/releases/download/v#{version}/FocusBar.app.zip"
   name "FocusBar"

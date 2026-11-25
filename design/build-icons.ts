@@ -52,6 +52,32 @@ const icons: Record<string, Cmd[]> = {
     { command: "shape.ellipse", params: { x: 19, y: 10, width: 4, height: 4 } },
   ]),
 
+  focusbar: makeDoc("focusbar", [
+    // Geometric menu-bar strip at the top with an amber focus pill + timer indicator below
+    ...strokeStyle(INK, 2),
+    { command: "shape.rectangle", params: { x: 4, y: 5, width: 24, height: 7, radius: 3.5 } },
+    ...fillStyle(AMBER),
+    { command: "shape.rectangle", params: { x: 6.5, y: 7, width: 12, height: 3, radius: 1.5 } },
+    ...strokeStyle(INK, 2),
+    { command: "shape.ellipse", params: { x: 9, y: 15, width: 14, height: 14 } },
+    ...strokeStyle(AMBER, 2.2),
+    { command: "shape.line", params: { x1: 16, y1: 22, x2: 20, y2: 18 } },
+  ]),
+
+  "block-clock": makeDoc("block-clock", [
+    // Rounded outer frame with a 3x2 grid of minute blocks, elapsed blocks in amber
+    ...strokeStyle(INK, 2),
+    { command: "shape.rectangle", params: { x: 3, y: 5, width: 26, height: 22, radius: 4 } },
+    ...fillStyle(AMBER),
+    { command: "shape.rectangle", params: { x: 7, y: 9, width: 5, height: 5, radius: 1 } },
+    { command: "shape.rectangle", params: { x: 13.5, y: 9, width: 5, height: 5, radius: 1 } },
+    { command: "shape.rectangle", params: { x: 20, y: 9, width: 5, height: 5, radius: 1 } },
+    { command: "shape.rectangle", params: { x: 7, y: 18, width: 5, height: 5, radius: 1 } },
+    ...strokeStyle(INK, 1.6),
+    { command: "shape.rectangle", params: { x: 13.5, y: 18, width: 5, height: 5, radius: 1 } },
+    { command: "shape.rectangle", params: { x: 20, y: 18, width: 5, height: 5, radius: 1 } },
+  ]),
+
   "life-manager": makeDoc("life-manager", [
     // 2x2 structured quadrant planner with amber focus dot
     ...strokeStyle(INK, 2),

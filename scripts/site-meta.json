@@ -2,6 +2,7 @@
   "tap": "AungMyoKyaw/homebrew-tap",
   "repoUrl": "https://github.com/AungMyoKyaw/homebrew-tap",
   "caskOrder": [
+    "focusbar",
     "block-clock",
     "life-manager",
     "chatgpt-controller",
@@ -14,6 +15,12 @@
   ],
   "formulaOrder": ["reminder", "corenote"],
   "packages": {
+    "focusbar": {
+      "summary": "Menu bar Pomodoro timer with gamification and Apple Reminders integration.",
+      "keywords": ["pomodoro", "timer", "focus", "menubar", "reminders", "gamification", "productivity"],
+      "website": "https://aungmyokyaw.github.io/FocusBar/",
+      "notes": "Requires macOS 14 (Sonoma) or later. Quarantine is removed automatically during install."
+    },
     "block-clock": {
       "summary": "Native GPUI desktop clock that visualizes the day as 1,440 continuous minute blocks.",
       "keywords": ["clock", "time", "focus", "gpui", "rust", "productivity", "minimalist"],

@@ -10,7 +10,7 @@ Developers and power users on macOS who already use Homebrew and want dependable
 
 ## Product Purpose
 
-Personal Homebrew tap distributing macOS tools (currently 8 desktop casks and 2 CLI formulae). The site (`index.html`, `reminder.html`, `corenote.html`) is generated directly from `Formula/*.rb` and `Casks/*.rb` via `bun scripts/build-site.ts` so versions and packages never drift.
+Personal Homebrew tap distributing macOS tools (currently 10 desktop casks and 2 CLI formulae). The site (`index.html`, `reminder.html`, `corenote.html`) is generated directly from `Formula/*.rb` and `Casks/*.rb` via `bun scripts/build-site.ts` so versions and packages never drift.
 
 ## Brand Personality
 

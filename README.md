@@ -78,7 +78,7 @@ On first run, macOS may prompt you to grant Terminal access to Reminders. Choose
 | receipts | v0.1.0 | Local-first menu-bar time tracker with sessions, a weekly calendar and statistics |
 | rusty-pomodoro | v1.0.1 | Focus timer with sessions, breaks, themes, and statistics |
 | [chatgpt-controller](https://aungmyokyaw.github.io/chatgpt-controller-desktop/) | v0.3.0 | Local ChatGPT browser controller with an authenticated localhost API (Apple Silicon) |
-| [focusbar](https://aungmyokyaw.github.io/FocusBar/) | v2.0.2 | Menu bar Pomodoro timer with gamification and Apple Reminders integration |
+| [focusbar](https://aungmyokyaw.github.io/FocusBar/) | v2.0.3 | Menu bar Pomodoro timer with gamification and Apple Reminders integration |
 | life-manager | v0.1.0 | Local-first GPUI personal productivity app (tasks, calendar, focus, habits, goals) and CLI/MCP |
 
 ```bash

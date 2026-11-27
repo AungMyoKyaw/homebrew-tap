@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
-import { join, basename } from "node:path";
+import { join, basename, resolve } from "node:path";
 
-const ROOT = "/Users/aungmyokyaw/my-home/projects/life/homebrew-tap";
+const ROOT = resolve(import.meta.dir, "..");
 const META = JSON.parse(readFileSync(join(ROOT, "scripts/site-meta.json"), "utf8"));
 const TAP = META.tap as string;
 const REPO_URL = META.repoUrl as string;

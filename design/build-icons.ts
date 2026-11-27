@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
-const ROOT = "/Users/aungmyokyaw/my-home/projects/life/homebrew-tap/design";
+const ROOT = import.meta.dir;
 const ICONS_DIR = join(ROOT, "icons");
 const TMP_DIR = join(ROOT, ".tmp-icons");
 mkdirSync(ICONS_DIR, { recursive: true });

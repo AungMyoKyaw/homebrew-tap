@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const DESIGN_DIR = "/Users/aungmyokyaw/my-home/projects/life/homebrew-tap/design";
+const DESIGN_DIR = import.meta.dir;
 const EXPORTS_DIR = join(DESIGN_DIR, "exports");
 mkdirSync(EXPORTS_DIR, { recursive: true });
 
